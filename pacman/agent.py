@@ -9,6 +9,7 @@ from random import randrange
 from ale_python_interface import ALEInterface
 import numpy as np
 from detect_maze import detect_maze, print_maze
+from pacman_image import pacman_image
 
 if len(sys.argv) < 2:
   print 'Usage:', sys.argv[0], 'rom_file'
@@ -41,19 +42,19 @@ legal_actions = ale.getLegalActionSet()
 # Play 10 episodes
 screen = np.reshape(ale.getScreen(), (210, -1))
 maze = detect_maze(screen)
+image = pacman_image(maze)
 # print_maze(maze)
 
 for episode in xrange(1):
   total_reward = 0
   step = 1
   while not ale.game_over():
-    if step == 500:
-      screen = np.reshape(ale.getScreen(), (210, -1))
-      print_maze(screen)
-      break
-    step += 1
-    # print step
+    # if step == 500:
+    screen = np.reshape(ale.getScreen(), (210, -1))
+    if step % 3 == 0:
+      image.new_image(screen)
     a = legal_actions[randrange(len(legal_actions))]
+    step += 1
     # Apply an action and get the resulting reward
     reward = ale.act(a);
     total_reward += reward

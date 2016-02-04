@@ -49,9 +49,26 @@ int main(int argc, char** argv) {
     ActionVect legal_actions = ale.getLegalActionSet();
 
     // Play 10 episodes
-    for (int episode=0; episode<10; episode++) {
+    for (int episode=0; episode<1; episode++) {
         float totalReward = 0;
         while (!ale.game_over()) {
+            /*
+            const ALEScreen screen = ale.getScreen();
+            float row_sum = 0, column_sum = 0, tot = 0.0;
+            for (int i = 0; i < screen.height(); ++i)
+            {
+                for (int j = 0; j < screen.width(); ++j)
+                {
+                    pixel_t tmp = screen.get(i, j);
+                    if(tmp >= 41 && tmp <= 43) {
+                        row_sum += i;
+                        column_sum += j;
+                        tot++;
+                    }
+                }
+            }
+            cout << (row_sum/tot) << "," << (column_sum/tot) << endl;
+            */
             Action a = legal_actions[rand() % legal_actions.size()];
             // Apply the action and get the resulting reward
             float reward = ale.act(a);
