@@ -1,0 +1,10 @@
+all: pacman_experiment
+
+pacman_experiment: pacman_experiment.o
+	$(CXX) pacman_experiment.o $(EXPLDFLAGS) -o pacman_experiment
+
+pacman_experiment.o: pacman_experiment.cpp
+	$(CXX) $(CFLAGS) -c pacman_experiment.cpp -o pacman_experiment.o
+
+clean:
+	rm -rf pacman_experiment pacman_experiment.exe *.o

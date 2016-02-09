@@ -1,0 +1,13 @@
+all: pacman_agent
+
+pacman_agent: pacman_agent.o pacman_image.o
+	$(CXX) pacman_agent.o pacman_image.o $(AGENTLDFLAGS) -o pacman_agent
+
+pacman_agent.o: pacman_agent.cpp
+	$(CXX) $(CFLAGS) -c pacman_agent.cpp -o pacman_agent.o
+
+pacman_image.o: pacman_image.cpp
+	$(CXX) $(CFLAGS) -c pacman_image.cpp -o pacman_image.o
+
+clean:
+	rm -rf pacman_agent pacman_agent.exe *.o
