@@ -8,6 +8,7 @@ from random import randrange
 from pacman_image import pacman_image
 import numpy as np
 from detect_maze import detect_maze
+from pacman_image import extra_colors
 
 
 class pacmanAgent(Agent):
@@ -54,6 +55,7 @@ class pacmanAgent(Agent):
 		return return_action
 
 	def agent_end(self, reward):
+		print extra_colors
 		pass
 
 	def agent_cleanup(self):
