@@ -20,15 +20,31 @@ vector<vector<int> >& pacman_image::get_maze() {
 
 pair<double, double> pacman_image::detect_loc(const vector<vector<int> > &screen, int low, int high) {
     double row_sum = 0, column_sum = 0;
+    vector<double> column_values;
     int total_matches = 0;
+    double tmp;
     for (int row = 0; row < screen.size(); ++row) {
         for (int column = 0; column < screen[row].size(); ++column) {
             if (low <= screen[row][column] && screen[row][column] <= high) {
+                tmp = min(tmp, double(column));
                 total_matches++;
                 row_sum += row;
                 column_sum += column;
+                column_values.push_back(column);
             }
         }
+    }
+    double column_mean = column_sum / column_values.size();
+    double variance = 0, sd = 0;
+    for (int i = 0; i < column_values.size(); ++i) {
+        variance += pow(column_values[i] - column_mean, 2);
+    }
+    variance /= column_values.size();
+    sd = sqrt(variance);
+    //    When the S.D is high => teleportation happening
+    //    We return a random location
+    if(sd > 10) {
+        return make_pair(row_sum/total_matches, tmp);
     }
     pair<double, double> location = make_pair(row_sum / total_matches, column_sum / total_matches);
     return location;
