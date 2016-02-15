@@ -27,11 +27,16 @@ public:
     vector<vector<int> >& get_maze(void);
     pair<double, double> detect_loc(const vector<vector<int> > &screen, int low, int high);
     pair<double, double> detect_pacman_loc(const vector<vector<int> > &screen);
+    loc detect_ghost1_loc(const vector<vector<int> > &screen);
+    loc detect_ghost2_loc(const vector<vector<int> > &screen);
+    loc detect_ghost3_loc(const vector<vector<int> > &screen);
+    loc detect_ghost4_loc(const vector<vector<int> > &screen);
     pair<double, double> detect_ghost_loc(const vector<vector<int> > &screen, int ghost);
     vector<pair<double, double> > process_screen(const vector<vector<int> > &screen);
     pair<bool, bool> can_move_horizontally(const loc pacman_location);
     pair<bool, bool> can_move_vertically(const loc pacman_location);
     vector<direction> get_valid_moves(const loc pacman_location);
+    vector<loc> detect_edible_ghosts(const vector<vector<int> > &screen);
 };
 
 vector<vector<int> > detect_maze(const vector<vector<int> > &screen);

@@ -3,8 +3,8 @@
 #include <rlglue/utils/C/TaskSpec_Parser.h>
 #include <bits/stdc++.h>
 #include "pacman_image.h"
+#include "escape_agent.h"
 #include "constants.h"
-#include "../src/common/Constants.h"
 
 using namespace std;
 
@@ -14,6 +14,9 @@ double total_reward = 0;
 action_t action;
 
 pacman_image p_image;
+escape_agent esc_agent;
+
+vector<loc> prev_object_locations;
 
 int randInRange(int max){
     double r, x;
@@ -22,34 +25,15 @@ int randInRange(int max){
     return (int)x;
 }
 
-double euclidean_distance(loc location1, loc location2) {
-    return sqrt(pow(abs(location1.first - location2.first), 2) + pow(abs(location1.second - location2.second), 2));
-}
-
-double ghost_cost(loc pacman_loc, loc ghost_loc) {
-    return GHOST_COST / euclidean_distance(pacman_loc, ghost_loc);
-}
-
-double corner_cost(loc pacman_loc) {
-    if (pacman_loc.first > SCREEN_HEIGHT / 2) pacman_loc.first = SCREEN_HEIGHT - pacman_loc.first;
-    if (pacman_loc.second > SCREEN_WIDTH / 2) pacman_loc.second = SCREEN_WIDTH - pacman_loc.second;
-    if (pacman_loc.first < 1 && pacman_loc.second < 1) return CORNER_COST;
-    else return CORNER_COST / euclidean_distance(pacman_loc, make_pair(0, 0));
-}
-
-double teleport_cost(loc pacman_loc) {
-    return (TELE_COST/euclidean_distance(pacman_loc, make_pair(double(TEL1), 0)) +
-            TELE_COST/euclidean_distance(pacman_loc, make_pair(double(TEL1), SCREEN_WIDTH)));
-}
-
 void print_image(vector<vector<int> > &screen) {
     ofstream my_file;
     my_file.open("image.txt", ofstream::out);
-    for (int row = 0; row < screen.size(); ++row) {
-        for (int column = 0; column < screen[row].size(); ++column) {
+    for (size_t row = 0; row < screen.size(); ++row) {
+        for (size_t column = 0; column < screen[row].size(); ++column) {
             int tmp = screen[row][column];
-            if(tmp == 74 || tmp == 144)
+            if(tmp == 74)
                 tmp = 1;
+            else if (tmp == 144) tmp = 0;
             my_file << tmp << " ";
         }
         my_file << endl;
@@ -57,72 +41,28 @@ void print_image(vector<vector<int> > &screen) {
     my_file.close();
 }
 
-void location_check(vector<loc> &object_locations) {
-    for (int i = 0; i < object_locations.size(); ++i) {
-        if(isnan(object_locations[i].first) || isnan(object_locations[i].second)) {
-            cout << "NAN index: " << i << endl;
+void update_object_locations(vector<loc> &object_locations) {
+    for (size_t i = 0; i < object_locations.size(); ++i) {
+        if (isnan(object_locations[i].first) || isnan(object_locations[i].second)) {
+            object_locations[i] = prev_object_locations[i];
         }
     }
 }
 
-Action escape_agent(pacman_image p_image, vector<vector<int> > screen) {
-    vector<loc> object_locations = p_image.process_screen(screen);
-    loc pacman_loc = object_locations[0];
-    cout << pacman_loc.first << " " << pacman_loc.second << endl;
-    location_check(object_locations);
-    if (!isnan(pacman_loc.first) && !isnan(pacman_loc.second)){
-        vector<direction> valid_moves = p_image.get_valid_moves(pacman_loc);
-        direction least_cost_dir = NULL_DIR;
-        double cost = GHOST_COST * 4 + CORNER_COST;
-        for (int i = 0; i < valid_moves.size(); ++i) {
-            direction dir = valid_moves[i];
-            loc next_pacman_loc;
-            if (dir == UP_DIR) {
-                cout << "up ";
-                next_pacman_loc = make_pair(pacman_loc.first - 1, pacman_loc.second);
-            }
-            else if (dir == DOWN_DIR) {
-                cout << "down ";
-                next_pacman_loc = make_pair(pacman_loc.first + 1, pacman_loc.second);
-            }
-            else if (dir == LEFT_DIR) {
-                cout << "left ";
-                next_pacman_loc = make_pair(pacman_loc.first, pacman_loc.second - 1);
-//                if(next_pacman_loc.second < 0) {
-//                    cout << "end ";
-//                    next_pacman_loc.second += SCREEN_WIDTH;
-//                }
-            }
-            else if (dir == RIGHT_DIR) {
-                cout << "right ";
-                next_pacman_loc = make_pair(pacman_loc.first, pacman_loc.second + 1);
-//                if(next_pacman_loc.second > SCREEN_WIDTH) {
-//                    next_pacman_loc.second -= SCREEN_WIDTH;
-//                }
-            }
-            double dir_cost = corner_cost(next_pacman_loc) + teleport_cost(next_pacman_loc);
-            //cout << dir_cost << " dir_cost, ";
-            for (int ghost = 0; ghost < 4; ++ghost) {
-                double c = ghost_cost(next_pacman_loc, object_locations[ghost + 1]);
-                dir_cost += (isnan(c) ? 0: c);
-            }
-            cout << dir_cost << " total_cost, ";
-            if (dir_cost < cost) {
-                cost = dir_cost;
-                least_cost_dir = dir;
-            }
+void update_previous_locations(const vector<loc> &object_locations) {
+    for (size_t i = 0; i < object_locations.size(); ++i) {
+        prev_object_locations[i] = object_locations[i];
+    }
+}
+
+void location_check(vector<loc> &object_locations) {
+    cout << "NAN index: ";
+    for (size_t i = 0; i < object_locations.size(); ++i) {
+        if(isnan(object_locations[i].first) || isnan(object_locations[i].second)) {
+            cout << i << " ";
         }
-        cout << endl;
-        if (least_cost_dir == NULL_DIR) return PLAYER_A_NOOP;
-        else if (least_cost_dir == UP_DIR) return PLAYER_A_UP;
-        else if (least_cost_dir == DOWN_DIR) return PLAYER_A_DOWN;
-        else if (least_cost_dir == LEFT_DIR) return PLAYER_A_LEFT;
-        else if (least_cost_dir == RIGHT_DIR) return PLAYER_A_RIGHT;
     }
-    else {
-        print_image(screen);
-        return PLAYER_A_NOOP;
-    }
+    cout << endl;
 }
 
 void agent_init(const char* task_spec_string) {
@@ -151,14 +91,11 @@ const action_t* agent_start(const observation_t* observation) {
         }
         screen.push_back(pixel_row);
     }
-    /* printing maze pattern
-    for (int row = 0; row < maze.size(); ++row) {
-        for (int column = 0; column < maze[row].size(); ++column) {
-            cout << maze[row][column] << " ";
-        }
-        cout << endl;
+    prev_object_locations.clear();
+    for (int i = 0; i < 5; ++i) {
+        loc tmp_loc = make_pair(NAN, NAN);
+        prev_object_locations.push_back(tmp_loc);
     }
-    */
     p_image.detect_maze_and_set(screen);
     int action_val = randInRange(max_action);
     action.intArray[0] = action_val;
@@ -177,8 +114,12 @@ const action_t* agent_step(double reward, const observation_t* observation) {
         }
         screen.push_back(pixel_row);
     }
+    vector<loc> object_locations = p_image.process_screen(screen);
+    update_object_locations(object_locations);
+    vector<loc> edible_ghosts = p_image.detect_edible_ghosts(screen);
     total_reward += reward;
-    int action_val = escape_agent(p_image, screen);
+    int action_val = esc_agent.get_action(p_image, object_locations, edible_ghosts);
+    update_previous_locations(object_locations);
     action.intArray[0] = action_val;
     return &action;
 }
@@ -186,7 +127,7 @@ const action_t* agent_step(double reward, const observation_t* observation) {
 void agent_end(double reward) {
     total_reward += reward;
     cout << "Total reward obtained " << total_reward << endl;
-    clearRLStruct(&action);
+    total_reward = 0;
 }
 
 void agent_cleanup() {
