@@ -20,7 +20,7 @@ enum direction {
 class pacman_image {
 private:
     vector<vector<int> > maze;
-    vector<loc> pellet_pos;
+    vector<loc> orig_pellet_pos, pellet_pos;
 
 public:
     // Constructors
@@ -43,6 +43,8 @@ public:
     pair<bool, bool> can_move_vertically(const loc pacman_location);
     vector<direction> get_valid_moves(const loc pacman_location);
     vector<loc> detect_edible_ghosts(const vector<vector<int> > &screen);
+    void update_pellet_pos(const vector<vector<int> > &screen);
+    vector<loc>& get_pellet_pos(void);
 };
 
 vector<vector<int> > detect_maze(const vector<vector<int> > &screen);

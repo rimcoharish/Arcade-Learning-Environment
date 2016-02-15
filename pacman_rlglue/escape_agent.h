@@ -11,6 +11,7 @@ private:
     double ghost_cost(loc pacman_loc, loc ghost_loc);
     double corner_cost(loc pacman_loc);
     double teleport_cost(loc pacman_loc);
+    double pellet_cost(loc pacman_loc, vector<loc> pellet_loc);
 
 public:
     escape_agent();

@@ -115,6 +115,7 @@ const action_t* agent_step(double reward, const observation_t* observation) {
         screen.push_back(pixel_row);
     }
     vector<loc> object_locations = p_image.process_screen(screen);
+    p_image.update_pellet_pos(screen);
     update_object_locations(object_locations);
     vector<loc> edible_ghosts = p_image.detect_edible_ghosts(screen);
     total_reward += reward;

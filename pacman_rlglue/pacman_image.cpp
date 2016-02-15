@@ -4,7 +4,10 @@
 #include "constants.h"
 using namespace std;
 
-pacman_image::pacman_image() {}
+pacman_image::pacman_image() {
+    orig_pellet_pos.reserve(1000);
+    pellet_pos.reserve(1000);
+}
 
 pacman_image::pacman_image(const vector<vector<int> > &maze) {
     this->maze = maze;
@@ -13,10 +16,15 @@ pacman_image::pacman_image(const vector<vector<int> > &maze) {
 void pacman_image::detect_maze_and_set(const vector<vector<int> > &screen) {
     this->maze = detect_maze(screen);
     this->pellet_pos = detect_pellets(this->maze);
+    this->orig_pellet_pos = this->pellet_pos;
 }
 
 vector<vector<int> >& pacman_image::get_maze() {
     return maze;
+}
+
+vector<loc>& pacman_image::get_pellet_pos() {
+    return pellet_pos;
 }
 
 pair<double, double> pacman_image::detect_loc(const vector<vector<int> > &screen, int low, int high) {
@@ -130,53 +138,6 @@ vector<direction> pacman_image::get_valid_moves(const loc pacman_location) {
 
 }
 
-vector<vector<int> > detect_maze(const vector<vector<int> > &screen) {
-    // Maze - 1, Ghost pellet - 2, Normal pellet - 3 and remaining positions 0
-    vector<vector<int> > maze;
-    for (size_t row = 0; row < screen.size(); ++row) {
-        vector<int> pixel_row;
-        for (size_t column = 0; column < screen[row].size(); ++column) {
-            if (screen[row][column] == MAZE_COLOR) {
-                if (row == 0 || column == 0) { // Corner is always a maze position if it is maze colored
-                    pixel_row.push_back(1);
-                }
-                else {
-                    if (maze[row - 1][column] == 1 || pixel_row[column - 1] == 1) { // Continuation of maze
-                        pixel_row.push_back(1);
-                    }
-                    else if (maze[row - 1][column] == 2 || pixel_row[column - 1] == 2) { // Continuation of ghost pellet
-                        pixel_row.push_back(2);
-                    }
-                    else if (maze[row - 1][column] == 2 || pixel_row[column - 1] == 3) { // Continuation of normal pellet
-                        pixel_row.push_back(3);
-                    }
-                    else {
-                        if (screen[row][column + 4] == MAZE_COLOR) { // Not any of the pellet, so must be part of maze
-                            pixel_row.push_back(1);
-                        }
-                        else if (screen[row + 2][column] == MAZE_COLOR) { // Not part of normal pellet
-                            if (screen[row + 7][column] == MAZE_COLOR) { // Not part of ghost pellet
-                                pixel_row.push_back(1); // Must be part of maze
-                            }
-                            else {
-                                pixel_row.push_back(2);
-                            }
-                        }
-                        else {
-                            pixel_row.push_back(3);
-                        }
-                    }
-                }
-            }
-            else {
-                pixel_row.push_back(0);
-            }
-        }
-        maze.push_back(pixel_row);
-    }
-    return maze;
-}
-
 vector<loc> expand_edible_ghost(const vector<vector<int> > &screen, vector<vector<bool> > &expanded, int row, int column) {
     vector<loc> locations;
     if (row < 0 || row >= MAZE_HEIGHT || column < 0 || column >= SCREEN_WIDTH) return locations; // out of bounds
@@ -252,6 +213,70 @@ vector<loc> pacman_image::detect_edible_ghosts(const vector<vector<int> > &scree
     return edible_ghost_locations;
 }
 
+/* 
+pellet_pos gets updated with the location of pellets active currently
+Known problem: When a ghost and pellet overlap, pellet gets undetected
+               for this step.
+*/
+void pacman_image::update_pellet_pos(const vector<vector<int> > &screen) {
+    std::vector<loc> pellet_pos;
+    for (vector<loc>::iterator it = orig_pellet_pos.begin(); it != orig_pellet_pos.end(); it++)
+    {
+        loc tmp = *it;
+        if(screen[tmp.first][tmp.second] == MAZE_COLOR)
+            pellet_pos.push_back(tmp);
+    }
+    this->pellet_pos.clear();
+    this->pellet_pos = pellet_pos;
+}
+
+vector<vector<int> > detect_maze(const vector<vector<int> > &screen) {
+    // Maze - 1, Ghost pellet - 2, Normal pellet - 3 and remaining positions 0
+    vector<vector<int> > maze;
+    for (size_t row = 0; row < screen.size(); ++row) {
+        vector<int> pixel_row;
+        for (size_t column = 0; column < screen[row].size(); ++column) {
+            if (screen[row][column] == MAZE_COLOR) {
+                if (row == 0 || column == 0) { // Corner is always a maze position if it is maze colored
+                    pixel_row.push_back(1);
+                }
+                else {
+                    if (maze[row - 1][column] == 1 || pixel_row[column - 1] == 1) { // Continuation of maze
+                        pixel_row.push_back(1);
+                    }
+                    else if (maze[row - 1][column] == 2 || pixel_row[column - 1] == 2) { // Continuation of ghost pellet
+                        pixel_row.push_back(2);
+                    }
+                    else if (maze[row - 1][column] == 2 || pixel_row[column - 1] == 3) { // Continuation of normal pellet
+                        pixel_row.push_back(3);
+                    }
+                    else {
+                        if (screen[row][column + 4] == MAZE_COLOR) { // Not any of the pellet, so must be part of maze
+                            pixel_row.push_back(1);
+                        }
+                        else if (screen[row + 2][column] == MAZE_COLOR) { // Not part of normal pellet
+                            if (screen[row + 7][column] == MAZE_COLOR) { // Not part of ghost pellet
+                                pixel_row.push_back(1); // Must be part of maze
+                            }
+                            else {
+                                pixel_row.push_back(2);
+                            }
+                        }
+                        else {
+                            pixel_row.push_back(3);
+                        }
+                    }
+                }
+            }
+            else {
+                pixel_row.push_back(0);
+            }
+        }
+        maze.push_back(pixel_row);
+    }
+    return maze;
+}
+
 vector<loc> detect_pellets(vector<vector<int> > maze) {
     vector<loc> pellet_pos;
     for (int row = 0; row < MAZE_HEIGHT; ++row) {
@@ -270,3 +295,4 @@ vector<loc> detect_pellets(vector<vector<int> > maze) {
     }
     return pellet_pos;
 }
+

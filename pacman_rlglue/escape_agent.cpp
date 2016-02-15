@@ -7,7 +7,9 @@ double escape_agent::euclidean_distance(loc location1, loc location2) {
 }
 
 double escape_agent::ghost_cost(loc pacman_loc, loc ghost_loc) {
-    return GHOST_COST / euclidean_distance(pacman_loc, ghost_loc);
+    double cost = GHOST_COST / euclidean_distance(pacman_loc, ghost_loc);
+    // cout << "Ghost: " << cost << ", ";
+    return cost;
 }
 
 double escape_agent::corner_cost(loc pacman_loc) {
@@ -18,10 +20,26 @@ double escape_agent::corner_cost(loc pacman_loc) {
 }
 
 double escape_agent::teleport_cost(loc pacman_loc) {
-    return (TELE_COST/euclidean_distance(pacman_loc, make_pair(double(UPPER_TELEPORTATION_ROW), 0)) +
-            TELE_COST/euclidean_distance(pacman_loc, make_pair(double(UPPER_TELEPORTATION_ROW), SCREEN_WIDTH)) +
-            TELE_COST/euclidean_distance(pacman_loc, make_pair(double(LOWER_TELEPORTATION_ROW), 0)) +
-            TELE_COST/euclidean_distance(pacman_loc, make_pair(double(LOWER_TELEPORTATION_ROW), SCREEN_WIDTH)));
+    return (TELE_COST/euclidean_distance(pacman_loc,
+                                         make_pair(double(UPPER_TELEPORTATION_ROW), 0)) +
+            TELE_COST/euclidean_distance(pacman_loc,
+                                         make_pair(double(UPPER_TELEPORTATION_ROW),
+                                                   SCREEN_WIDTH)) +
+            TELE_COST/euclidean_distance(pacman_loc,
+                                         make_pair(double(LOWER_TELEPORTATION_ROW), 0)) +
+            TELE_COST/euclidean_distance(pacman_loc,
+                                         make_pair(double(LOWER_TELEPORTATION_ROW),
+                                                   SCREEN_WIDTH)));
+}
+
+double escape_agent::pellet_cost(loc pacman_loc, vector<loc> pellet_loc) {
+    double total_cost = 0.0;
+    for (int i = 0; i < pellet_loc.size(); ++i)
+    {
+        total_cost += PELLET_COST/euclidean_distance(pacman_loc, pellet_loc[i]);
+    }
+    // cout << "Pellet: " << total_cost << ", ";
+    return total_cost;
 }
 
 Action escape_agent::get_action(pacman_image p_image, vector<loc> object_locations, vector<loc> edible_ghosts) {
@@ -52,7 +70,8 @@ Action escape_agent::get_action(pacman_image p_image, vector<loc> object_locatio
                 }
             }
             else {
-                dir_cost += corner_cost(next_pacman_loc) + teleport_cost(next_pacman_loc);
+                dir_cost += corner_cost(next_pacman_loc) + teleport_cost(next_pacman_loc) +
+                            pellet_cost(next_pacman_loc, p_image.get_pellet_pos());
                 for (int ghost = 0; ghost < 4; ++ghost) {
                     double c = ghost_cost(next_pacman_loc, object_locations[ghost + 1]);
                     dir_cost += (isnan(c) ? 0: c);
@@ -63,6 +82,7 @@ Action escape_agent::get_action(pacman_image p_image, vector<loc> object_locatio
                 least_cost_dir = dir;
             }
         }
+        // cout << "\n";
         if (least_cost_dir == NULL_DIR) return PLAYER_A_NOOP;
         else if (least_cost_dir == UP_DIR) return PLAYER_A_UP;
         else if (least_cost_dir == DOWN_DIR) return PLAYER_A_DOWN;
