@@ -12,6 +12,7 @@ pacman_image::pacman_image(const vector<vector<int> > &maze) {
 
 void pacman_image::detect_maze_and_set(const vector<vector<int> > &screen) {
     this->maze = detect_maze(screen);
+    this->pellet_pos = detect_pellets(this->maze);
 }
 
 vector<vector<int> >& pacman_image::get_maze() {
@@ -251,3 +252,21 @@ vector<loc> pacman_image::detect_edible_ghosts(const vector<vector<int> > &scree
     return edible_ghost_locations;
 }
 
+vector<loc> detect_pellets(vector<vector<int> > maze) {
+    vector<loc> pellet_pos;
+    for (int row = 0; row < MAZE_HEIGHT; ++row) {
+        for (size_t column = 0; column < maze[row].size(); ++column) {
+            if(maze[row][column] == 3) {
+                pellet_pos.push_back(make_pair(row, column));
+                for (int i = 0; i < 2; ++i)
+                {
+                    for (int j = 0; j < 4; ++j)
+                    {
+                        maze[row+i][column+j] = 0;
+                    }
+                }
+            }
+        }
+    }
+    return pellet_pos;
+}
