@@ -1,0 +1,14 @@
+all: alien_agent
+
+alien_agent: alien_agent.o alien_image.o
+	$(CXX) alien_agent.o alien_image.o $(AGENTLDFLAGS) -o alien_agent
+
+alien_agent.o: alien_agent.cpp
+	$(CXX) $(CFLAGS) -c alien_agent.cpp -o alien_agent.o
+
+alien_image.o: alien_image.cpp
+	$(CXX) $(CFLAGS) -c alien_image.cpp -o alien_image.o
+
+
+clean:
+	rm -rf alien_agent alien_agent.exe *.o
