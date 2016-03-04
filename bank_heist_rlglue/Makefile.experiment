@@ -1,0 +1,10 @@
+all: bank_heist_experiment
+
+bank_heist_experiment: bank_heist_experiment.o
+	$(CXX) bank_heist_experiment.o $(EXPLDFLAGS) -o bank_heist_experiment
+
+bank_heist_experiment.o: bank_heist_experiment.cpp
+	$(CXX) $(CFLAGS) -c bank_heist_experiment.cpp -o bank_heist_experiment.o
+
+clean:
+	rm -rf bank_heist_experiment bank_heist_experiment.exe *.o
