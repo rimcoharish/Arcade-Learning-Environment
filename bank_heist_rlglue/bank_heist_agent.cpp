@@ -7,12 +7,13 @@
 
 using namespace std;
 
+set<int> all;
 int num_actions = 0;
 int max_action = 17;
 double total_reward = 0;
 action_t action;
 
-bank_heist_image a_image;
+bank_heist_image img;
 
 int randInRange(int max){
     double r, x;
@@ -20,23 +21,6 @@ int randInRange(int max){
     x = (r * (max+1));
     return (int)x;
 }
-
-void print_image(vector<vector<int> > &screen) {
-    ofstream my_file;
-    my_file.open("image.txt", ofstream::out);
-    for (size_t row = 0; row < screen.size(); ++row) {
-        for (size_t column = 0; column < screen[row].size(); ++column) {
-            int tmp = screen[row][column];
-            if(tmp == MAZE_COLOR)
-                tmp = 1;
-            else if (tmp == BACKGROUND_COLOR) tmp = 0;
-            my_file << tmp << " ";
-        }
-        my_file << endl;
-    }
-    my_file.close();
-}
-
 
 void location_check(vector<loc> &object_locations) {
     cout << "NAN index: ";
@@ -74,16 +58,7 @@ const action_t* agent_start(const observation_t* observation) {
         }
         screen.push_back(pixel_row);
     }
-    print_image(screen);
-    // vector<vector<int> > maze = detect_maze(screen);
-    /* printing maze pattern
-    for (int row = 0; row < maze.size(); ++row) {
-        for (int column = 0; column < maze[row].size(); ++column) {
-            cout << maze[row][column] << " ";
-        }
-        cout << endl;
-    }
-    */
+    img.process_screen(screen);
     int action_val = randInRange(max_action);
     action.intArray[0] = action_val;
     return &action;
@@ -101,7 +76,7 @@ const action_t* agent_step(double reward, const observation_t* observation) {
         }
         screen.push_back(pixel_row);
     }
-    print_image(screen);
+    img.process_screen(screen);
     total_reward += reward;
     int action_val = randInRange(max_action);
     action.intArray[0] = action_val;
