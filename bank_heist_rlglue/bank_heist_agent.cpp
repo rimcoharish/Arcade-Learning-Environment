@@ -7,7 +7,6 @@
 
 using namespace std;
 
-set<int> all;
 int num_actions = 0;
 int max_action = 17;
 double total_reward = 0;

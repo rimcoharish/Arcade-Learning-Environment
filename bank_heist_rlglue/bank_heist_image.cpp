@@ -2,6 +2,9 @@
 #include "constants.h"
 using namespace std;
 
+int BACKGROUND_COLOR = 117;
+int MAZE_COLOR = 22;
+
 bank_heist_image::bank_heist_image(){}
 
 loc bank_heist_image::detect_loc(const vector<vector<int> > &screen, int low, int high) {
@@ -32,8 +35,8 @@ loc bank_heist_image::detect_loc(const vector<vector<int> > &screen, int low, in
     if(sd > 10) {
         assert(false);
     }
-    pair<double, double> location = make_pair(row_sum / total_matches, column_sum / total_matches);
-
+    pair<double, double> location = mp(row_sum / total_matches,
+                                       column_sum / total_matches);
     return location;
 }
 
@@ -42,11 +45,39 @@ void bank_heist_image::observe_colors(const vector<vector<int> > &screen) {
     MAZE_COLOR = screen[MAZE_START_X][MAZE_START_Y];
 }
 
+vector<loc> bank_heist_image::detect_banks(const vector<vector<int> > &screen) {
+    if(BANK_COLOR == BACKGROUND_COLOR)
+        return banks_loc;
+    vector<loc> banks;
+    vector<vector<int> > tmp_screen = screen;
+    for (int row = MAZE_START_X; row < MAZE_END_X; ++row) {
+        for (size_t column = 0; column < tmp_screen[row].size(); ++column) {
+            if(tmp_screen[row][column] == BANK_COLOR) {
+                banks.push_back(mp(row, column));
+                // modify the 7x7 matrix
+                for (size_t i = 0; i < 9; i++) {
+                    for (size_t j = 0; j < 9; j++) {
+                        tmp_screen[row+i-2][column+j-2] = 0;
+                    }
+                }
+            }
+        }
+    }
+    return banks;
+}
+
 void bank_heist_image::process_screen(const vector<vector<int> > &screen) {
     observe_colors(screen);
     print_image(screen);
-    loc heist = detect_loc(screen, HEIST_COLOR-1, HEIST_COLOR+1);
-    cout << "HEIST: " << heist.first << " " << heist.second << endl;
+    this->heist_loc = detect_loc(screen, HEIST_COLOR-1, HEIST_COLOR+1);
+    // vector<loc> banks;
+    banks_loc = detect_banks(screen);
+    cout << "HEIST: " << heist_loc.first << "," << heist_loc.second << endl;
+    cout << "Banks: ";
+    for (size_t i = 0; i < banks_loc.size(); i++) {
+        cout << banks_loc[i].first << "," << banks_loc[i].second << " ";
+    }
+    cout << endl;
     cout << "MAZE_COLOR: " << MAZE_COLOR << "\n";
     cout << "BACKGROUND_COLOR: " << BACKGROUND_COLOR << "\n";
 }
