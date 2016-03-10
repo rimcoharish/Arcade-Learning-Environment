@@ -7,7 +7,7 @@ int MAZE_COLOR = 22;
 
 bank_heist_image::bank_heist_image(){}
 
-loc bank_heist_image::detect_loc(const vector<vector<int> > &screen, int low, int high) {
+loc bank_heist_image::detect_loc(int low, int high) {
     double row_sum = 0, column_sum = 0;
     vector<double> column_values;
     int total_matches = 0;
@@ -40,14 +40,15 @@ loc bank_heist_image::detect_loc(const vector<vector<int> > &screen, int low, in
     return location;
 }
 
-void bank_heist_image::observe_colors(const vector<vector<int> > &screen) {
+void bank_heist_image::observe_colors() {
     BACKGROUND_COLOR = screen[13][0];
     MAZE_COLOR = screen[MAZE_START_X][MAZE_START_Y];
 }
 
-vector<loc> bank_heist_image::detect_banks(const vector<vector<int> > &screen) {
-    if(BANK_COLOR == BACKGROUND_COLOR)
+vector<loc> bank_heist_image::detect_banks() {
+    if(BANK_COLOR == BACKGROUND_COLOR) {
         return banks_loc;
+    }
     vector<loc> banks;
     vector<vector<int> > tmp_screen = screen;
     for (int row = MAZE_START_X; row < MAZE_END_X; ++row) {
@@ -66,12 +67,57 @@ vector<loc> bank_heist_image::detect_banks(const vector<vector<int> > &screen) {
     return banks;
 }
 
-void bank_heist_image::process_screen(const vector<vector<int> > &screen) {
-    observe_colors(screen);
-    print_image(screen);
-    this->heist_loc = detect_loc(screen, HEIST_COLOR-1, HEIST_COLOR+1);
+// dir:- 1 = right; 0 = left
+bool bank_heist_image::can_move_horizontally(int dir) {
+  bool ret = true;
+  int var = -1;
+  if(dir == 1)
+    var = 1;
+  for (int row = MAZE_START_X; row < MAZE_END_X; ++row) {
+      for (size_t column = 0; column < screen[row].size(); ++column) {
+          if(screen[row][column] >= HEIST_COLOR - 2 && screen[row][column] <= HEIST_COLOR + 2) {
+              if(screen[row][column+var] == MAZE_COLOR || screen[row][column+2*var] == MAZE_COLOR)
+                  ret = false;
+          }
+      }
+  }
+  return ret;
+}
+
+// dir:- 1 = up; 0 = down
+bool bank_heist_image::can_move_vertically(int dir) {
+  bool ret = true;
+  int var = 1;
+  if(dir == 1)
+    var = -1;
+  for (int row = MAZE_START_X; row < MAZE_END_X; ++row) {
+      for (size_t column = 0; column < screen[row].size(); ++column) {
+        if(screen[row][column] >= HEIST_COLOR - 2 && screen[row][column] <= HEIST_COLOR + 2) {
+              if(screen[row+var][column] == MAZE_COLOR || screen[row+2*var][column] == MAZE_COLOR) {
+                ret = false;
+              }
+          }
+      }
+  }
+  return ret;
+}
+
+vector<direction> bank_heist_image::get_valid_moves() {
+    vector<direction> valid_moves;
+    if (can_move_horizontally(0)) valid_moves.push_back(LEFT_DIR);
+    if (can_move_horizontally(1)) valid_moves.push_back(RIGHT_DIR);
+    if (can_move_vertically(1)) valid_moves.push_back(UP_DIR);
+    if (can_move_vertically(0)) valid_moves.push_back(DOWN_DIR);
+    return valid_moves;
+}
+
+void bank_heist_image::process_screen(vector<vector<int> > &screen) {
+    this->screen = screen;
+    observe_colors();
+    print_image();
+    this->heist_loc = detect_loc(HEIST_COLOR-1, HEIST_COLOR+1);
     // vector<loc> banks;
-    banks_loc = detect_banks(screen);
+    banks_loc = detect_banks();
     cout << "HEIST: " << heist_loc.first << "," << heist_loc.second << endl;
     cout << "Banks: ";
     for (size_t i = 0; i < banks_loc.size(); i++) {
@@ -82,7 +128,7 @@ void bank_heist_image::process_screen(const vector<vector<int> > &screen) {
     cout << "BACKGROUND_COLOR: " << BACKGROUND_COLOR << "\n";
 }
 
-void bank_heist_image::print_image(const vector<vector<int> > &screen) {
+void bank_heist_image::print_image() {
     ofstream my_file;
     my_file.open("image.txt", ofstream::out);
     for (size_t row = 0; row < screen.size(); ++row) {

@@ -13,4 +13,6 @@ const int MAZE_START_Y = 12;
 const int HEIST_COLOR = 36;
 const int BANK_COLOR = 169;
 
+// Affinities
+const int BANK_COST = -2000;
 #endif

@@ -3,6 +3,7 @@
 #include <rlglue/utils/C/TaskSpec_Parser.h>
 #include <bits/stdc++.h>
 #include "bank_heist_image.h"
+#include "game_agent.h"
 #include "constants.h"
 
 using namespace std;
@@ -13,6 +14,7 @@ double total_reward = 0;
 action_t action;
 
 bank_heist_image img;
+game_agent agent;
 
 int randInRange(int max){
     double r, x;
@@ -77,7 +79,7 @@ const action_t* agent_step(double reward, const observation_t* observation) {
     }
     img.process_screen(screen);
     total_reward += reward;
-    int action_val = randInRange(max_action);
+    int action_val = agent.get_action(img);
     action.intArray[0] = action_val;
     return &action;
 }
