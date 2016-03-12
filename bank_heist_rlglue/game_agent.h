@@ -11,8 +11,8 @@ private:
 
 public:
     game_agent();
-    double bank_cost(loc heist_loc, vector<loc> bank_loc);
     Action get_action(bank_heist_image img);
+    direction move_to_target(loc heist_location, loc target, vector<direction> moves);
 };
 
 #endif

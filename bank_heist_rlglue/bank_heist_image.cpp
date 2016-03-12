@@ -143,3 +143,20 @@ void bank_heist_image::print_image() {
     }
     my_file.close();
 }
+
+double bank_heist_image::distance(loc source, loc destination) {
+
+}
+
+vector<loc> bank_heist_image::next_loc(loc location) {
+  vector<loc> ret;
+  loc down=mp(location.first+1, location.second);
+  if(screen[down.first][down.second] != MAZE_COLOR) {
+    ret.push_back(down);
+  }
+  loc up=mp(location.first-1, location.second);
+  if(screen[up.first][up.second] != MAZE_COLOR) {
+    ret.push_back(up);
+  }
+
+}
