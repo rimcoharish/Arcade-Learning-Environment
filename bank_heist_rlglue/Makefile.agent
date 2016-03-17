@@ -1,0 +1,16 @@
+all: bank_heist_agent
+
+bank_heist_agent: bank_heist_agent.o bank_heist_image.o game_agent.o
+	$(CXX) bank_heist_agent.o bank_heist_image.o game_agent.o $(AGENTLDFLAGS) -o bank_heist_agent
+
+bank_heist_agent.o: bank_heist_agent.cpp
+	$(CXX) $(CFLAGS) -c bank_heist_agent.cpp -o bank_heist_agent.o
+
+bank_heist_image.o: bank_heist_image.cpp
+	$(CXX) $(CFLAGS) -c bank_heist_image.cpp -o bank_heist_image.o
+
+game_agent.o: game_agent.cpp
+	$(CXX) $(CFLAGS) -c game_agent.cpp -o game_agent.o
+
+clean:
+	rm -rf bank_heist_agent bank_heist_agent.exe *.o

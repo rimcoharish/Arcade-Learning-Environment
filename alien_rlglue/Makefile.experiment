@@ -1,0 +1,10 @@
+all: alien_experiment
+
+alien_experiment: alien_experiment.o
+	$(CXX) alien_experiment.o $(EXPLDFLAGS) -o alien_experiment
+
+alien_experiment.o: alien_experiment.cpp
+	$(CXX) $(CFLAGS) -c alien_experiment.cpp -o alien_experiment.o
+
+clean:
+	rm -rf alien_experiment alien_experiment.exe *.o
