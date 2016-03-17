@@ -39,5 +39,5 @@ const int GHOST_COST = 5000;
 const int CORNER_COST = 1000;
 const int TELE_COST = 1000;
 const int EDIBLE_GHOST_COST = -5000;
-const int PELLET_COST = -10;
+const int PELLET_COST = -100;
 #endif

@@ -1,0 +1,13 @@
+all: agent
+
+agent: agent.o bfs.o
+	$(CXX) agent.o bfs.o $(AGENTLDFLAGS) -o agent
+
+agent.o: agent.cpp
+	$(CXX) $(CFLAGS) -c agent.cpp -o agent.o
+
+bfs.o: bfs.cpp
+	$(CXX) $(CFLAGS) -c bfs.cpp -o bfs.o
+
+clean:
+	rm -rf agent agent.exe *.o

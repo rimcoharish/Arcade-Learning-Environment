@@ -1,0 +1,10 @@
+all: experiment
+
+experiment: experiment.o
+	$(CXX) experiment.o $(EXPLDFLAGS) -o experiment
+
+experiment.o: experiment.cpp
+	$(CXX) $(CFLAGS) -c experiment.cpp -o experiment.o
+
+clean:
+	rm -rf experiment experiment.exe *.o
