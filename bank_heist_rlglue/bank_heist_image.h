@@ -1,8 +1,6 @@
 #ifndef ALE_BANK_HEIST_IMAGE_H
 #define ALE_BANK_HEIST_IMAGE_H
 
-#include <vector>
-#include <math.h>
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -24,17 +22,25 @@ public:
     vector<vector<int> > screen;
     loc heist_loc;
     vector<loc> banks_loc;
+    vector<bool> banks_visited;
+    int prev_maze_color;
     // Constructors
     bank_heist_image();
 
     loc detect_loc(int low, int high);
     void observe_colors();
     vector<loc> detect_banks();
-    bool can_move_horizontally(int dir);
-    bool can_move_vertically(int dir);
+    bool is_heist(int row, int column);
+    bool can_move_horizontally(loc heist, int dir);
+    bool can_move_vertically(loc heist, int dir);
     vector<direction> get_valid_moves();
+    bool heist_loc_possible(loc heist);
     void process_screen(vector<vector<int> > &screen);
+    void analyze_maze();
     void print_image();
+    int distance(loc source, loc destination);
+    vector<loc> next_loc(loc location);
+    double euclidean_distance(loc location1, loc location2);
 };
 
 #endif
