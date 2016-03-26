@@ -4,12 +4,17 @@
 #include <bits/stdc++.h>
 #include "../src/common/Constants.h"
 #include "constants.h"
-#include "bfs.h"
+#include "astar.h"
+#include "amidar_image.h"
+#include "escape_agent.h"
 
 using namespace std;
 
 action_t action;
 double episode_reward = 0;
+
+amidar_image image;
+escape_agent agent;
 
 void print_image(vector<vector<int> > &screen) {
     ofstream my_file;
@@ -58,10 +63,10 @@ const action_t* agent_step(double reward, const observation_t* observation) {
         full_screen.push_back(pixel_row);
     }
     print_image(screen);
-    cout << get_distance(full_screen, make_pair(0, 18), make_pair(19, 36)) << endl;
+    Action action_val = agent.get_action(image, screen);
 
     episode_reward += reward;
-    action.intArray[0] = PLAYER_A_NOOP;
+    action.intArray[0] = action_val;
     return &action;
 }
 

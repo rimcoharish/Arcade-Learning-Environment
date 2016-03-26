@@ -209,7 +209,7 @@ vector<loc> pacman_image::detect_edible_ghosts(const vector<vector<int> > &scree
                 }
             }
         }
-    }\
+    }
     return edible_ghost_locations;
 }
 

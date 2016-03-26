@@ -7,5 +7,8 @@ const int SCREEN_WIDTH = 160;
 // Game colors
 const int MAZE_COLOR = 36;
 const int AMIDAR_COLOR = 30;
-const int GHOST_COLOR = 216; // 232 also seen sometimes
+const int GHOST_LOW = 214; // 232 also seen sometimes
+const int GHOST_HIGH = 232;
+const int GHOST_COST = 5000;
+const int CORNER_COST = 1000;
 #endif
