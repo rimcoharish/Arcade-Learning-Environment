@@ -13,8 +13,10 @@ const int MAZE_END_Y = 148; // Maze ends just before MAZE_END_Y
 const int MAZE_EXIT_X = 80;
 
 const int HEIST_COLOR = 36;
-const int POLICE_COLOR = 144; // 130?
+const int POLICE_COLOR_1 = 144; // 130?
+const int POLICE_COLOR_2 = 130; // 130?
 const int BANK_COLOR = 169;
+const int NUM_BANKS = 3;
 
 // Affinities
 const int BANK_COST = -2000;

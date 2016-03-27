@@ -7,9 +7,12 @@ int MAZE_COLOR = 0;
 bool debug = false;
 
 bank_heist_image::bank_heist_image(){
-  banks_visited.push_back(false);
-  banks_visited.push_back(false);
-  banks_visited.push_back(false);
+  banks_visited.push_back(0);
+  banks_visited.push_back(0);
+  banks_visited.push_back(0);
+  time_of_visit.push_back(0);
+  time_of_visit.push_back(0);
+  time_of_visit.push_back(0);
 }
 
 loc bank_heist_image::detect_loc(int low, int high) {
@@ -76,25 +79,66 @@ vector<loc> bank_heist_image::detect_banks() {
     return banks;
 }
 
+vector<loc> bank_heist_image::detect_polices() {
+  vector<loc> polices;
+  vector<vector<int> > tmp_screen = screen;
+  for (int row = MAZE_START_X; row < MAZE_END_X; ++row) {
+      for (size_t column = 0; column < tmp_screen[row].size(); ++column) {
+          if(tmp_screen[row][column] == POLICE_COLOR_1 || tmp_screen[row][column] == POLICE_COLOR_2) {
+              loc police = mp(row, column);
+              // modify the 7x7 matrix
+              for (size_t i = 0; i < 11; i++) {
+                  for (size_t j = 0; j < 11; j++) {
+                      tmp_screen[row+i-3][column+j-3] = 0;
+                  }
+              }
+              polices.push_back(police);
+          }
+      }
+  }
+  int num_banks_existing = 0;
+  for (size_t i = 0; i < NUM_BANKS; i++)
+    if(banks_visited[i] == 0)
+      num_banks_existing++;
+
+  int max_index, second_max_index, min_index;
+  if(polices.size() + num_banks_existing < NUM_BANKS) {
+    int num_add = NUM_BANKS - polices.size() - num_banks_existing;
+    if(debug)
+      cout << "Adding " << num_add << " polices\n";
+    if(num_add >= 1) {
+      max_index = max_element(banks_visited.begin(), banks_visited.end()) - banks_visited.begin();
+      if(step - time_of_visit[max_index] > 115)
+        polices.push_back(banks_loc[max_index]);
+    }
+    if(num_add == 2) {
+      int tmp = 0;
+      swap(tmp, banks_visited[max_index]);
+      second_max_index = max_element(banks_visited.begin(), banks_visited.end()) - banks_visited.begin();
+      if(debug) {
+        cout << "Difference is " << step - time_of_visit[second_max_index] << "\n";
+        cout << second_max_index << " " << step << " " << time_of_visit[second_max_index] << endl;
+      }
+      swap(tmp, banks_visited[max_index]);
+      if(step - time_of_visit[second_max_index] > 115)
+        polices.push_back(banks_loc[second_max_index]);
+    }
+    if(num_add == 3) {
+      min_index = min_element(banks_visited.begin(), banks_visited.end()) - banks_visited.begin();
+      if(step - time_of_visit[min_index] > 115)
+        polices.push_back(banks_loc[min_index]);
+    }
+  }
+
+  return polices;
+}
+
 bool bank_heist_image::is_heist(int row, int column) {
   return (screen[row][column] >= HEIST_COLOR - 2 && screen[row][column] <= HEIST_COLOR + 2);
 }
 
 // dir:- 1 = right; 0 = left
 bool bank_heist_image::can_move_horizontally(loc heist, int dir) {
-  // bool ret = true;
-  // int var = -1;
-  // if(dir == 1)
-  //   var = 1;
-  // for (int row = MAZE_START_X; row < MAZE_END_X; ++row) {
-  //     for (size_t column = 0; column < screen[row].size(); ++column) {
-  //         if(is_heist(row, column)) {
-  //             if(screen[row][column+var] == MAZE_COLOR || screen[row][column+2*var] == MAZE_COLOR)
-  //                 ret = false;
-  //         }
-  //     }
-  // }
-  // return ret;
   int row = round(heist.first);
   int column = round(heist.second);
   int left = 0, right = 0;
@@ -115,20 +159,6 @@ bool bank_heist_image::can_move_horizontally(loc heist, int dir) {
 
 // dir:- 1 = up; 0 = down
 bool bank_heist_image::can_move_vertically(loc heist, int dir) {
-  // bool ret = true;
-  // int var = 1;
-  // if(dir == 1)
-  //   var = -1;
-  // for (int row = MAZE_START_X; row < MAZE_END_X; ++row) {
-  //     for (size_t column = 0; column < screen[row].size(); ++column) {
-  //         if(is_heist(row, column)) {
-  //             if(screen[row+var][column] == MAZE_COLOR || screen[row+2*var][column] == MAZE_COLOR) {
-  //               ret = false;
-  //             }
-  //         }
-  //     }
-  // }
-  // return ret;
   int row = round(heist.first);
   int column = round(heist.second);
   int up = 0, down = 0;
@@ -141,9 +171,8 @@ bool bank_heist_image::can_move_vertically(loc heist, int dir) {
           else down++;
       }
   }
-  if(dir == 0) {
+  if(dir == 0)
     return screen[row + down][column] != MAZE_COLOR && heist_loc_possible(mp(row+1, column));
-  }
   else
     return screen[row - up][column] != MAZE_COLOR && heist_loc_possible(mp(row-1, column));
 }
@@ -168,6 +197,7 @@ bool bank_heist_image::heist_loc_possible(loc heist) {
 }
 
 void bank_heist_image::process_screen(vector<vector<int> > &scr) {
+    step++;
     screen = scr;
     for (int row = MAZE_START_X; row < MAZE_END_X; ++row) {
         for (size_t column = 0; column < screen[row].size(); ++column) {
@@ -179,14 +209,19 @@ void bank_heist_image::process_screen(vector<vector<int> > &scr) {
     observe_colors();
     if(prev_maze_color != MAZE_COLOR)
       analyze_maze();
+    police_loc = detect_polices();
     this->heist_loc = detect_loc(HEIST_COLOR-2, HEIST_COLOR+2);
     if(debug) {
       print_image();
       cout << "HEIST: " << heist_loc.first << "," << heist_loc.second << endl;
       cout << "Banks: ";
       for (size_t i = 0; i < banks_loc.size(); i++)
-        if(!banks_visited[i])
+        if(banks_visited[i]==0)
           cout << banks_loc[i].first << "," << banks_loc[i].second << " ";
+      cout << endl;
+      cout << "Polices: ";
+      for (size_t i = 0; i < police_loc.size(); i++)
+          cout << police_loc[i].first << "," << police_loc[i].second << " ";
       cout << endl;
       cout << "MAZE_COLOR: " << MAZE_COLOR << "\n";
       cout << "BACKGROUND_COLOR: " << BACKGROUND_COLOR << "\n";
@@ -196,11 +231,15 @@ void bank_heist_image::process_screen(vector<vector<int> > &scr) {
 // The first time a new maze is encountered
 void bank_heist_image::analyze_maze() {
     cout << "New maze\n";
+    step = 0;
     banks_loc = detect_banks();
     cout << banks_loc[0].first << endl;
-    banks_visited[0] = false;
-    banks_visited[1] = false;
-    banks_visited[2] = false;
+    banks_visited[0] = 0;
+    banks_visited[1] = 0;
+    banks_visited[2] = 0;
+    time_of_visit[0] = 0;
+    time_of_visit[1] = 0;
+    time_of_visit[2] = 0;
 }
 
 void bank_heist_image::print_image() {
@@ -220,20 +259,18 @@ void bank_heist_image::print_image() {
 }
 
 // Distance b/w source and destination using bfs on the game image
-int bank_heist_image::distance(loc source, loc destination) {
+double bank_heist_image::distance(loc source, loc destination) {
   source.first = round(source.first);
   source.second = round(source.second);
   destination.first = round(destination.first);
   destination.second = round(destination.second);
 
   vector<vector<bool> > visited(SCREEN_HEIGHT, vector<bool>(SCREEN_WIDTH, false));
-  vector<vector<int> > dist(SCREEN_HEIGHT, vector<int>(SCREEN_WIDTH, 1000000));
+  vector<vector<double> > dist(SCREEN_HEIGHT, vector<double>(SCREEN_WIDTH, 1000000));
   dist[source.first][source.second] = 0;
 
   queue<loc> locations;
   locations.push(source);
-  if(debug)
-    cout << "Source " << source.first << "," << source.second << "\n";
   while(!locations.empty()) {
     loc current_loc = locations.front();
     locations.pop();
@@ -246,12 +283,12 @@ int bank_heist_image::distance(loc source, loc destination) {
       continue;
     visited[current_loc.first][current_loc.second] = true;
     if(current_loc == destination) {
-      if(debug) {
+      if(false) {
         ofstream my_file;
         my_file.open("distance.txt", ofstream::out);
         for (size_t row = 0; row < screen.size(); ++row) {
             for (size_t column = 0; column < screen[row].size(); ++column) {
-                int tmp = dist[row][column];
+                double tmp = dist[row][column];
                 if(tmp == 1000000)
                     tmp = -1;
                 my_file << tmp << " ";
@@ -265,7 +302,7 @@ int bank_heist_image::distance(loc source, loc destination) {
     vector<loc> adjacent_locations = next_loc(current_loc);
     for(size_t i=0; i<adjacent_locations.size(); i++) {
       if(!visited[adjacent_locations[i].first][adjacent_locations[i].second]) {
-        int new_dist = dist[current_loc.first][current_loc.second] + 1;
+        double new_dist = dist[current_loc.first][current_loc.second] + 1;
         if(new_dist < dist[adjacent_locations[i].first][adjacent_locations[i].second]) {
           dist[adjacent_locations[i].first][adjacent_locations[i].second] = new_dist;
           locations.push(adjacent_locations[i]);
@@ -311,6 +348,17 @@ vector<loc> bank_heist_image::next_loc(loc location) {
   }
   return ret;
 }
+
+// double bank_heist_image::police_cost(loc location) {
+//   double cost = 0.0;
+//   for (size_t i = 0; i < police_loc.size(); i++) {
+//     if(location == police_loc[i])
+//       cost += 100;
+//     else
+//       cost += 10 / euclidean_distance(location, police_loc[i]);
+//   }
+//   return cost;
+// }
 
 double bank_heist_image::euclidean_distance(loc location1, loc location2) {
     return sqrt(pow(abs(location1.first - location2.first), 2) +
