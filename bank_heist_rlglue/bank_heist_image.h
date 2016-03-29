@@ -25,6 +25,7 @@ struct bank_heist_image {
     vector<int> banks_visited;
     vector<int> time_of_visit;
     int prev_maze_color;
+    vector<vector<double> > dist1, dist2, dist3, dist4;
 
     // Constructors
     bank_heist_image();
@@ -42,6 +43,7 @@ struct bank_heist_image {
     void analyze_maze();
     void print_image();
     double distance(loc source, loc destination);
+    vector<vector<double> > complete_dfs(loc source);
     vector<loc> next_loc(loc location);
     double police_cost(loc location);
     double euclidean_distance(loc location1, loc location2);
