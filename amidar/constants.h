@@ -3,6 +3,7 @@
 // Screen Dimensions
 const int SCREEN_HEIGHT = 210;
 const int SCREEN_WIDTH = 160;
+const int MAZE_HIGH = 168;
 
 // Game colors
 const int MAZE_COLOR = 36;

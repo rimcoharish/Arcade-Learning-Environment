@@ -3,10 +3,11 @@
 
 #include <vector>
 #include <math.h>
+#include <set>
 
 using namespace std;
 
-typedef pair<double, double> loc;
+typedef pair<int, int> loc;
 
 enum direction {
     UP_DIR,
@@ -23,6 +24,7 @@ public:
     pair<bool, bool> can_move_horizontally(const loc amidar_location, vector<vector<int> > &maze);
     pair<bool, bool> can_move_vertically(const loc amidar_location, vector<vector<int> > &maze);
     vector<direction> get_valid_moves(const loc amidar_location, vector<vector<int> > &maze);
+    set<loc> detect_junctions(const vector<vector<int> > &screen);
 };
 
 #endif

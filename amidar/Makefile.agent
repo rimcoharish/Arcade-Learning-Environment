@@ -1,19 +1,19 @@
 all: agent
 
-agent: agent.o astar.o amidar_image.o escape_agent.o
-	$(CXX) agent.o astar.o amidar_image.o escape_agent.o $(AGENTLDFLAGS) -o agent
+agent: agent.o amidar_image.o target_based_agent.o
+	$(CXX) agent.o amidar_image.o target_based_agent.o $(AGENTLDFLAGS) -o agent
 
 agent.o: agent.cpp
 	$(CXX) $(CFLAGS) -c agent.cpp -o agent.o
 
-astar.o: astar.cpp
-	$(CXX) $(CFLAGS) -c astar.cpp -o astar.o
+#astar.o: astar.cpp
+#	$(CXX) $(CFLAGS) -c astar.cpp -o astar.o
 
 amidar_image.o: amidar_image.cpp
 	$(CXX) $(CFLAGS) -c amidar_image.cpp -o amidar_image.o
 
-escape_agent.o: escape_agent.cpp
-	$(CXX) $(CFLAGS) -c escape_agent.cpp -o escape_agent.o
+target_based_agent.o: target_based_agent.cpp
+	$(CXX) $(CFLAGS) -c target_based_agent.cpp -o target_based_agent.o
 
 clean:
 	rm -rf agent agent.exe *.o
