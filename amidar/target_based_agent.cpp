@@ -12,8 +12,14 @@ double euclidean_distance(const pair<int, int> &loc1, const pair<int, int> &loc2
 }
 
 target_based_agent::target_based_agent() {
+    amidar_location = make_pair(-1, -1);
+
     amidar_mode = ROAM;
+
     target_loc = make_pair(-1, -1);
+    paint_loc = make_pair(-1, -1);
+
+    action_taken = PLAYER_A_NOOP;
 }
 
 vector<loc> get_adjacent_locations(loc location) {
@@ -25,6 +31,60 @@ vector<loc> get_adjacent_locations(loc location) {
     if (location.second != SCREEN_WIDTH - 1)
         adjacent_locations.push_back(make_pair(location.first, location.second + 1));
     return adjacent_locations;
+}
+
+void target_based_agent::update_amidar_location(loc amidar_loc) {
+    if (amidar_location.first < 0) amidar_location = amidar_loc;
+    else if (amidar_loc.first > 0) amidar_location = amidar_loc;
+    else {
+        switch (action_taken) {
+            case PLAYER_A_UP:
+                amidar_location = make_pair(amidar_location.first - 1, amidar_location.second);
+                break;
+            case PLAYER_A_DOWN:
+                amidar_location = make_pair(amidar_location.first + 1, amidar_location.second);
+                break;
+            case PLAYER_A_LEFT:
+                amidar_location = make_pair(amidar_location.first, amidar_location.second - 1);
+                break;
+            case PLAYER_A_RIGHT:
+                amidar_location = make_pair(amidar_location.first, amidar_location.second + 1);
+                break;
+            default:
+                break;
+        }
+    }
+}
+
+void target_based_agent::update_ghost_locations(vector<loc> current_ghost_locations) {
+//    cout << current_ghost_locations.size() << " __________ " << ghost_locations.size() << endl;
+    if (current_ghost_locations.size() < ghost_locations.size()) {
+        set<loc> updated_ghost_locations;
+        for (int i = 0; i < current_ghost_locations.size(); ++i) {
+            set<loc>::iterator nearest_prev_loc = ghost_locations.begin();
+            double least_distance = euclidean_distance(*nearest_prev_loc, current_ghost_locations[i]);
+            for (set<loc>::iterator it = ghost_locations.begin(); it != ghost_locations.end(); ++it) {
+                double dist = euclidean_distance(*it, current_ghost_locations[i]);
+                if (dist < least_distance) {
+                    least_distance = dist;
+                    nearest_prev_loc = it;
+                }
+            }
+            loc ghost_loc = make_pair((*nearest_prev_loc).first, (*nearest_prev_loc).second);
+            updated_ghost_locations.insert(ghost_loc);
+            if (ghost_locations.find(ghost_loc) == ghost_locations.end()) {
+                cout << "not found" << endl;
+                exit(0);
+            }
+            ghost_locations.erase(ghost_loc);
+        }
+        ghost_locations.insert(updated_ghost_locations.begin(), updated_ghost_locations.end());
+    }
+    else {
+        ghost_locations.clear();
+        ghost_locations.insert(current_ghost_locations.begin(), current_ghost_locations.end());
+    }
+//    cout << ghost_locations.size() << " |||| " << current_ghost_locations.size() << endl;
 }
 
 loc nearest_unpainted_loc(const vector<vector<int> > &screen, loc amidar_loc) {
@@ -156,7 +216,7 @@ vector<loc> target_based_agent::junction_neighbors(loc junction) {
 //    loc down_junction = make_pair(junction.first, junction.second + 30);
 //    if (junctions.find(up_junction) != junctions.end()) neighbors.push_back(up_junction);
 //    if (junctions.find(down_junction) != junctions.end()) neighbors.push_back(down_junction);
-    cout << junction.first << ", " << junction.second << endl;
+//    cout << junction.first << ", " << junction.second << endl;
     set<loc>::iterator left_junction = junctions.end();
     set<loc>::iterator right_junction = junctions.end();
     int left_junction_column = 0;
@@ -168,7 +228,7 @@ vector<loc> target_based_agent::junction_neighbors(loc junction) {
         }
         if ((*it).first == junction.first && (*it).second > junction.second
             && (*it).second < right_junction_column) {
-            cout << "right " << right_junction_column << " " << (*it).second << " " << junction.second << endl;
+//            cout << "right " << right_junction_column << " " << (*it).second << " " << junction.second << endl;
             right_junction_column = (*it).second;
             right_junction = it;
         }
@@ -184,32 +244,93 @@ vector<loc> target_based_agent::junction_neighbors(loc junction) {
 }
 
 bool target_reached = false;
-Action repeat_action = PLAYER_A_NOOP;
 int paint_steps = 0;
 
 Action target_based_agent::get_action(amidar_image image, vector<vector<int> > &screen) {
     if (target_reached) {
-        if (paint_steps < 2){
+        if (paint_steps < 1){
             paint_steps++;
-            return repeat_action;
+            return action_taken;
         }
         else {
             target_reached = false;
-            repeat_action = PLAYER_A_NOOP;
             paint_steps = 0;
         }
     }
-    vector<loc> ghost_locations = image.detect_ghosts(screen);
-    double ghost_cost = 0;
-    for (int i = 0; i < ghost_locations.size(); ++i) {
-
-    }
     loc amidar_loc = image.detect_amidar(screen);
+    update_amidar_location(amidar_loc);
+    amidar_loc = amidar_location;
+//    cout << amidar_loc.first << ",,,,,,,,," << amidar_loc.second << endl;
+    update_ghost_locations(image.detect_ghosts(screen));
+    if (ghost_locations.size() > 5) {
+        ghost_locations.clear();
+        amidar_mode = ROAM;
+        target_loc = make_pair(-1, -1);
+        paint_loc = make_pair(-1, -1);
+        target_reached = false;
+        paint_steps = 0;
+        action_taken = PLAYER_A_NOOP;
+        return action_taken;
+    }
+    vector<loc> current_ghost_locations(ghost_locations.begin(), ghost_locations.end());
+    bool near_ghost = false;
+    for (int i = 0; i < current_ghost_locations.size(); ++i) {
+//        cout << current_ghost_locations[i].first << ", " << current_ghost_locations[i].second << endl;
+        double dist = euclidean_distance(amidar_loc, current_ghost_locations[i]);
+//        cout << dist << endl;
+        if (dist < 50) {
+            near_ghost = true;
+            amidar_mode = ESCAPE;
+            target_loc = make_pair(-1, -1);
+            paint_loc = make_pair(-1, -1);
+            break;
+        }
+        else if (amidar_mode == ESCAPE) amidar_mode = ROAM;
+    }
     if (amidar_loc.first > 0) {
-        if (amidar_mode == ROAM) {
+        if (amidar_mode == ESCAPE) {
+            /*cout << "***********************************************************************" << endl;*/
+//            cout << "Escape mode entered" << endl;
+            vector<direction> moves = image.get_valid_moves(amidar_loc, screen);
+            direction least_cost_dir = NULL_DIR;
+            double least_cost = 100000;
+            for (int i = 0; i < moves.size(); ++i) {
+                loc next_loc;
+                if (moves[i] == UP_DIR) next_loc = make_pair(amidar_loc.first - 1, amidar_loc.second);
+                else if (moves[i] == DOWN_DIR) next_loc = make_pair(amidar_loc.first + 1, amidar_loc.second);
+                else if (moves[i] == LEFT_DIR) next_loc = make_pair(amidar_loc.first, amidar_loc.second - 1);
+                else if (moves[i] == RIGHT_DIR) next_loc = make_pair(amidar_loc.first, amidar_loc.second + 1);
+                double cost = 0;
+                for (int j = 0; j < current_ghost_locations.size(); ++j) {
+                    cost += euclidean_distance(next_loc, current_ghost_locations[j]);
+                }
+//                cout << "Ghost Cost " << cost << endl;
+                if (cost < least_cost) {
+                    least_cost_dir = moves[i];
+                    least_cost = cost;
+                }
+            }
+            action_taken = PLAYER_A_NOOP;
+            switch (least_cost_dir) {
+                case UP_DIR:
+                    action_taken = PLAYER_A_UP;
+                    break;
+                case DOWN_DIR:
+                    action_taken = PLAYER_A_DOWN;
+                    break;
+                case LEFT_DIR:
+                    action_taken = PLAYER_A_LEFT;
+                    break;
+                case RIGHT_DIR:
+                    action_taken = PLAYER_A_RIGHT;
+            }
+            return action_taken;
+        }
+        else if (amidar_mode == ROAM) {
+//            cout << "ROAM Mode" << endl;
             if (target_loc == make_pair(-1, -1)) {
-                target_loc = nearest_unpainted_loc(screen, image.detect_amidar(screen));
-                cout << "Unpainted " << target_loc.first << " " << target_loc.second << endl;
+                target_loc = nearest_unpainted_loc(screen, amidar_loc);
+//                cout << "Unpainted " << target_loc.first << " " << target_loc.second << endl;
                 loc least_dist_loc = make_pair(-1, -1);
                 double least_dist = 100000;
                 loc next_least_dist_loc = make_pair(-1, -1);
@@ -234,35 +355,35 @@ Action target_based_agent::get_action(amidar_image image, vector<vector<int> > &
                 if (angle2 < 0) angle2 = 360 + angle2;
                 paint_loc = next_least_dist_loc;
                 vector<loc> neighbors = junction_neighbors(target_loc);
-                cout << endl;
-                cout << "Target and paint: ";
-                cout << target_loc.first << " " << target_loc.second << " ";
-                cout << paint_loc.first << " " << paint_loc.second << endl;
-                cout << "Neighbors: " << endl;
+//                cout << endl;
+//                cout << "Target and paint: ";
+//                cout << target_loc.first << " " << target_loc.second << " ";
+//                cout << paint_loc.first << " " << paint_loc.second << endl;
+//                cout << "Neighbors: " << endl;
                 double angle = 0;
                 for (int i = 0; i < neighbors.size(); ++i) {
-                    cout << neighbors[i].first << " " << neighbors[i].second << " ";
+//                    cout << neighbors[i].first << " " << neighbors[i].second << " ";
                     double angle1 = atan2(neighbors[i].first - painting_loc.first, neighbors[i].second - painting_loc.second);
                     angle1 = angle1 * 180 / 3.14159265;
                     if (angle1 < 0) angle1 = 360 + angle1;
                     double a = abs(angle1 - angle2);
                     if (a > 180) a = 360 - a;
-                    cout << a << endl;
+//                    cout << a << endl;
                     if (a > angle) {
                         paint_loc = neighbors[i];
                         angle = a;
                     }
                 }
-                cout << "Paint target changed to: " << paint_loc.first << " " << paint_loc.second << endl;
-                cout << endl;
+//                cout << "Paint target changed to: " << paint_loc.first << " " << paint_loc.second << endl;
+//                cout << endl;
             }
             vector<direction> moves = image.get_valid_moves(amidar_loc, screen);
             direction least_cost_dir = NULL_DIR;
             double least_cost = 100000;
-            cout << amidar_loc.first << " " << amidar_loc.second << endl;
+//            cout << amidar_loc.first << " " << amidar_loc.second << endl;
 //            random_shuffle(moves.begin(), moves.end());
             for (int i = 0; i < moves.size(); ++i) {
-                cout << "Move " << moves[i] << " ";
+//                cout << "Move " << moves[i] << " ";
                 loc next_loc;
                 if (moves[i] == UP_DIR) next_loc = make_pair(amidar_loc.first - 1, amidar_loc.second);
                 else if (moves[i] == DOWN_DIR) next_loc = make_pair(amidar_loc.first + 1, amidar_loc.second);
@@ -270,44 +391,44 @@ Action target_based_agent::get_action(amidar_image image, vector<vector<int> > &
                 else if (moves[i] == RIGHT_DIR) next_loc = make_pair(amidar_loc.first, amidar_loc.second + 1);
                 //double cost = get_distance(screen, next_loc, target_loc);
                 double cost = euclidean_distance(next_loc, target_loc);
-                cout << "Cost " << cost << endl;
+//                cout << "Cost " << cost << endl;
                 if (cost < least_cost) {
                     least_cost_dir = moves[i];
                     least_cost = cost;
                 }
             }
-            Action next_action = PLAYER_A_NOOP;
+            action_taken = PLAYER_A_NOOP;
             switch (least_cost_dir) {
                 case UP_DIR:
-                    next_action = PLAYER_A_UP;
+                    action_taken = PLAYER_A_UP;
                     break;
                 case DOWN_DIR:
-                    next_action = PLAYER_A_DOWN;
+                    action_taken = PLAYER_A_DOWN;
                     break;
                 case LEFT_DIR:
-                    next_action = PLAYER_A_LEFT;
+                    action_taken = PLAYER_A_LEFT;
                     break;
                 case RIGHT_DIR:
-                    next_action = PLAYER_A_RIGHT;
+                    action_taken = PLAYER_A_RIGHT;
             }
             double dist = 1;
             if (target_loc.first > 160) dist = target_loc.first - 160;
             if (least_cost <= dist) {
-                cout << "Target Reached" << endl;
+//                cout << "Target Reached" << endl;
                 amidar_mode = PAINT;
                 target_loc = make_pair(-1, -1);
                 target_reached = true;
-                repeat_action = next_action;
             }
-            return next_action;
+            return action_taken;
         }
         else if (amidar_mode == PAINT) {
+//            cout << "PAINT mode " << endl;
             target_loc = paint_loc;
-            cout << "Painting " << target_loc.first << " " << target_loc.second << endl;
+//            cout << "Painting " << target_loc.first << " " << target_loc.second << endl;
             paint_loc = make_pair(-1, -1);
             amidar_mode = ROAM;
-            return PLAYER_A_NOOP;
+            return action_taken;
         }
     }
-    else return PLAYER_A_NOOP;
+    else return action_taken;
 }
