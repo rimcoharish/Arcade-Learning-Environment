@@ -7,6 +7,7 @@
 #include <limits>
 #include <ctime>
 #include <unistd.h>
+#include <algorithm>
 
 double euclidean_distance(const pair<int, int> &loc1, const pair<int, int> &loc2) {
     return sqrt(pow(loc1.first - loc2.first, 2) + pow(loc1.second - loc2.second, 2));
@@ -16,9 +17,6 @@ target_based_agent::target_based_agent() {
     amidar_location = make_pair(-1, -1);
 
     amidar_mode = ROAM;
-
-    target_loc = make_pair(-1, -1);
-    paint_loc = make_pair(-1, -1);
 
     action_taken = PLAYER_A_NOOP;
 }
@@ -267,6 +265,21 @@ void target_based_agent::set_junctions(set<loc> junctions) {
     this->junctions = junctions;
 }
 
+void target_based_agent::set_squares(vector<vector<loc> > squares) {
+    this->squares = squares;
+}
+
+vector<loc> target_based_agent::get_square(pair<loc, loc> edge) {
+    for (int i = 0; i < squares.size(); ++i) {
+        if (find(squares[i].begin(), squares[i].end(), edge.first) != squares[i].end() &&
+                find(squares[i].begin(), squares[i].end(), edge.second) != squares[i].end()) {
+            return squares[i];
+        }
+    }
+    vector<loc> empty_vec;
+    return empty_vec;
+}
+
 vector<loc> target_based_agent::junction_neighbors(loc junction) {
     vector<loc> neighbors;
     set<loc>::iterator left_junction = junctions.end();
@@ -315,53 +328,66 @@ Action target_based_agent::get_action(amidar_image image, vector<vector<int> > &
     if (ghost_locations.size() > 5) {
         ghost_locations.clear();
         amidar_mode = ROAM;
-        target_loc = make_pair(-1, -1);
-        paint_loc = make_pair(-1, -1);
+        while (!targets.empty()) targets.pop();
         target_reached = false;
         paint_steps = 0;
         action_taken = PLAYER_A_NOOP;
         return action_taken;
     }
     vector<loc> current_ghost_locations(ghost_locations.begin(), ghost_locations.end());
+    /*cout << "Amidar Location: " << endl;
+    cout << amidar_loc.first << ", " << amidar_loc.second << endl;
+    cout << "Ghost Locations: " << endl;
+    for (int i = 0; i < current_ghost_locations.size(); ++i) {
+        cout << current_ghost_locations[i].first << ", " << current_ghost_locations[i].second << endl;
+    }*/
     bool near_ghost = false;
     for (int i = 0; i < current_ghost_locations.size(); ++i) {
         double dist = euclidean_distance(amidar_loc, current_ghost_locations[i]);
         if (dist < 25) {
             near_ghost = true;
             amidar_mode = ESCAPE;
-            target_loc = make_pair(-1, -1);
-            paint_loc = make_pair(-1, -1);
-            cout << current_ghost_locations[i].first << " " << current_ghost_locations[i].second << endl;
-            cout << amidar_loc.first << " " << amidar_loc.second << endl;
+            while (!targets.empty()) targets.pop();
             break;
         }
     }
     if (!near_ghost && amidar_mode == ESCAPE) {
         amidar_mode = ROAM;
     }
+    /*cout << "Amidar mode: " << amidar_mode << endl;*/
     if (amidar_loc.first > 0) {
+        vector<direction> moves = image.get_valid_moves(amidar_loc, screen);
+        if (corner_section(amidar_loc)) {
+            if (amidar_loc.second != 141 &&
+                    find(moves.begin(), moves.end(), RIGHT_DIR) == moves.end()) moves.push_back(RIGHT_DIR);
+            if (amidar_loc.second != 17 &&
+                    find(moves.begin(), moves.end(), LEFT_DIR) == moves.end()) moves.push_back(LEFT_DIR);
+        }
         if (amidar_mode == ESCAPE) {
-            vector<direction> moves = image.get_valid_moves(amidar_loc, screen);
             direction least_cost_dir = NULL_DIR;
             double least_cost = 100000;
             for (int i = 0; i < moves.size(); ++i) {
                 loc next_loc;
                 if (moves[i] == UP_DIR) {
                     next_loc = make_pair(amidar_loc.first - 1, amidar_loc.second);
+                    /*cout << "Up dir" << endl;*/
                 }
                 else if (moves[i] == DOWN_DIR) {
                     next_loc = make_pair(amidar_loc.first + 1, amidar_loc.second);
+                    /*cout << "Down dir" << endl;*/
                 }
                 else if (moves[i] == LEFT_DIR) {
                     next_loc = make_pair(amidar_loc.first, amidar_loc.second - 1);
+                    /*cout << "Left dir" << endl;*/
                 }
                 else if (moves[i] == RIGHT_DIR) {
                     next_loc = make_pair(amidar_loc.first, amidar_loc.second + 1);
+                    /*cout << "Right dir" << endl;*/
                 }
                 double cost = corner_cost(next_loc);
                 for (int j = 0; j < current_ghost_locations.size(); ++j) {
                     double ghost_cost = euclidean_distance(next_loc, current_ghost_locations[j]);
-                    if (ghost_cost < 50) cost += GHOST_COST / ghost_cost;
+                    if (ghost_cost < 100) cost += GHOST_COST / ghost_cost;
                 }
                 if (cost < least_cost) {
                     least_cost_dir = moves[i];
@@ -385,19 +411,44 @@ Action target_based_agent::get_action(amidar_image image, vector<vector<int> > &
             return action_taken;
         }
         else if (amidar_mode == ROAM) {
-            if (target_loc == make_pair(-1, -1)) {
-                target_loc = nearest_unpainted_loc(screen, amidar_loc);
+            if (targets.empty()) {
+                loc target_loc = nearest_unpainted_loc(screen, amidar_loc);
                 pair<loc, loc> edge = get_edge(target_loc);
-                if (euclidean_distance(edge.first, amidar_loc) < euclidean_distance(edge.second, amidar_loc)) {
-                    target_loc = edge.first;
-                    paint_loc = edge.second;
+                /*cout << edge.first.first << ", " << edge.first.second << " ";
+                cout << edge.second.first << ", " << edge.second.second << endl;*/
+                vector<loc> square_vec = get_square(edge);
+                if (!square_vec.empty()) {
+                    int least_index = -1;
+                    double least_dist = 10000;
+                    for (int i = 0; i < square_vec.size(); ++i) {
+                        double dist = euclidean_distance(square_vec[i], amidar_loc);
+                        if (dist < least_dist) {
+                            least_dist = dist;
+                            least_index = i;
+                        }
+                    }
+                    int left_index = least_index - 1, right_index = least_index + 1;
+                    if (least_index == 0) left_index = square_vec.size() - 1;
+                    else if (least_index == square_vec.size() - 1) right_index = 0;
+                    for (int i = 0; i < square_vec.size(); ++i) {
+                        /*cout << square_vec[i].first << ", " << square_vec[i].second << endl;*/
+                        targets.push(square_vec[i]);
+                    }
+                    targets.push(square_vec[0]);
                 }
                 else {
-                    target_loc = edge.second;
-                    paint_loc = edge.first;
+                    if (euclidean_distance(edge.first, amidar_loc) < euclidean_distance(edge.second, amidar_loc)) {
+                        targets.push(edge.first);
+                        targets.push(edge.second);
+                    }
+                    else {
+                        targets.push(edge.second);
+                        targets.push(edge.first);
+                    }
                 }
             }
-            vector<direction> moves = image.get_valid_moves(amidar_loc, screen);
+            /*cout << "Target: " << endl;
+            cout << targets.front().first << ", " << targets.front().second << endl;*/
             direction least_cost_dir = NULL_DIR;
             double least_cost = 100000;
             for (int i = 0; i < moves.size(); ++i) {
@@ -406,7 +457,7 @@ Action target_based_agent::get_action(amidar_image image, vector<vector<int> > &
                 else if (moves[i] == DOWN_DIR) next_loc = make_pair(amidar_loc.first + 1, amidar_loc.second);
                 else if (moves[i] == LEFT_DIR) next_loc = make_pair(amidar_loc.first, amidar_loc.second - 1);
                 else if (moves[i] == RIGHT_DIR) next_loc = make_pair(amidar_loc.first, amidar_loc.second + 1);
-                double cost = euclidean_distance(next_loc, target_loc);
+                double cost = euclidean_distance(next_loc, targets.front());
                 if (cost < least_cost) {
                     least_cost_dir = moves[i];
                     least_cost = cost;
@@ -427,17 +478,11 @@ Action target_based_agent::get_action(amidar_image image, vector<vector<int> > &
                     action_taken = PLAYER_A_RIGHT;
             }
             double dist = 1;
-            if (target_loc.first > 160) dist = target_loc.first - 160;
+            if (targets.front().first > 160) dist = targets.front().first - 160;
             if (least_cost <= dist) {
-                amidar_mode = PAINT;
+                targets.pop();
                 target_reached = true;
             }
-            return action_taken;
-        }
-        else if (amidar_mode == PAINT) {
-            target_loc = paint_loc;
-            paint_loc = make_pair(-1, -1);
-            amidar_mode = ROAM;
             return action_taken;
         }
     }

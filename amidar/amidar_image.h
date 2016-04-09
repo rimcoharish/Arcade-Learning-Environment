@@ -25,6 +25,7 @@ public:
     pair<bool, bool> can_move_vertically(const loc amidar_location, vector<vector<int> > &maze);
     vector<direction> get_valid_moves(const loc amidar_location, vector<vector<int> > &maze);
     set<loc> detect_junctions(const vector<vector<int> > &screen);
+    vector<vector<loc> > construct_squares(set<loc> &junctions);
 };
 
 #endif

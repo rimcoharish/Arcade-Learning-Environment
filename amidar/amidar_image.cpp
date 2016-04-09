@@ -146,3 +146,31 @@ set<loc> amidar_image::detect_junctions(const vector<vector<int> > &screen) {
     }
     return junctions;
 }
+
+vector<vector<loc> > amidar_image::construct_squares(set<loc> &junctions) {
+    vector<vector<loc> > squares;
+    for (set<loc>::iterator it = junctions.begin(); it != junctions.end(); it++) {
+        set<loc>::iterator current_it = it;
+        it++;
+        set<loc>::iterator it_next = it;
+        it--;
+        while (it_next != junctions.end() && (*it).first == (*it_next).first && (*it).first != 165) {
+            if (junctions.find(make_pair((*it_next).first + 30, (*it_next).second)) != junctions.end() &&
+                    junctions.find(make_pair((*it).first + 30, (*it).second)) != junctions.end()) {
+                vector<loc> square;
+                square.push_back(*it);
+                square.push_back(*it_next);
+                square.push_back(make_pair((*it_next).first + 30, (*it_next).second));
+                square.push_back(make_pair((*it).first + 30, (*it).second));
+                squares.push_back(square);
+                break;
+            }
+            else {
+                it_next++;
+            }
+        }
+        it_next--;
+        it = it_next;
+    }
+    return squares;
+}

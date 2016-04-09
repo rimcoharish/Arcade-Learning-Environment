@@ -70,8 +70,9 @@ const action_t* agent_step(double reward, const observation_t* observation) {
         set<loc> junctions;
         junctions = image.detect_junctions(full_screen);
         target_agent.set_junctions(junctions);
+        target_agent.set_squares(image.construct_squares(junctions));
     }
-    print_image(full_screen);
+    /*print_image(full_screen);*/
     Action action_val = target_agent.get_action(image, full_screen);
 
     episode_reward += reward;
