@@ -112,7 +112,7 @@ vector<loc> bank_heist_image::detect_polices() {
       cout << "Adding " << num_add << " police\n";
     if(num_add >= 1) {
       max_index = max_element(banks_visited.begin(), banks_visited.end()) - banks_visited.begin();
-      if(step - time_of_visit[max_index] > 90 && step - time_of_visit[max_index] < 160) {
+      if(step - time_of_visit[max_index] > 70 && step - time_of_visit[max_index] < 160) {
         if(debug) {
           cout << "Difference is " << step - time_of_visit[max_index] << "\n";
           cout << max_index << " " << step << " " << time_of_visit[max_index] << endl;
@@ -129,12 +129,12 @@ vector<loc> bank_heist_image::detect_polices() {
         cout << second_max_index << " " << step << " " << time_of_visit[second_max_index] << endl;
       }
       swap(tmp, banks_visited[max_index]);
-      if(step - time_of_visit[second_max_index] > 90 && step - time_of_visit[max_index] < 160)
+      if(step - time_of_visit[second_max_index] > 70 && step - time_of_visit[max_index] < 160)
         polices.push_back(banks_loc[second_max_index]);
     }
     if(num_add == 3) {
       min_index = min_element(banks_visited.begin(), banks_visited.end()) - banks_visited.begin();
-      if(step - time_of_visit[min_index] > 90 && step - time_of_visit[max_index] < 160)
+      if(step - time_of_visit[min_index] > 70 && step - time_of_visit[max_index] < 160)
         polices.push_back(banks_loc[min_index]);
     }
   }
@@ -161,9 +161,9 @@ bool bank_heist_image::can_move_horizontally(loc heist, int dir) {
       }
   }
   if(dir == 1)
-    return screen[row][column + right] != MAZE_COLOR && heist_loc_possible(mp(row, column+1));
+    return screen[row][column + right] != MAZE_COLOR;
   else
-    return screen[row][column - left] != MAZE_COLOR && heist_loc_possible(mp(row, column-1));
+    return screen[row][column - left] != MAZE_COLOR;
 }
 
 // dir:- 1 = up; 0 = down
@@ -181,9 +181,9 @@ bool bank_heist_image::can_move_vertically(loc heist, int dir) {
       }
   }
   if(dir == 0)
-    return screen[row + down][column] != MAZE_COLOR && heist_loc_possible(mp(row+1, column));
+    return screen[row + down][column] != MAZE_COLOR;
   else
-    return screen[row - up][column] != MAZE_COLOR && heist_loc_possible(mp(row-1, column));
+    return screen[row - up][column] != MAZE_COLOR;
 }
 
 vector<direction> bank_heist_image::get_valid_moves() {

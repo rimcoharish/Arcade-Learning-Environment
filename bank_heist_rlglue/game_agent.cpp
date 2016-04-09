@@ -93,8 +93,6 @@ direction game_agent::move_to_target(bank_heist_image &img, loc target) {
           dir_dist = img.dist2[round(next_loc.first)][round(next_loc.second)];
         else if(target == img.banks_loc[2])
           dir_dist = img.dist3[round(next_loc.first)][round(next_loc.second)];
-        else if(target == mp(double(MAZE_EXIT_X), double(MAZE_END_Y-1)))
-          dir_dist = img.dist4[round(next_loc.first)][round(next_loc.second)];
         else
           dir_dist = img.distance(next_loc, target);
         if(debug1)
@@ -114,7 +112,7 @@ double game_agent::nearest_police(bank_heist_image& img, loc location) {
   double least = 10000;
   for(size_t i=0; i<polices.size(); i++) {
     double tmp = img.euclidean_distance(location, polices[i]);
-    if(tmp < 70)
+    if(tmp < 50)
       tmp = img.distance(location, polices[i]);
     if(tmp < least)
       least = tmp;
