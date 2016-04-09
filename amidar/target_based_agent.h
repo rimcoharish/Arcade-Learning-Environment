@@ -25,6 +25,9 @@ private:
 
     set<loc> junctions;
     vector<loc> junction_neighbors(loc junction);
+    loc nearest_unpainted_loc(const vector<vector<int> > &screen, loc amidar_loc);
+    bool corner_section(loc location);
+    pair<loc, loc> get_edge(loc location);
 
 public:
     target_based_agent();
