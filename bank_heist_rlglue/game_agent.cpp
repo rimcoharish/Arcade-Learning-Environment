@@ -22,12 +22,14 @@ Action game_agent::get_action(bank_heist_image &img) {
   else {
     if(debug1)
       cout << "Target oriented agent " << tmp_cost << "\n";
-    double tmp_cost = 1000000;
+    double tmp_cost = 0;
     loc target = mp(MAZE_EXIT_X, MAZE_END_Y-1);
     for (size_t i = 0; i < banks.size(); i++) {
         if(img.banks_visited[i] != 0)
           continue;
         double tmp = img.euclidean_distance(heist_location, banks[i]);
+        double exit_dist = img.euclidean_distance(mp(MAZE_EXIT_X, MAZE_END_Y-1),
+                                                  banks[i]);
         if(tmp <= 3) {
           cout << "Reached bank: " << i << "\n";
           int tmp = 0;
@@ -38,8 +40,8 @@ Action game_agent::get_action(bank_heist_image &img) {
           img.time_of_visit[i] = img.step;
           continue;
         }
-        if(tmp_cost > tmp) {
-            tmp_cost = tmp;
+        if(tmp_cost < exit_dist) {
+            tmp_cost = exit_dist;
             target = banks[i];
         }
       }
