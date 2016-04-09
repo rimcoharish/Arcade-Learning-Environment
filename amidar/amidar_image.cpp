@@ -3,39 +3,24 @@
 #include <iostream>
 
 pair<bool, bool> amidar_image::can_move_horizontally(const loc amidar_location, vector<vector<int> > &maze)  {
-    int row = round(amidar_location.first);
-    int column = round(amidar_location.second);
-    int left = 0, right = 0;
-    while (left + right < 10) {
-        if (column - left < 0) right++;
-        else if (column + right >= SCREEN_WIDTH - 1) left++;
-        else if (maze[row][column - left] == 0 && maze[row][column + right] == 0) break;
-        else if (maze[row][column - left] == 0) right++;
-        else if (maze[row][column + right] == 0) left++;
-        else {
-            if ((left + right) % 2 == 0) left++;
-            else right++;
-        }
+    bool can_move_left = maze[amidar_location.first + 4][amidar_location.second - 3] == MAZE_COLOR;
+    bool can_move_right = maze[amidar_location.first + 4][amidar_location.second + 3] == MAZE_COLOR;
+    if (amidar_location.first == 160) {
+        can_move_left = maze[amidar_location.first + 5][amidar_location.second - 3] == MAZE_COLOR;
+        can_move_right = maze[amidar_location.first + 5][amidar_location.second + 3] == MAZE_COLOR;
     }
-    return make_pair(maze[row][column - left] != 0, maze[row][column + right] != 0);
+    return make_pair(can_move_left, can_move_right);
 }
 
 pair<bool, bool> amidar_image::can_move_vertically(const loc amidar_location, vector<vector<int> > &maze) {
-    int row = round(amidar_location.first);
-    int column = round(amidar_location.second);
-    int up = 0, down = 0;
-    while (up + down < 10) {
-        if (row - up < 0) down++;
-        else if (row + down >= maze.size() - 1) up++;
-        else if (maze[row - up][column] == 0 && maze[row + down][column] == 0) break;
-        else if (maze[row - up][column] == 0) down++;
-        else if (maze[row + down][column] == 0) up++;
-        else {
-            if ((up + down) % 2 == 0) up++;
-            else down++;
-        }
-    }
-    return make_pair(maze[row - up][column] != 0, maze[row + down][column] != 0);
+    bool can_move_up = maze[amidar_location.first - 1][amidar_location.second] == MAZE_COLOR ||
+            maze[amidar_location.first - 2][amidar_location.second] == MAZE_COLOR;
+    bool can_move_down = maze[amidar_location.first + 6][amidar_location.second - 1] == MAZE_COLOR ||
+            maze[amidar_location.first + 7][amidar_location.second - 1] == MAZE_COLOR ||
+            maze[amidar_location.first + 7][amidar_location.second + 1] == MAZE_COLOR ||
+            maze[amidar_location.first + 8][amidar_location.second + 1] == MAZE_COLOR;
+    if (amidar_location.first == 160) can_move_down = false;
+    return make_pair(can_move_up, can_move_down);
 }
 
 vector<direction> amidar_image::get_valid_moves(const loc amidar_location, vector<vector<int> > &maze) {
@@ -50,18 +35,27 @@ vector<direction> amidar_image::get_valid_moves(const loc amidar_location, vecto
 
 }
 
+bool check_amidar_intact(loc amidar_location, const vector<vector<int> > &screen) {
+    for (int i = 1; i < 3; ++i) {
+        if (screen[amidar_location.first][amidar_location.second + i] != AMIDAR_COLOR) return false;
+    }
+    for (int i = -1; i < 4; ++i) {
+        if (screen[amidar_location.first + 1][amidar_location.second + i] != AMIDAR_COLOR) return false;
+    }
+    return true;
+}
+
 loc amidar_image::detect_amidar(const vector<vector<int> > &screen) {
-    double row_sum = 0, column_sum = 0, count = 0;
-    for (int row = 0; row < screen.size(); ++row) {
+    for (int row = 0; row < MAZE_HIGH; ++row) {
         for (int column = 0; column < screen[row].size(); ++column) {
             if (screen[row][column] == AMIDAR_COLOR) {
-                row_sum += row;
-                column_sum += column;
-                count += 1;
+                loc possible_amidar_loc = make_pair(row, column);
+                if (check_amidar_intact(possible_amidar_loc, screen)) return possible_amidar_loc;
+                else return make_pair(-1, -1);
             }
         }
     }
-    return make_pair(row_sum / count, column_sum / count);
+    return make_pair(-1, -1);
 }
 
 vector<loc> expand_ghost(const vector<vector<int> > &screen, vector<vector<bool> > &expanded, int row, int column) {
@@ -137,4 +131,18 @@ vector<loc> amidar_image::detect_ghosts(const vector<vector<int> > &screen) {
         }
     }
     return ghost_locations;
+}
+
+set<loc> amidar_image::detect_junctions(const vector<vector<int> > &screen) {
+    set<loc> junctions;
+    for (int row = 15; row < 136; row += 30) {
+        for (int column = 0; column < screen[row].size(); ++column) {
+            if (screen[row + 7][column] == MAZE_COLOR) {
+                junctions.insert(make_pair(row, column));
+                junctions.insert(make_pair(row + 30, column));
+                column += 4;
+            }
+        }
+    }
+    return junctions;
 }

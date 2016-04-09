@@ -6,7 +6,7 @@
 #include "constants.h"
 #include "astar.h"
 #include "amidar_image.h"
-#include "escape_agent.h"
+#include "target_based_agent.h"
 
 using namespace std;
 
@@ -14,7 +14,8 @@ action_t action;
 double episode_reward = 0;
 
 amidar_image image;
-escape_agent agent;
+target_based_agent target_agent;
+//escape_agent agent;
 
 void print_image(vector<vector<int> > &screen) {
     ofstream my_file;
@@ -46,7 +47,10 @@ const action_t* agent_start(const observation_t* observation) {
     return &action;
 }
 
+int steps = 0;
+
 const action_t* agent_step(double reward, const observation_t* observation) {
+    steps++;
     int screen_start_index = 128;
     int offset = 0;
     vector<vector<int> > screen;
@@ -62,8 +66,13 @@ const action_t* agent_step(double reward, const observation_t* observation) {
         if (maze_encountered) screen.push_back(pixel_row);
         full_screen.push_back(pixel_row);
     }
-    print_image(screen);
-    Action action_val = agent.get_action(image, screen);
+    if (steps == 3) {
+        set<loc> junctions;
+        junctions = image.detect_junctions(full_screen);
+        target_agent.set_junctions(junctions);
+    }
+    print_image(full_screen);
+    Action action_val = target_agent.get_action(image, full_screen);
 
     episode_reward += reward;
     action.intArray[0] = action_val;
