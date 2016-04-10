@@ -30,6 +30,7 @@ private:
     bool corner_section(loc location);
     pair<loc, loc> get_edge(loc location);
     vector<loc> get_square(pair<loc, loc> edge);
+    void target_square(vector<vector<int> > &screen, loc amidar_loc);
 
 public:
     target_based_agent();

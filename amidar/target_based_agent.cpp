@@ -15,9 +15,7 @@ double euclidean_distance(const pair<int, int> &loc1, const pair<int, int> &loc2
 
 target_based_agent::target_based_agent() {
     amidar_location = make_pair(-1, -1);
-
     amidar_mode = ROAM;
-
     action_taken = PLAYER_A_NOOP;
 }
 
@@ -307,6 +305,175 @@ vector<loc> target_based_agent::junction_neighbors(loc junction) {
     return neighbors;
 }
 
+bool edge_painted(pair<loc, loc> edge, vector<vector<int> > &screen) {
+    if (edge.first.first == edge.second.first) { // Horizontal Edge
+        if (edge.first.second < edge.second.second) {
+            for (int i = 1; edge.first.second + i != edge.second.second; i++) {
+                if (screen[edge.first.first + 4][edge.first.second + i] == 0) return false;
+            }
+            return true;
+        }
+        else {
+            for (int i = 1; edge.second.second + i != edge.first.second; i++) {
+                if (screen[edge.second.first + 4][edge.second.second + i] == 0) return false;
+            }
+            return true;
+        }
+    }
+    else { // Vertical Edge
+        if (edge.first.first < edge.second.first) {
+            if (screen[edge.first.first + 6][edge.first.second] == 0) return false;
+            else return true;
+        }
+        else {
+            if (screen[edge.second.first + 6][edge.second.second] == 0) return false;
+            else return true;
+        }
+    }
+}
+
+void target_based_agent::target_square(vector<vector<int> > &screen, loc amidar_loc) {
+    loc target_loc = nearest_unpainted_loc(screen, amidar_loc);
+//    cout << "Target found: " << target_loc.first << ", " << target_loc.second << endl;
+    pair<loc, loc> edge = get_edge(target_loc);
+    vector<loc> square_vec = get_square(edge);
+    if (!square_vec.empty()) {
+//        cout << "Part of a square" << endl;
+        int least_index = -1;
+        double least_dist = 10000;
+        for (int i = 0; i < square_vec.size(); ++i) {
+            double dist = euclidean_distance(square_vec[i], amidar_loc);
+            if (dist < least_dist) {
+                least_dist = dist;
+                least_index = i;
+            }
+        }
+        int left_index = least_index - 1, right_index = least_index + 1;
+        if (least_index == 0) left_index = square_vec.size() - 1;
+        else if (least_index == square_vec.size() - 1) right_index = 0;
+        bool right_edge_painted = edge_painted(make_pair(square_vec[least_index], square_vec[right_index]), screen);
+        bool left_edge_painted = edge_painted(make_pair(square_vec[least_index], square_vec[least_index]), screen);
+        bool next_right_edge_painted = edge_painted(make_pair(square_vec[right_index],
+                                                    square_vec[(right_index + 1) % square_vec.size()]), screen);
+        bool next_left_edge_painted = edge_painted(make_pair(square_vec[left_index],
+                                                   square_vec[(right_index + 1) % square_vec.size()]), screen);
+        if (right_edge_painted) {
+            if (left_edge_painted) {
+//                cout << "both left and right edges painted" << endl;
+                if (next_right_edge_painted) { // 3 edges painted
+                    targets.push(square_vec[left_index]);
+                    targets.push(square_vec[(right_index + 1) % square_vec.size()]);
+                    sleep(10);
+                    return;
+                }
+                else if (next_left_edge_painted) { // 3 edges painted
+                    targets.push(square_vec[right_index]);
+                    targets.push(square_vec[(right_index + 1) % square_vec.size()]);
+                    return;
+                }
+                else {
+                    double right_edge_length = euclidean_distance(square_vec[least_index], square_vec[right_index]);
+                    double left_edge_length = euclidean_distance(square_vec[least_index], square_vec[left_index]);
+                    if (right_edge_length < left_edge_length) {
+                        /*targets.push(square_vec[least_index]);*/
+                        targets.push(square_vec[right_index]);
+                        targets.push(square_vec[(right_index + 1) % square_vec.size()]);
+                        targets.push(square_vec[left_index]);
+                        return;
+                    }
+                    else {
+                        /*targets.push(square_vec[least_index]);*/
+                        targets.push(square_vec[left_index]);
+                        targets.push(square_vec[(right_index + 1) % square_vec.size()]);
+                        targets.push(square_vec[right_index]);
+                        return;
+                    }
+                }
+            }
+            else {
+                if (next_right_edge_painted) {
+                    if (next_left_edge_painted) {
+                        targets.push(square_vec[least_index]);
+                        targets.push(square_vec[left_index]);
+                        return;
+                    }
+                    else {
+                        targets.push(square_vec[least_index]);
+                        targets.push(square_vec[left_index]);
+                        targets.push(square_vec[(right_index + 1) % square_vec.size()]);
+                        return;
+                    }
+                }
+                else {
+                    targets.push(square_vec[least_index]);
+                    targets.push(square_vec[left_index]);
+                    targets.push(square_vec[(right_index + 1) % square_vec.size()]);
+                    targets.push(square_vec[right_index]);
+                    return;
+                }
+            }
+        }
+        else {
+            if (left_edge_painted) {
+                if (next_right_edge_painted) {
+                    if (next_left_edge_painted) {
+                        targets.push(square_vec[least_index]);
+                        targets.push(square_vec[right_index]);
+                        return;
+                    }
+                    else {
+                        targets.push(square_vec[least_index]);
+                        targets.push(square_vec[right_index]);
+                        targets.push(square_vec[(right_index + 1) % square_vec.size()]);
+                        targets.push(square_vec[left_index]);
+                        return;
+                    }
+                }
+                else {
+                    if (next_left_edge_painted) {
+                        targets.push(square_vec[least_index]);
+                        targets.push(square_vec[right_index]);
+                        targets.push(square_vec[(right_index + 1) % square_vec.size()]);
+                        return;
+                    }
+                    else {
+                        targets.push(square_vec[least_index]);
+                        targets.push(square_vec[left_index]);
+                        targets.push(square_vec[(right_index + 1) % square_vec.size()]);
+                        targets.push(square_vec[right_index]);
+                        return;
+                    }
+                }
+            }
+            else {
+                targets.push(square_vec[least_index]);
+                targets.push(square_vec[right_index]);
+                targets.push(square_vec[(right_index + 1) % square_vec.size()]);
+                targets.push(square_vec[left_index]);
+                targets.push(square_vec[least_index]);
+                return;
+            }
+        }
+    }
+    else {
+        if (euclidean_distance(edge.first, amidar_loc) < euclidean_distance(edge.second, amidar_loc)) {
+            targets.push(edge.first);
+            targets.push(edge.second);
+        }
+        else {
+            targets.push(edge.second);
+            targets.push(edge.first);
+        }
+    }
+}
+
+bool amidar_on_border(loc amidar_loc) {
+    if (amidar_loc.first == 14 || amidar_loc.first == 160 || amidar_loc.second == 17 || amidar_loc.second == 141) {
+        return true;
+    }
+    else return false;
+}
+
 bool target_reached = false;
 int paint_steps = 0;
 
@@ -412,40 +579,7 @@ Action target_based_agent::get_action(amidar_image image, vector<vector<int> > &
         }
         else if (amidar_mode == ROAM) {
             if (targets.empty()) {
-                loc target_loc = nearest_unpainted_loc(screen, amidar_loc);
-                pair<loc, loc> edge = get_edge(target_loc);
-                /*cout << edge.first.first << ", " << edge.first.second << " ";
-                cout << edge.second.first << ", " << edge.second.second << endl;*/
-                vector<loc> square_vec = get_square(edge);
-                if (!square_vec.empty()) {
-                    int least_index = -1;
-                    double least_dist = 10000;
-                    for (int i = 0; i < square_vec.size(); ++i) {
-                        double dist = euclidean_distance(square_vec[i], amidar_loc);
-                        if (dist < least_dist) {
-                            least_dist = dist;
-                            least_index = i;
-                        }
-                    }
-                    int left_index = least_index - 1, right_index = least_index + 1;
-                    if (least_index == 0) left_index = square_vec.size() - 1;
-                    else if (least_index == square_vec.size() - 1) right_index = 0;
-                    for (int i = 0; i < square_vec.size(); ++i) {
-                        /*cout << square_vec[i].first << ", " << square_vec[i].second << endl;*/
-                        targets.push(square_vec[i]);
-                    }
-                    targets.push(square_vec[0]);
-                }
-                else {
-                    if (euclidean_distance(edge.first, amidar_loc) < euclidean_distance(edge.second, amidar_loc)) {
-                        targets.push(edge.first);
-                        targets.push(edge.second);
-                    }
-                    else {
-                        targets.push(edge.second);
-                        targets.push(edge.first);
-                    }
-                }
+                target_square(screen, amidar_loc);
             }
             /*cout << "Target: " << endl;
             cout << targets.front().first << ", " << targets.front().second << endl;*/
