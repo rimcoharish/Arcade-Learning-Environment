@@ -13,6 +13,10 @@ double euclidean_distance(const pair<int, int> &loc1, const pair<int, int> &loc2
     return sqrt(pow(loc1.first - loc2.first, 2) + pow(loc1.second - loc2.second, 2));
 }
 
+double manhattan_distance(const pair<int, int> &loc1, const pair<int, int> &loc2) {
+    return fabs(loc1.first - loc2.first) + fabs(loc1.second - loc2.second);
+}
+
 target_based_agent::target_based_agent() {
     amidar_location = make_pair(-1, -1);
     amidar_mode = ROAM;
@@ -37,6 +41,20 @@ double corner_cost(loc amidar_location) {
     cost += CORNER_COST / euclidean_distance(amidar_location, make_pair(167, 13));
     cost += CORNER_COST / euclidean_distance(amidar_location, make_pair(167, 143));
     return cost;
+}
+
+double ghost_cost(loc ghost_location, loc amidar_loc) {
+    if (ghost_location.first < 20 || ghost_location.first > 160) {
+//        cout << "here1" << endl;
+        return GHOST_COST / manhattan_distance(ghost_location, amidar_loc);
+    }
+    else if (ghost_location.second < 20 || ghost_location.second > 138) {
+//        cout << "here2" << endl;
+//        cout << ghost_location.first << ", " << ghost_location.second << endl;
+//        cout << amidar_loc.first << ", " << amidar_loc.second << endl;
+        return GHOST_COST / manhattan_distance(ghost_location, amidar_loc);
+    }
+    else return GHOST_COST / euclidean_distance(ghost_location, amidar_loc);
 }
 
 void target_based_agent::update_amidar_location(loc amidar_loc) {
@@ -218,10 +236,6 @@ loc target_based_agent::nearest_unpainted_loc(const vector<vector<int> > &screen
         }
     }
     return make_pair(-1, -1);
-}
-
-double manhattan_distance(const pair<int, int> &loc1, const pair<int, int> &loc2) {
-    return fabs(loc1.first - loc2.first) + fabs(loc1.second - loc2.second);
 }
 
 class heuristic_comparison {
@@ -520,6 +534,7 @@ bool target_reached = false;
 int paint_steps = 0;
 
 Action target_based_agent::get_action(amidar_image image, vector<vector<int> > &screen) {
+//    cout << targets.empty() << endl;
     if (target_reached) {
         if (paint_steps < 2){
             paint_steps++;
@@ -563,7 +578,7 @@ Action target_based_agent::get_action(amidar_image image, vector<vector<int> > &
     if (!near_ghost && amidar_mode == ESCAPE) {
         amidar_mode = ROAM;
     }
-    /*cout << "Amidar mode: " << amidar_mode << endl;*/
+//    cout << "Amidar mode: " << amidar_mode << endl;
     if (amidar_loc.first > 0) {
         vector<direction> moves = image.get_valid_moves(amidar_loc, screen);
         if (corner_section(amidar_loc)) {
@@ -595,9 +610,10 @@ Action target_based_agent::get_action(amidar_image image, vector<vector<int> > &
                 }
                 double cost = corner_cost(next_loc);
                 for (int j = 0; j < current_ghost_locations.size(); ++j) {
-                    double ghost_cost = euclidean_distance(next_loc, current_ghost_locations[j]);
-                    if (ghost_cost < 100) cost += GHOST_COST / ghost_cost;
+                    double ghost_cost_val = euclidean_distance(next_loc, current_ghost_locations[j]);
+                    if (ghost_cost_val < 50) cost += ghost_cost(current_ghost_locations[j], next_loc);
                 }
+//                cout << cost << endl;
                 if (cost < least_cost) {
                     least_cost_dir = moves[i];
                     least_cost = cost;
@@ -629,8 +645,6 @@ Action target_based_agent::get_action(amidar_image image, vector<vector<int> > &
                 cout << "Targets empty" << endl;
                 exit(0);
             }
-            /*cout << "Target: " << endl;
-            cout << targets.front().first << ", " << targets.front().second << endl;*/
             direction least_cost_dir = NULL_DIR;
             double least_cost = 100000;
 //            cout << "Target: " << targets.front().first << ", " << targets.front().second << endl;
@@ -665,6 +679,7 @@ Action target_based_agent::get_action(amidar_image image, vector<vector<int> > &
 //            cout << endl;
             double dist = 1;
             if (targets.front().first > 160) dist = targets.front().first - 160;
+            if (targets.front().first == 165 && targets.front().second == 16) dist = dist + 1;
             if (least_cost <= dist) {
                 targets.pop();
                 target_reached = true;
