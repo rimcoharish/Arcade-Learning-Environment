@@ -4,6 +4,7 @@
 #include "amidar_image.h"
 #include "../src/common/Constants.h"
 #include <queue>
+#include <map>
 
 enum agent_mode {
     ROAM,
@@ -14,6 +15,7 @@ class target_based_agent {
 private:
 
     set<loc> ghost_locations;
+    map<loc, direction> ghost_dir;
     loc amidar_location;
 
     agent_mode amidar_mode;
@@ -39,6 +41,7 @@ public:
     void set_squares(vector<vector<loc> > squares);
     void update_amidar_location(loc amidar_loc);
     void update_ghost_locations(vector<loc> current_ghost_locations);
+    void update_ghost_locations_new(vector<loc> current_ghost_locations);
 };
 
 #endif
