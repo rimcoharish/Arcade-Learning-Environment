@@ -17,7 +17,8 @@ int main() {
         double reward_for_episode = RL_return();
         total_reward += reward_for_episode;
         rewards.push_back(reward_for_episode);
-        printf("%d Steps \t%f total reward\t %d natural end \n", RL_num_steps(), reward_for_episode, terminal);
+        printf("Episode: %d, %d Steps \t%f total reward\t %d natural end \n", i + 1, RL_num_steps(),
+               reward_for_episode, terminal);
     }
     double mean_reward = total_reward / total_episodes;
     cout << "Average reward for " << total_episodes << " episodes is " << mean_reward << endl;
