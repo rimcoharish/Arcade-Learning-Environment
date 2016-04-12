@@ -30,6 +30,7 @@ private:
     vector<loc> junction_neighbors(loc junction);
     loc nearest_unpainted_loc(const vector<vector<int> > &screen, loc amidar_loc);
     bool corner_section(loc location);
+    bool amidar_at_junction(loc location);
     pair<loc, loc> get_edge(loc location);
     vector<loc> get_square(pair<loc, loc> edge);
     void target_square(vector<vector<int> > &screen, loc amidar_loc);
@@ -42,6 +43,7 @@ public:
     void update_amidar_location(loc amidar_loc);
     void update_ghost_locations(vector<loc> current_ghost_locations);
     void update_ghost_locations_new(vector<loc> current_ghost_locations);
+    void clear_targets();
 };
 
 #endif

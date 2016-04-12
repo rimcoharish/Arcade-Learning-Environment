@@ -26,6 +26,7 @@ public:
     vector<direction> get_valid_moves(const loc amidar_location, vector<vector<int> > &maze);
     set<loc> detect_junctions(const vector<vector<int> > &screen);
     vector<vector<loc> > construct_squares(set<loc> &junctions);
+    bool check_amidar_intact(loc amidar_location, const vector<vector<int> > &screen);
 };
 
 #endif

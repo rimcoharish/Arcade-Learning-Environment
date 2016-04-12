@@ -1,107 +1,106 @@
-RL-Glue C Experiment Codec Version 2.0, Build 576
-	Connecting to host=127.0.0.1 on port=4096...
-	RL-Glue C Experiment Codec :: Connected
-VERSION RL-Glue-3.0 PROBLEMTYPE episodic DISCOUNTFACTOR 1 OBSERVATIONS INTS (128 0 255)(33600 0 127) ACTIONS INTS (0 18) REWARDS (UNSPEC UNSPEC) EXTRA Name: Arcade Learning Environment 
-Episode: 1, 7599 Steps 	933.000000 total reward	 1 natural end
-Episode: 2, 3709 Steps 	314.000000 total reward	 1 natural end
-Episode: 3, 4429 Steps 	375.000000 total reward	 1 natural end
-Episode: 4, 5749 Steps 	337.000000 total reward	 1 natural end
-Episode: 5, 13194 Steps 	1235.000000 total reward	 1 natural end
-Episode: 6, 4349 Steps 	288.000000 total reward	 1 natural end
-Episode: 7, 10469 Steps 	877.000000 total reward	 1 natural end
-Episode: 8, 12039 Steps 	1290.000000 total reward	 1 natural end
-Episode: 9, 7664 Steps 	675.000000 total reward	 1 natural end
-Episode: 10, 9624 Steps 	1029.000000 total reward	 1 natural end
-Episode: 11, 3459 Steps 	241.000000 total reward	 1 natural end
-Episode: 12, 9449 Steps 	878.000000 total reward	 1 natural end
-Episode: 13, 8269 Steps 	822.000000 total reward	 1 natural end
-Episode: 14, 12124 Steps 	1324.000000 total reward	 1 natural end
-Episode: 15, 14116 Steps 	1693.000000 total reward	 1 natural end
-Episode: 16, 7664 Steps 	750.000000 total reward	 1 natural end
-Episode: 17, 8264 Steps 	962.000000 total reward	 1 natural end
-Episode: 18, 16456 Steps 	1491.000000 total reward	 1 natural end
-Episode: 19, 10129 Steps 	923.000000 total reward	 1 natural end
-Episode: 20, 8939 Steps 	789.000000 total reward	 1 natural end
-Episode: 21, 4769 Steps 	438.000000 total reward	 1 natural end
-Episode: 22, 4459 Steps 	283.000000 total reward	 1 natural end
-Episode: 23, 13199 Steps 	1188.000000 total reward	 1 natural end
-Episode: 24, 5609 Steps 	527.000000 total reward	 1 natural end
-Episode: 25, 2494 Steps 	119.000000 total reward	 1 natural end
-Episode: 26, 8459 Steps 	861.000000 total reward	 1 natural end
-Episode: 27, 6154 Steps 	639.000000 total reward	 1 natural end
-Episode: 28, 5164 Steps 	341.000000 total reward	 1 natural end
-Episode: 29, 6019 Steps 	591.000000 total reward	 1 natural end
-Episode: 30, 9849 Steps 	671.000000 total reward	 1 natural end
-Episode: 31, 6849 Steps 	697.000000 total reward	 1 natural end
-Episode: 32, 8769 Steps 	1024.000000 total reward	 1 natural end
-Episode: 33, 10699 Steps 	723.000000 total reward	 1 natural end
-Episode: 34, 8479 Steps 	829.000000 total reward	 1 natural end
-Episode: 35, 15340 Steps 	1490.000000 total reward	 1 natural end
-Episode: 36, 4034 Steps 	316.000000 total reward	 1 natural end
-Episode: 37, 8999 Steps 	939.000000 total reward	 1 natural end
-Episode: 38, 14481 Steps 	1452.000000 total reward	 1 natural end
-Episode: 39, 4019 Steps 	317.000000 total reward	 1 natural end
-Episode: 40, 15134 Steps 	1591.000000 total reward	 1 natural end
-Episode: 41, 12864 Steps 	1243.000000 total reward	 1 natural end
-Episode: 42, 5759 Steps 	643.000000 total reward	 1 natural end
-Episode: 43, 4319 Steps 	279.000000 total reward	 1 natural end
-Episode: 44, 12509 Steps 	1177.000000 total reward	 1 natural end
-Episode: 45, 21521 Steps 	1545.000000 total reward	 1 natural end
-Episode: 46, 4474 Steps 	371.000000 total reward	 1 natural end
-Episode: 47, 4899 Steps 	384.000000 total reward	 1 natural end
-Episode: 48, 7414 Steps 	613.000000 total reward	 1 natural end
-Episode: 49, 14284 Steps 	1188.000000 total reward	 1 natural end
-Episode: 50, 9939 Steps 	928.000000 total reward	 1 natural end
-Episode: 51, 14914 Steps 	1383.000000 total reward	 1 natural end
-Episode: 52, 10934 Steps 	842.000000 total reward	 1 natural end
-Episode: 53, 5469 Steps 	343.000000 total reward	 1 natural end
-Episode: 54, 4034 Steps 	314.000000 total reward	 1 natural end
-Episode: 55, 8044 Steps 	854.000000 total reward	 1 natural end
-Episode: 56, 4234 Steps 	314.000000 total reward	 1 natural end
-Episode: 57, 6654 Steps 	599.000000 total reward	 1 natural end
-Episode: 58, 8289 Steps 	628.000000 total reward	 1 natural end
-Episode: 59, 4904 Steps 	433.000000 total reward	 1 natural end
-Episode: 60, 6174 Steps 	440.000000 total reward	 1 natural end
-Episode: 61, 8504 Steps 	968.000000 total reward	 1 natural end
-Episode: 62, 5629 Steps 	404.000000 total reward	 1 natural end
-Episode: 63, 3529 Steps 	189.000000 total reward	 1 natural end
-Episode: 64, 4289 Steps 	226.000000 total reward	 1 natural end
-Episode: 65, 6064 Steps 	456.000000 total reward	 1 natural end
-Episode: 66, 3669 Steps 	145.000000 total reward	 1 natural end
-Episode: 67, 8889 Steps 	649.000000 total reward	 1 natural end
-Episode: 68, 4019 Steps 	368.000000 total reward	 1 natural end
-Episode: 69, 9439 Steps 	679.000000 total reward	 1 natural end
-Episode: 70, 7679 Steps 	644.000000 total reward	 1 natural end
-Episode: 71, 8719 Steps 	866.000000 total reward	 1 natural end
-Episode: 72, 9124 Steps 	749.000000 total reward	 1 natural end
-Episode: 73, 7149 Steps 	692.000000 total reward	 1 natural end
-Episode: 74, 5414 Steps 	334.000000 total reward	 1 natural end
-Episode: 75, 15771 Steps 	1597.000000 total reward	 1 natural end
-Episode: 76, 4014 Steps 	317.000000 total reward	 1 natural end
-Episode: 77, 4934 Steps 	492.000000 total reward	 1 natural end
-Episode: 78, 10014 Steps 	993.000000 total reward	 1 natural end
-Episode: 79, 9079 Steps 	1182.000000 total reward	 1 natural end
-Episode: 80, 7854 Steps 	810.000000 total reward	 1 natural end
-Episode: 81, 5999 Steps 	342.000000 total reward	 1 natural end
-Episode: 82, 5459 Steps 	349.000000 total reward	 1 natural end
-Episode: 83, 8839 Steps 	821.000000 total reward	 1 natural end
-Episode: 84, 4694 Steps 	131.000000 total reward	 1 natural end
-Episode: 85, 6699 Steps 	698.000000 total reward	 1 natural end
-Episode: 86, 9024 Steps 	878.000000 total reward	 1 natural end
-Episode: 87, 10779 Steps 	1024.000000 total reward	 1 natural end
-Episode: 88, 3659 Steps 	210.000000 total reward	 1 natural end
-Episode: 89, 8724 Steps 	711.000000 total reward	 1 natural end
-Episode: 90, 8074 Steps 	708.000000 total reward	 1 natural end
-Episode: 91, 15426 Steps 	1579.000000 total reward	 1 natural end
-Episode: 92, 7929 Steps 	820.000000 total reward	 1 natural end
-6Episode: 93, 9639 Steps 	1033.000000 total reward	 1 natural end
-Episode: 94, 9064 Steps 	778.000000 total reward	 1 natural end
-Episode: 95, 11209 Steps 	1225.000000 total reward	 1 natural end
-Episode: 96, 7004 Steps 	472.000000 total reward	 1 natural end
-Episode: 97, 3059 Steps 	177.000000 total reward	 1 natural end
-Episode: 98, 16276 Steps 	1598.000000 total reward	 1 natural end
-Episode: 99, 3454 Steps 	294.000000 total reward	 1 natural end
-Episode: 100, 8164 Steps 	903.000000 total reward	 1 natural end
-Average reward for 100 episodes is 742.94
-Standard deviation 404.259
-True Mean 742.94 +/- 40.4259
+Episode	reward:	1116
+Episode	reward:	1184
+Episode	reward:	828
+Episode	reward:	671
+Episode	reward:	1116
+Episode	reward:	1023
+Episode	reward:	934
+Episode	reward:	730
+Episode	reward:	1229
+Episode	reward:	937
+Episode	reward:	1388
+Episode	reward:	1195
+Episode	reward:	491
+Episode	reward:	775
+Episode	reward:	1180
+Episode	reward:	1534
+Episode	reward:	819
+Episode	reward:	1493
+Episode	reward:	935
+Episode	reward:	592
+Episode	reward:	1496
+Episode	reward:	1187
+Episode	reward:	1180
+Episode	reward:	1068
+Episode	reward:	923
+Episode	reward:	1181
+Episode	reward:	1168
+Episode	reward:	1142
+Episode	reward:	594
+Episode	reward:	1149
+Episode	reward:	1132
+Episode	reward:	1071
+Episode	reward:	574
+Episode	reward:	594
+Episode	reward:	1290
+Episode	reward:	633
+Episode	reward:	1446
+Episode	reward:	1119
+Episode	reward:	1186
+Episode	reward:	1297
+Episode	reward:	1150
+Episode	reward:	1440
+Episode	reward:	1022
+Episode	reward:	1115
+Episode	reward:	1118
+Episode	reward:	644
+Episode	reward:	937
+Episode	reward:	726
+Episode	reward:	1189
+Episode	reward:	732
+Episode	reward:	979
+Episode	reward:	594
+Episode	reward:	1086
+Episode	reward:	1401
+Episode	reward:	592
+Episode	reward:	593
+Episode	reward:	1144
+Episode	reward:	1179
+Episode	reward:	776
+Episode	reward:	1069
+Episode	reward:	1495
+Episode	reward:	1027
+Episode	reward:	822
+Episode	reward:	592
+Episode	reward:	1152
+Episode	reward:	1489
+Episode	reward:	1346
+Episode	reward:	1029
+Episode	reward:	1497
+Episode	reward:	1492
+Episode	reward:	926
+Episode	reward:	782
+Episode	reward:	822
+Episode	reward:	1190
+Episode	reward:	598
+Episode	reward:	1533
+Episode	reward:	1118
+Episode	reward:	298
+Episode	reward:	1177
+Episode	reward:	1143
+Episode	reward:	1336
+Episode	reward:	1181
+Episode	reward:	1246
+Episode	reward:	593
+Episode	reward:	490
+Episode	reward:	1241
+Episode	reward:	1496
+Episode	reward:	1380
+Episode	reward:	1196
+Episode	reward:	675
+Episode	reward:	1435
+Episode	reward:	1135
+Episode	reward:	634
+Episode	reward:	1393
+Episode	reward:	978
+Episode	reward:	716
+Episode	reward:	406
+Episode	reward:	1688
+Episode	reward:	1034
+Episode	reward:	1190
+Episode	reward:	1120
+Episode	reward:	1597
+Episode	reward:	1439
+Mean - 1050.6116504854
+Std  - 310.6977041955
+True Mean - 1050.6116504854 +/- 30.6139544602

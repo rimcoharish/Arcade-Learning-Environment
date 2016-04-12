@@ -15,6 +15,7 @@ double episode_reward = 0;
 
 amidar_image image;
 target_based_agent target_agent;
+bool junctions_set = false;
 //escape_agent agent;
 
 void print_image(vector<vector<int> > &screen) {
@@ -44,13 +45,12 @@ void agent_init(const char* task_spec_string) {
 
 const action_t* agent_start(const observation_t* observation) {
     action.intArray[0] = PLAYER_A_NOOP;
+    target_agent.clear_targets();
+    junctions_set = false;
     return &action;
 }
 
-int steps = 0;
-
 const action_t* agent_step(double reward, const observation_t* observation) {
-    steps++;
     int screen_start_index = 128;
     int offset = 0;
     vector<vector<int> > screen;
@@ -66,7 +66,7 @@ const action_t* agent_step(double reward, const observation_t* observation) {
         if (maze_encountered) screen.push_back(pixel_row);
         full_screen.push_back(pixel_row);
     }
-    if (steps == 3) {
+    if (screen.size() != 0 && !junctions_set) {
         set<loc> junctions;
         junctions = image.detect_junctions(full_screen);
         target_agent.set_junctions(junctions);
@@ -75,9 +75,12 @@ const action_t* agent_step(double reward, const observation_t* observation) {
             cout << "Junctions not set" << endl;
             exit(0);
         }
+        junctions_set = true;
     }
     /*print_image(full_screen);*/
-    Action action_val = target_agent.get_action(image, full_screen);
+    Action action_val;
+    if (screen.size() != 0) action_val = target_agent.get_action(image, full_screen);
+    else action_val = PLAYER_A_NOOP;
 
     episode_reward += reward;
     action.intArray[0] = action_val;

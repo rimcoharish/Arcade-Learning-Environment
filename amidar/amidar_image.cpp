@@ -35,7 +35,7 @@ vector<direction> amidar_image::get_valid_moves(const loc amidar_location, vecto
 
 }
 
-bool check_amidar_intact(loc amidar_location, const vector<vector<int> > &screen) {
+bool amidar_image::check_amidar_intact(loc amidar_location, const vector<vector<int> > &screen) {
     for (int i = 1; i < 3; ++i) {
         if (screen[amidar_location.first][amidar_location.second + i] != AMIDAR_COLOR) return false;
     }
