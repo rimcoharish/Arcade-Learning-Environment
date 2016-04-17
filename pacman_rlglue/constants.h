@@ -35,9 +35,9 @@ const int GRAPE_LOW = 68;
 const int GRAPE_HIGH = 68;
 
 // Costs
-const int GHOST_COST = 5000;
-const int CORNER_COST = 1000;
-const int TELE_COST = 1000;
-const int EDIBLE_GHOST_COST = -5000;
-const int PELLET_COST = -100;
+extern double GHOST_COST;
+extern double CORNER_COST;
+extern double TELE_COST;
+extern double EDIBLE_GHOST_COST;
+extern double PELLET_COST;
 #endif

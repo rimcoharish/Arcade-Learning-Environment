@@ -44,7 +44,7 @@ double escape_agent::pellet_cost(loc pacman_loc, vector<loc> pellet_loc) {
 
 Action escape_agent::get_action(pacman_image p_image, vector<loc> object_locations, vector<loc> edible_ghosts) {
     loc pacman_loc = object_locations[0];
-    if (!isnan(pacman_loc.first) && !isnan(pacman_loc.second)){
+    if (!std::isnan(pacman_loc.first) && !std::isnan(pacman_loc.second)){
         vector<direction> valid_moves = p_image.get_valid_moves(pacman_loc);
         direction least_cost_dir = NULL_DIR;
         double cost = GHOST_COST * 4 + TELE_COST * 4 + CORNER_COST;
@@ -74,7 +74,7 @@ Action escape_agent::get_action(pacman_image p_image, vector<loc> object_locatio
                             pellet_cost(next_pacman_loc, p_image.get_pellet_pos());
                 for (int ghost = 0; ghost < 4; ++ghost) {
                     double c = ghost_cost(next_pacman_loc, object_locations[ghost + 1]);
-                    dir_cost += (isnan(c) ? 0: c);
+                    dir_cost += (std::isnan(c) ? 0: c);
                 }
             }
             if (dir_cost < cost) {
