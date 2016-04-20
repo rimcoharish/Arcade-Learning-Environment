@@ -91,22 +91,21 @@ vector<loc> pacman_image::detect_object_loc(const ALEScreen &screen) {
     }
     for(int i=0; i<7; i++) {
         double column_mean = column_sum[i] / total_matches[i];
-        double variance = 0, sd = 0;
+        double variance = 0;
         for(size_t j = 0; j < column_values[i].size(); ++j) {
-            variance += pow(column_values[i][j] - column_mean, 2);
+            variance += (column_values[i][j] - column_mean) * (column_values[i][j] - column_mean);
         }
         variance /= total_matches[i];
-        sd = sqrt(variance);
-        if(sd > 10)
+        if(variance > 100)
             ret1[i] = make_pair(row_sum[i] / total_matches[i], rand_loc[i]);
     }
     ret.push_back(ret1[4]);
     for(int i=0; i<4; i++) {
         ret.push_back(ret1[i]);
     }
-    if(isnan(ret[1].first) || isnan(ret[1].second))
+    if(isnan(ret[1].first + ret[1].second))
         ret[1] = ret1[5];
-    if(isnan(ret[2].first) || isnan(ret[2].second))
+    if(isnan(ret[2].first + ret[2].second))
         ret[2] = ret1[6];
     return ret;
 }

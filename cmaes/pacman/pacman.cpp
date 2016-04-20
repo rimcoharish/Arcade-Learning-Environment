@@ -137,7 +137,7 @@ int main(int argc, char** argv) {
         fitness_value = - evaluate(argv[1], 1);
     else
         fitness_value = - evaluate(argv[1], 40);
-		ofstream result_file;
+	ofstream result_file;
     result_file.open("result.txt", ofstream::out);
     result_file << std::setprecision(10) << fitness_value << endl; // True Mean
     result_file.close();
