@@ -158,12 +158,12 @@ vector<direction> pacman_image::get_valid_moves(const loc pacman_location) {
 
 }
 
-vector<loc> expand_edible_ghost(const ALEScreen &screen, vector<vector<bool> > &expanded, int row, int column) {
+vector<loc> expand_edible_ghost(const ALEScreen &screen, vector<vector<int> > &expanded, int row, int column) {
     vector<loc> locations;
     if (row < 0 || row >= MAZE_HEIGHT || column < 0 || column >= SCREEN_WIDTH) return locations; // out of bounds
     else if (expanded[row][column]) return locations;
     else {
-        expanded[row][column] = true;
+        expanded[row][column] = 1;
         if (EDIBLE_GHOST_LOW <= screen.get(row, column) && screen.get(row, column) <= EDIBLE_GHOST_HIGH) {
             vector<loc> left_loc = expand_edible_ghost(screen, expanded, row - 1, column);
             vector<loc> right_loc = expand_edible_ghost(screen, expanded, row + 1, column);
@@ -207,9 +207,9 @@ vector<loc> expand_edible_ghost(const ALEScreen &screen, vector<vector<bool> > &
 }
 
 vector<loc> pacman_image::detect_edible_ghosts(const ALEScreen &screen) {
-    vector<vector<bool> > expanded;
+    vector<vector<int> > expanded;
     for (int row = 0; row < MAZE_HEIGHT; ++row) {
-        vector<bool> row_vec(SCREEN_WIDTH, false);
+        vector<int> row_vec(SCREEN_WIDTH, 0);
         expanded.push_back(row_vec);
     }
     vector<loc> edible_ghost_locations;
