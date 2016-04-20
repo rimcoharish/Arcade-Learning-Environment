@@ -61,7 +61,7 @@ loc pacman_image::detect_pacman_loc(const ALEScreen &screen) {
 
 loc pacman_image::detect_ghost1_loc(const ALEScreen &screen) {
     loc ghost1_loc = detect_ghost_loc(screen, 0);
-    if (isnan(ghost1_loc.first) || isnan(ghost1_loc.second)) {
+    if (std::isnan(ghost1_loc.first) || std::isnan(ghost1_loc.second)) {
         ghost1_loc = detect_loc(screen, GHOST1_BLINK_LOW, GHOST1_BLINK_HIGH);
     }
     return ghost1_loc;
@@ -69,7 +69,7 @@ loc pacman_image::detect_ghost1_loc(const ALEScreen &screen) {
 
 loc pacman_image::detect_ghost2_loc(const ALEScreen &screen) {
     loc ghost2_loc = detect_ghost_loc(screen, 1);
-    if (isnan(ghost2_loc.first) || isnan(ghost2_loc.second)) {
+    if (std::isnan(ghost2_loc.first) || std::isnan(ghost2_loc.second)) {
         ghost2_loc = detect_loc(screen, GHOST2_BLINK_LOW, GHOST2_BLINK_HIGH);
     }
     return ghost2_loc;

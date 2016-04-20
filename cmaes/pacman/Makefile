@@ -3,7 +3,7 @@ USE_SDL := 1
 ALE := /home/rimcoharish/Arcade-Learning-Environment-0.5.1
 
 FLAGS := -I$(ALE)/src -I$(ALE)/src/controllers -I$(ALE)/src/os_dependent -I$(ALE)/src/environment -I$(ALE)/src/external -L$(ALE)
-CFLAGS := -Wall -pedantic
+CFLAGS := -Wall -pedantic -std=c++11
 LDFLAGS := -lale -lz
 CMAES_FLAGS := -I/usr/include/eigen3/ -I/home/rimcoharish/CMAES/include/libcmaes/ -L/home/rimcoharish/CMAES/lib
 CMAES_CFLAGS := -fopenmp -std=c++11
@@ -15,10 +15,10 @@ ifeq ($(strip $(USE_SDL)), 1)
   LDFLAGS += $(shell sdl-config --libs)
 endif
 
-all: pacman
+all: cmaes pacman
 
-cmaes: pacman_image.o escape_agent.o constants.o pacman.o cmaes.o
-	$(CXX) pacman_image.o escape_agent.o constants.o pacman.o cmaes.o -o cmaes $(DEFINES) $(FLAGS) $(CMAES_FLAGS) $(CFLAGS) $(CMAES_CFLAGS) $(LDFLAGS) -lcmaes
+cmaes: cmaes.o
+	$(CXX) cmaes.o -o cmaes $(DEFINES) $(CMAES_FLAGS) $(CMAES_CFLAGS) -lcmaes
 
 cmaes.o: cmaes.cpp
 	g++ -fopenmp -std=c++11 -I/usr/include/eigen3/ -I/home/rimcoharish/CMAES/include/libcmaes/ -L/home/rimcoharish/CMAES/lib -lcmaes -c cmaes.cpp -o cmaes.o

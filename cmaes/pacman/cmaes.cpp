@@ -8,6 +8,7 @@
 #include <fstream>
 #include <iomanip>
 #include "pacman.h"
+#include <mutex>
 
 using namespace libcmaes;
 using namespace std;
@@ -25,16 +26,29 @@ FitFunc fsphere = [](const double *x, const int N)
     return val;
 };
 
+mutex fmtx;
+
 FitFunc pacman_experiment = [](const double *x, const int N) {
-    iterations++;
-    cout << setprecision(10) << "Iteration: " << iterations << endl;
-    cout << "Ghost Cost: " << x[0] << " ";
-    cout << "Corner Cost: " << x[1] << " ";
-    cout << "Teleportation Cost: " << x[2] << " ";
-    cout << "Edible Ghost Cost: " << x[3] << " ";
-    cout << "Pellet Cost: " << x[4] << endl;
-    double fitness_value = - evaluate(rom_file, total_episodes, x, N);
-    cout << "Fitness value: " << fitness_value << endl;
+    fmtx.lock();
+    int eval_num = iterations++;
+    string command = "./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost ";
+    command += to_string(x[0]);
+    command += " --teleportation_cost ";
+    command += to_string(x[1]);
+    command += " --edible_ghost_cost ";
+    command += to_string(x[2]);
+    command += " --pellet_cost ";
+    command += to_string(x[3]);
+    string output_file = "result/result_" + to_string(eval_num) + ".txt";
+    command += " > " + output_file;
+    cout << command << endl;
+    fmtx.unlock();
+    system(command.c_str());
+    ifstream infile(output_file);
+    double fitness_value;
+    infile >> fitness_value;
+    infile.close();
+    cout << setprecision(10) << "Iteration: " << eval_num << ", Fitness value: " << fitness_value << endl;
     return fitness_value;
 };
 
@@ -45,22 +59,24 @@ int main(int argc, char *argv[])
         return 1;
     }
     rom_file = argv[1];
-    int GHOST_COST = 5000;
-    int CORNER_COST = 1000;
-    int TELE_COST = 1000;
-    int EDIBLE_GHOST_COST = -5000;
-    int PELLET_COST = -100;
-    int dim = 5; // problem dimensions.
+//    double GHOST_COST = 5000 / 5000.0;
+    double CORNER_COST = 1000 / 5000.0;
+    double TELE_COST = 1000 / 5000.0;
+    double EDIBLE_GHOST_COST = -5000 / 5000.0;
+    double PELLET_COST = -100 / 5000.0;
+    int dim = 4; // problem dimensions.
     std::vector<double> x0;
-    x0.push_back(GHOST_COST);
+//    x0.push_back(GHOST_COST);
     x0.push_back(CORNER_COST);
     x0.push_back(TELE_COST);
     x0.push_back(EDIBLE_GHOST_COST);
     x0.push_back(PELLET_COST);
     double sigma = 0.1;
-    int lambda = 20; // offsprings at each generation.
+    int lambda = 16; // offsprings at each generation.
     CMAParameters<> cmaparams(x0, sigma, lambda);
     cmaparams.set_mt_feval(true);
+    cmaparams.set_max_fevals(200);
+    cmaparams.set_fplot("data.dat");
     //cmaparams._algo = BIPOP_CMAES;
     CMASolutions cmasols = cmaes<>(pacman_experiment, cmaparams);
     std::cout << "best solution: " << cmasols << std::endl;

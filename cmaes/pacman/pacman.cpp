@@ -17,6 +17,9 @@
 #include <iostream>
 #include <ale_interface.hpp>
 #include <fstream>
+#include <unistd.h>
+#include <stdlib.h>
+#include <string>
 
 #include "pacman.h"
 #include "constants.h"
@@ -93,7 +96,7 @@ void parse_flags(int argc, char** argv) {
     }
 }
 
-double evaluate(string rom_file, int total_episodes) {
+vector<double> evaluate(string rom_file, int total_episodes) {
     ALEInterface ale;
 
     // Load the ROM file. (Also resets the system for new settings to
@@ -103,30 +106,43 @@ double evaluate(string rom_file, int total_episodes) {
     vector<double> rewards;
     double total_reward = 0;
     for (int episode = 0; episode < total_episodes; ++episode) {
-        cout << "Episode: " << episode + 1 << " Reward: ";
+//        cout << "Episode: " << episode + 1 << " Reward: ";
         double episode_reward = simulate_episode(ale);
         rewards.push_back(episode_reward);
         total_reward += episode_reward;
-        cout << episode_reward << " Steps: " << ale.getEpisodeFrameNumber() << endl;
+//        cout << episode_reward << " Steps: " << ale.getEpisodeFrameNumber() << endl;
         ale.reset_game();
     }
+    return rewards;
+}
+
+int main(int argc, char** argv) {
+    parse_flags(argc, argv);
+    int total_episodes = 10;
+    vector<double> rewards = evaluate(argv[1], total_episodes);
+    double total_reward = 0;
+    for (int episode = 0; episode < rewards.size(); ++episode) {
+        total_reward += rewards[episode];
+    }
     double mean_reward = total_reward / total_episodes;
-    cout << "Average reward for " << total_episodes << " episodes is " << mean_reward << endl;
     double sd = 0;
     for (int i = 0; i < rewards.size(); ++i) {
         sd += pow(rewards[i] - mean_reward, 2);
     }
     sd = sqrt(sd / (rewards.size() - 1));
-    cout << "Standard deviation " << sd << endl;
+    double fitness_value = mean_reward - (sd / sqrt(total_episodes));
+    cout << setprecision(10) << - fitness_value << endl;
+    cout << "Ghost Cost: " << GHOST_COST * 5000 << endl;
+    cout << "Corner Cost: " << CORNER_COST * 5000 << endl;
+    cout << "Teleportation Cost: " << TELE_COST * 5000 << endl;
+    cout << "Edible Ghost Cost: " << EDIBLE_GHOST_COST * 5000 << endl;
+    cout << "Pellet Cost: " << PELLET_COST * 5000 << endl;
 
-    return mean_reward - (sd / sqrt(total_episodes));
-}
+    for (int episode = 0; episode < rewards.size(); ++episode) {
+        cout << "Episode " + to_string(episode + 1) + ": " << rewards[episode] << endl;
+    }
+    cout << "Mean: " << mean_reward << endl;
+    cout << "Standard Dev: " << sd << endl;
+    cout << "True Mean: " << fitness_value << endl;
 
-int main(int argc, char** argv) {
-    parse_flags(argc, argv);
-    double fitness_value = - evaluate(argv[1], 1);
-    ofstream result_file;
-    result_file.open("result.txt", ofstream::out);
-    result_file << std::setprecision(10) << fitness_value << endl; // True Mean
-    result_file.close();
 }
