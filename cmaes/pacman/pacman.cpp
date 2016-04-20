@@ -105,16 +105,21 @@ double evaluate(string rom_file, int total_episodes) {
 
     vector<double> rewards;
     double total_reward = 0;
+    double total_steps = 0;
     for (int episode = 0; episode < total_episodes; ++episode) {
         cout << "Episode: " << episode + 1 << " Reward: ";
         double episode_reward = simulate_episode(ale);
         rewards.push_back(episode_reward);
         total_reward += episode_reward;
-        cout << episode_reward << " Steps: " << ale.getEpisodeFrameNumber() << endl;
+        int steps = ale.getEpisodeFrameNumber();
+        cout << episode_reward << " Steps: " << steps << endl;
+        total_steps += steps;
         ale.reset_game();
     }
     double mean_reward = total_reward / total_episodes;
+    double mean_steps = total_steps / total_episodes;
     cout << "Average reward for " << total_episodes << " episodes is " << mean_reward << endl;
+    cout << "Average number of steps is " << mean_steps << endl;
     double sd = 0;
     for (size_t i = 0; i < rewards.size(); ++i) {
         sd += pow(rewards[i] - mean_reward, 2);
