@@ -15,13 +15,16 @@ ifeq ($(strip $(USE_SDL)), 1)
   LDFLAGS += $(shell sdl-config --libs)
 endif
 
-all: cmaes
+all: pacman
 
 cmaes: pacman_image.o escape_agent.o constants.o pacman.o cmaes.o
 	$(CXX) pacman_image.o escape_agent.o constants.o pacman.o cmaes.o -o cmaes $(DEFINES) $(FLAGS) $(CMAES_FLAGS) $(CFLAGS) $(CMAES_CFLAGS) $(LDFLAGS) -lcmaes
 
 cmaes.o: cmaes.cpp
 	g++ -fopenmp -std=c++11 -I/usr/include/eigen3/ -I/home/rimcoharish/CMAES/include/libcmaes/ -L/home/rimcoharish/CMAES/lib -lcmaes -c cmaes.cpp -o cmaes.o
+
+pacman: pacman_image.o escape_agent.o constants.o pacman.o
+	$(CXX) pacman_image.o escape_agent.o constants.o pacman.o -o pacman $(DEFINES) $(FLAGS) $(CFLAGS) $(LDFLAGS)
 
 pacman.o: pacman.cpp
 	$(CXX) $(FLAGS) $(CFLAGS) $(LDFLAGS) -c pacman.cpp -o pacman.o
@@ -36,4 +39,4 @@ constants.o: constants.cpp
 	$(CXX) $(CFLAGS) -c constants.cpp -o constants.o
 
 clean:
-	rm -rf cmaes *.o
+	rm -rf cmaes pacman *.o
