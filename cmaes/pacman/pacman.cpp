@@ -27,6 +27,8 @@
 
 using namespace std;
 
+bool debug = false;
+
 void update_object_locations(vector<loc> &object_locations, vector<loc> &prev_object_locations) {
     for (size_t i = 0; i < object_locations.size(); ++i) {
         if (std::isnan(object_locations[i].first) || std::isnan(object_locations[i].second)) {
@@ -95,7 +97,8 @@ void parse_flags(int argc, char** argv) {
 
 double evaluate(string rom_file, int total_episodes) {
     ALEInterface ale;
-
+    if(debug)
+        ale.setBool("display_screen", true);
     // Load the ROM file. (Also resets the system for new settings to
     // take effect.)
     ale.loadROM(rom_file);
@@ -113,7 +116,7 @@ double evaluate(string rom_file, int total_episodes) {
     double mean_reward = total_reward / total_episodes;
     cout << "Average reward for " << total_episodes << " episodes is " << mean_reward << endl;
     double sd = 0;
-    for (int i = 0; i < rewards.size(); ++i) {
+    for (size_t i = 0; i < rewards.size(); ++i) {
         sd += pow(rewards[i] - mean_reward, 2);
     }
     sd = sqrt(sd / (rewards.size() - 1));
@@ -124,8 +127,12 @@ double evaluate(string rom_file, int total_episodes) {
 
 int main(int argc, char** argv) {
     parse_flags(argc, argv);
-    double fitness_value = - evaluate(argv[1], 1);
-    ofstream result_file;
+    double fitness_value;
+    if(debug)
+        fitness_value = - evaluate(argv[1], 1);
+    else
+        fitness_value = - evaluate(argv[1], 40);
+		ofstream result_file;
     result_file.open("result.txt", ofstream::out);
     result_file << std::setprecision(10) << fitness_value << endl; // True Mean
     result_file.close();

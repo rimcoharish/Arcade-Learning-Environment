@@ -1,12 +1,12 @@
 USE_SDL := 1
 
-ALE := /home/rimcoharish/Arcade-Learning-Environment-0.5.1
+ALE := /home/mskd96/Desktop/Studies/CS748/Arcade-Learning-Environment
 
-FLAGS := -I$(ALE)/src -I$(ALE)/src/controllers -I$(ALE)/src/os_dependent -I$(ALE)/src/environment -I$(ALE)/src/external -L$(ALE)
+FLAGS := -I$(ALE)/src -I$(ALE)/src/controllers -I$(ALE)/src/os_dependent -I$(ALE)/src/environment -I$(ALE)/src/external -L$(ALE) -Wl,-rpath=$(ALE)
 CFLAGS := -Wall -pedantic
 LDFLAGS := -lale -lz
 CMAES_FLAGS := -I/usr/include/eigen3/ -I/home/rimcoharish/CMAES/include/libcmaes/ -L/home/rimcoharish/CMAES/lib
-CMAES_CFLAGS := -fopenmp -std=c++11
+CMAES_CFLAGS := -fopenmp
 
 
 ifeq ($(strip $(USE_SDL)), 1)
