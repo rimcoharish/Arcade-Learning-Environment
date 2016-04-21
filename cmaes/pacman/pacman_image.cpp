@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <list>
 #include "pacman_image.h"
 #include "constants.h"
 using namespace std;
@@ -30,7 +31,7 @@ vector<loc> pacman_image::detect_object_loc(const ALEScreen &screen) {
     vector<double> rand_loc(7);
 
     for (int row = 0; row < MAZE_HEIGHT; ++row) {
-        for (size_t column = 0; column < screen.width(); ++column) {
+        for (size_t column = 0; column < SCREEN_WIDTH; ++column) {
             int val = screen.get(row, column);
             if (ghost_low[0] <= val && val <= ghost_high[0]) {
                 total_matches[0]++;
@@ -90,22 +91,21 @@ vector<loc> pacman_image::detect_object_loc(const ALEScreen &screen) {
     }
     for(int i=0; i<7; i++) {
         double column_mean = column_sum[i] / total_matches[i];
-        double variance = 0, sd = 0;
+        double variance = 0;
         for(size_t j = 0; j < column_values[i].size(); ++j) {
-            variance += pow(column_values[i][j] - column_mean, 2);
+            variance += (column_values[i][j] - column_mean) * (column_values[i][j] - column_mean);
         }
         variance /= total_matches[i];
-        sd = sqrt(variance);
-        if(sd > 10)
+        if(variance > 100)
             ret1[i] = make_pair(row_sum[i] / total_matches[i], rand_loc[i]);
     }
     ret.push_back(ret1[4]);
     for(int i=0; i<4; i++) {
         ret.push_back(ret1[i]);
     }
-    if(std::isnan(ret[1].first) || std::isnan(ret[1].second))
+    if(std::isnan(ret[1].first + ret[1].second))
         ret[1] = ret1[5];
-    if(std::isnan(ret[2].first) || std::isnan(ret[2].second))
+    if(std::isnan(ret[2].first + ret[2].second))
         ret[2] = ret1[6];
     return ret;
 }
@@ -158,46 +158,31 @@ vector<direction> pacman_image::get_valid_moves(const loc pacman_location) {
 
 }
 
-vector<loc> expand_edible_ghost(const ALEScreen &screen, vector<vector<bool> > &expanded, int row, int column) {
-    vector<loc> locations;
+list<loc> expand_edible_ghost(const ALEScreen &screen, vector<vector<int> > &expanded, int row, int column) {
+    list<loc> locations;
     if (row < 0 || row >= MAZE_HEIGHT || column < 0 || column >= SCREEN_WIDTH) return locations; // out of bounds
     else if (expanded[row][column]) return locations;
     else {
-        expanded[row][column] = true;
-        if (EDIBLE_GHOST_LOW <= screen.get(row, column) && screen.get(row, column) <= EDIBLE_GHOST_HIGH) {
-            vector<loc> left_loc = expand_edible_ghost(screen, expanded, row - 1, column);
-            vector<loc> right_loc = expand_edible_ghost(screen, expanded, row + 1, column);
-            vector<loc> up_loc = expand_edible_ghost(screen, expanded, row, column - 1);
-            vector<loc> down_loc = expand_edible_ghost(screen, expanded, row, column + 1);
-            vector<loc> up_left_loc = expand_edible_ghost(screen, expanded, row - 1, column - 1);
-            vector<loc> up_right_loc = expand_edible_ghost(screen, expanded, row - 1, column + 1);
-            vector<loc> down_left_loc = expand_edible_ghost(screen, expanded, row + 1, column - 1);
-            vector<loc> down_right_loc = expand_edible_ghost(screen, expanded, row + 1, column + 1);
+        expanded[row][column] = 1;
+        int val = screen.get(row, column);
+        if (EDIBLE_GHOST_LOW <= val && val <= EDIBLE_GHOST_HIGH) {
+            list<loc> tmp = expand_edible_ghost(screen, expanded, row - 1, column);
+            locations.splice(locations.end(), tmp);
+            tmp = expand_edible_ghost(screen, expanded, row + 1, column);
+            locations.splice(locations.end(), tmp);
+            tmp = expand_edible_ghost(screen, expanded, row, column - 1);
+            locations.splice(locations.end(), tmp);
+            tmp = expand_edible_ghost(screen, expanded, row, column + 1);
+            locations.splice(locations.end(), tmp);
+            tmp = expand_edible_ghost(screen, expanded, row - 1, column - 1);
+            locations.splice(locations.end(), tmp);
+            tmp = expand_edible_ghost(screen, expanded, row - 1, column + 1);
+            locations.splice(locations.end(), tmp);
+            tmp = expand_edible_ghost(screen, expanded, row + 1, column - 1);
+            locations.splice(locations.end(), tmp);
+            tmp = expand_edible_ghost(screen, expanded, row + 1, column + 1);
+            locations.splice(locations.end(), tmp);
             locations.push_back(make_pair(row, column));
-            for (size_t i = 0; i < left_loc.size(); ++i) {
-                locations.push_back(left_loc[i]);
-            }
-            for (size_t i = 0; i < right_loc.size(); ++i) {
-                locations.push_back(right_loc[i]);
-            }
-            for (size_t i = 0; i < up_loc.size(); ++i) {
-                locations.push_back(up_loc[i]);
-            }
-            for (size_t i = 0; i < down_loc.size(); ++i) {
-                locations.push_back(down_loc[i]);
-            }
-            for (size_t i = 0; i < up_left_loc.size(); ++i) {
-                locations.push_back(up_left_loc[i]);
-            }
-            for (size_t i = 0; i < up_right_loc.size(); ++i) {
-                locations.push_back(up_right_loc[i]);
-            }
-            for (size_t i = 0; i < down_left_loc.size(); ++i) {
-                locations.push_back(down_left_loc[i]);
-            }
-            for (size_t i = 0; i < down_right_loc.size(); ++i) {
-                locations.push_back(down_right_loc[i]);
-            }
             return locations;
         }
         else {
@@ -207,21 +192,22 @@ vector<loc> expand_edible_ghost(const ALEScreen &screen, vector<vector<bool> > &
 }
 
 vector<loc> pacman_image::detect_edible_ghosts(const ALEScreen &screen) {
-    vector<vector<bool> > expanded;
+    vector<vector<int> > expanded;
     for (int row = 0; row < MAZE_HEIGHT; ++row) {
-        vector<bool> row_vec(SCREEN_WIDTH, false);
+        vector<int> row_vec(SCREEN_WIDTH, 0);
         expanded.push_back(row_vec);
     }
     vector<loc> edible_ghost_locations;
     for (int row = 0; row < MAZE_HEIGHT; ++row) {
         for (int column = 0; column < SCREEN_WIDTH; ++column) {
             if (!expanded[row][column]) {
-                if (EDIBLE_GHOST_LOW <= screen.get(row, column) && screen.get(row, column) <= EDIBLE_GHOST_HIGH) {
-                    vector<loc> locations = expand_edible_ghost(screen, expanded, row, column);
+                int val = screen.get(row, column);
+                if (EDIBLE_GHOST_LOW <= val && val <= EDIBLE_GHOST_HIGH) {
+                    list<loc> locations = expand_edible_ghost(screen, expanded, row, column);
                     loc average_loc = make_pair(0, 0);
-                    for (size_t i = 0; i < locations.size(); ++i) {
-                        average_loc.first += locations[i].first;
-                        average_loc.second += locations[i].second;
+                    for (list<loc>::iterator it=locations.begin(); it!=locations.end(); it++) {
+                        average_loc.first += (*it).first;
+                        average_loc.second += (*it).second;
                     }
                     average_loc.first = average_loc.first / locations.size();
                     average_loc.second = average_loc.second / locations.size();
@@ -253,9 +239,9 @@ void pacman_image::update_pellet_pos(const ALEScreen &screen) {
 vector<vector<int> > detect_maze(const ALEScreen &screen) {
     // Maze - 1, Ghost pellet - 2, Normal pellet - 3 and remaining positions 0
     vector<vector<int> > maze;
-    for (size_t row = 0; row < screen.height(); ++row) {
+    for (size_t row = 0; row < MAZE_HEIGHT; ++row) {
         vector<int> pixel_row;
-        for (size_t column = 0; column < screen.width(); ++column) {
+        for (size_t column = 0; column < SCREEN_WIDTH; ++column) {
             if (screen.get(row, column) == MAZE_COLOR) {
                 if (row == 0 || column == 0) { // Corner is always a maze position if it is maze colored
                     pixel_row.push_back(1);
