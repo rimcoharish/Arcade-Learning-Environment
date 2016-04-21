@@ -118,7 +118,7 @@ vector<double> evaluate(string rom_file, int total_episodes) {
 
 int main(int argc, char** argv) {
     parse_flags(argc, argv);
-    int total_episodes = 10;
+    int total_episodes = 100;
     vector<double> rewards = evaluate(argv[1], total_episodes);
     double total_reward = 0;
     for (int episode = 0; episode < rewards.size(); ++episode) {

@@ -23,71 +23,95 @@ vector<loc>& pacman_image::get_pellet_pos() {
     return pellet_pos;
 }
 
-loc pacman_image::detect_loc(const ALEScreen &screen, int low, int high) {
-    double row_sum = 0, column_sum = 0;
-    vector<double> column_values;
-    int total_matches = 0;
-    double tmp;
+vector<loc> pacman_image::detect_object_loc(const ALEScreen &screen) {
+    vector<double> row_sum(7, 0), column_sum(7, 0);
+    vector<vector<double> > column_values(7);
+    vector<int> total_matches(7, 0);
+    vector<double> rand_loc(7);
+
     for (int row = 0; row < MAZE_HEIGHT; ++row) {
         for (size_t column = 0; column < screen.width(); ++column) {
-            if (low <= screen.get(row, column) && screen.get(row, column) <= high) {
-                tmp = min(tmp, double(column));
-                total_matches++;
-                row_sum += row;
-                column_sum += column;
-                column_values.push_back(column);
+            int val = screen.get(row, column);
+            if (ghost_low[0] <= val && val <= ghost_high[0]) {
+                total_matches[0]++;
+                row_sum[0]+=row;
+                column_sum[0]+=column;
+                rand_loc[0] = min(rand_loc[0], double(column));
+                column_values[0].push_back(column);
+            }
+            if (ghost_low[1] <= val && val <= ghost_high[1]) {
+                total_matches[1]++;
+                row_sum[1]+=row;
+                column_sum[1]+=column;
+                rand_loc[1] = min(rand_loc[1], double(column));
+                column_values[1].push_back(column);
+            }
+            if (ghost_low[2] <= val && val <= ghost_high[2]) {
+                total_matches[2]++;
+                row_sum[2]+=row;
+                column_sum[2]+=column;
+                rand_loc[2] = min(rand_loc[2], double(column));
+                column_values[2].push_back(column);
+            }
+            if (ghost_low[3] <= val && val <= ghost_high[3]) {
+                total_matches[3]++;
+                row_sum[3]+=row;
+                column_sum[3]+=column;
+                rand_loc[3] = min(rand_loc[3], double(column));
+                column_values[3].push_back(column);
+            }
+            // detect pacman
+            if (PACMAN_LOW <= val && val <= PACMAN_HIGH) {
+                total_matches[4]++;
+                row_sum[4]+=row;
+                column_sum[4]+=column;
+                rand_loc[4] = min(rand_loc[4], double(column));
+                column_values[4].push_back(column);
+            }
+            if (GHOST1_BLINK_LOW <= val && val <= GHOST1_BLINK_HIGH) {
+                total_matches[5]++;
+                row_sum[5]+=row;
+                column_sum[5]+=column;
+                rand_loc[5] = min(rand_loc[5], double(column));
+                column_values[5].push_back(column);
+            }
+            if (GHOST2_BLINK_LOW <= val && val <= GHOST2_BLINK_HIGH) {
+                total_matches[6]++;
+                row_sum[6]+=row;
+                column_sum[6]+=column;
+                rand_loc[6] = min(rand_loc[6], double(column));
+                column_values[6].push_back(column);
             }
         }
     }
-    double column_mean = column_sum / column_values.size();
-    double variance = 0, sd = 0;
-    for (size_t i = 0; i < column_values.size(); ++i) {
-        variance += pow(column_values[i] - column_mean, 2);
+    vector<loc> ret, ret1;
+    for(int i=0; i<7; i++) {
+        ret1.push_back(make_pair(row_sum[i] / total_matches[i], column_sum[i] / total_matches[i]));
     }
-    variance /= column_values.size();
-    sd = sqrt(variance);
-    //    When the S.D is high => teleportation happening
-    //    We return a random location
-    if(sd > 10) {
-        return make_pair(row_sum/total_matches, tmp);
+    for(int i=0; i<7; i++) {
+        double column_mean = column_sum[i] / total_matches[i];
+        double variance = 0, sd = 0;
+        for(size_t j = 0; j < column_values[i].size(); ++j) {
+            variance += pow(column_values[i][j] - column_mean, 2);
+        }
+        variance /= total_matches[i];
+        sd = sqrt(variance);
+        if(sd > 10)
+            ret1[i] = make_pair(row_sum[i] / total_matches[i], rand_loc[i]);
     }
-    loc location = make_pair(row_sum / total_matches, column_sum / total_matches);
-    return location;
-}
-
-loc pacman_image::detect_pacman_loc(const ALEScreen &screen) {
-    return detect_loc(screen, PACMAN_LOW, PACMAN_HIGH);
-}
-
-loc pacman_image::detect_ghost1_loc(const ALEScreen &screen) {
-    loc ghost1_loc = detect_ghost_loc(screen, 0);
-    if (std::isnan(ghost1_loc.first) || std::isnan(ghost1_loc.second)) {
-        ghost1_loc = detect_loc(screen, GHOST1_BLINK_LOW, GHOST1_BLINK_HIGH);
+    ret.push_back(ret1[4]);
+    for(int i=0; i<4; i++) {
+        ret.push_back(ret1[i]);
     }
-    return ghost1_loc;
-}
-
-loc pacman_image::detect_ghost2_loc(const ALEScreen &screen) {
-    loc ghost2_loc = detect_ghost_loc(screen, 1);
-    if (std::isnan(ghost2_loc.first) || std::isnan(ghost2_loc.second)) {
-        ghost2_loc = detect_loc(screen, GHOST2_BLINK_LOW, GHOST2_BLINK_HIGH);
-    }
-    return ghost2_loc;
-}
-
-loc pacman_image::detect_ghost_loc(const ALEScreen &screen, int ghost) {
-    return detect_loc(screen, ghost_low[ghost], ghost_high[ghost]);
+    if(std::isnan(ret[1].first) || std::isnan(ret[1].second))
+        ret[1] = ret1[5];
+    if(std::isnan(ret[2].first) || std::isnan(ret[2].second))
+        ret[2] = ret1[6];
+    return ret;
 }
 
 vector<loc> pacman_image::process_screen(const ALEScreen &screen) {
-    vector<loc> object_locations;
-    object_locations.push_back(detect_pacman_loc(screen));
-    object_locations.push_back(detect_ghost1_loc(screen));
-    object_locations.push_back(detect_ghost2_loc(screen));
-    for (int ghost = 2; ghost < 4; ++ghost) {
-        object_locations.push_back(detect_ghost_loc(screen, ghost));
-    }
-    return object_locations;
+    return detect_object_loc(screen);
 }
 
 pair<bool, bool> pacman_image::can_move_horizontally(const loc pacman_location)  {
@@ -209,7 +233,7 @@ vector<loc> pacman_image::detect_edible_ghosts(const ALEScreen &screen) {
     return edible_ghost_locations;
 }
 
-/* 
+/*
 pellet_pos gets updated with the location of pellets active currently
 Known problem: When a ghost and pellet overlap, pellet gets undetected
                for this step.
@@ -291,4 +315,3 @@ vector<loc> detect_pellets(vector<vector<int> > maze) {
     }
     return pellet_pos;
 }
-

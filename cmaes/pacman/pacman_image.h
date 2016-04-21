@@ -32,13 +32,7 @@ public:
     void detect_maze_and_set(const ALEScreen &screen);
     vector<vector<int> >& get_maze(void);
 
-    pair<double, double> detect_loc(const ALEScreen &screen, int low, int high);
-    pair<double, double> detect_pacman_loc(const ALEScreen &screen);
-    loc detect_ghost1_loc(const ALEScreen &screen);
-    loc detect_ghost2_loc(const ALEScreen &screen);
-    loc detect_ghost3_loc(const ALEScreen &screen);
-    loc detect_ghost4_loc(const ALEScreen &screen);
-    pair<double, double> detect_ghost_loc(const ALEScreen &screen, int ghost);
+    vector<loc> detect_object_loc(const ALEScreen &screen);
     vector<pair<double, double> > process_screen(const ALEScreen &screen);
     pair<bool, bool> can_move_horizontally(const loc pacman_location);
     pair<bool, bool> can_move_vertically(const loc pacman_location);
