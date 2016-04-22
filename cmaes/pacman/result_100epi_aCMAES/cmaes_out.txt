@@ -1,0 +1,800 @@
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.176717 --teleportation_cost 0.294219 --edible_ghost_cost -0.946910 --pellet_cost -0.006756 > result/result_0.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.142924 --teleportation_cost 0.209766 --edible_ghost_cost -0.926844 --pellet_cost 0.161014 > result/result_1.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.109480 --teleportation_cost 0.126937 --edible_ghost_cost -0.768429 --pellet_cost 0.133225 > result/result_2.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.058925 --teleportation_cost 0.147805 --edible_ghost_cost -1.141372 --pellet_cost -0.153598 > result/result_3.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.204257 --teleportation_cost 0.047161 --edible_ghost_cost -0.877365 --pellet_cost -0.109560 > result/result_4.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.226679 --teleportation_cost 0.300462 --edible_ghost_cost -0.893891 --pellet_cost 0.127123 > result/result_5.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.268150 --teleportation_cost 0.097889 --edible_ghost_cost -0.867291 --pellet_cost 0.017176 > result/result_6.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.135436 --teleportation_cost 0.154618 --edible_ghost_cost -0.914871 --pellet_cost -0.223860 > result/result_7.txt
+Iteration: 1, Fitness value: -1219.823433
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost -0.014628 --teleportation_cost 0.147645 --edible_ghost_cost -0.971218 --pellet_cost -0.026531 > result/result_8.txt
+Iteration: 5, Fitness value: -1352.422621
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.108785 --teleportation_cost 0.122329 --edible_ghost_cost -1.112003 --pellet_cost -0.071897 > result/result_9.txt
+Iteration: 2, Fitness value: -1315.071989
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.100020 --teleportation_cost 0.192649 --edible_ghost_cost -0.975380 --pellet_cost -0.056938 > result/result_10.txt
+Iteration: 6, Fitness value: -4380.395304
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.156065 --teleportation_cost 0.170103 --edible_ghost_cost -1.003666 --pellet_cost 0.105793 > result/result_11.txt
+Iteration: 7, Fitness value: -5547.418306
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.206463 --teleportation_cost 0.040502 --edible_ghost_cost -1.047673 --pellet_cost 0.050395 > result/result_12.txt
+Iteration: 0, Fitness value: -4746.31627
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.243357 --teleportation_cost 0.236136 --edible_ghost_cost -1.026374 --pellet_cost -0.175703 > result/result_13.txt
+Iteration: 3, Fitness value: -6413.214782
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.136953 --teleportation_cost 0.164889 --edible_ghost_cost -1.088551 --pellet_cost 0.018063 > result/result_14.txt
+Iteration: 4, Fitness value: -6173.951511
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.315029 --teleportation_cost 0.132365 --edible_ghost_cost -1.049876 --pellet_cost 0.035288 > result/result_15.txt
+Iteration: 11, Fitness value: -1563.753455
+Iteration: 8, Fitness value: -5665.162021
+Iteration: 12, Fitness value: -2382.338926
+Iteration: 9, Fitness value: -5956.195691
+Iteration: 10, Fitness value: -5900.707514
+Iteration: 15, Fitness value: -3573.325437
+Iteration: 13, Fitness value: -5712.420217
+Iteration: 14, Fitness value: -4024.178246
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost -0.023429 --teleportation_cost 0.300393 --edible_ghost_cost -1.023310 --pellet_cost -0.211700 > result/result_16.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.154690 --teleportation_cost 0.130512 --edible_ghost_cost -1.104028 --pellet_cost 0.043610 > result/result_17.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.112583 --teleportation_cost 0.273811 --edible_ghost_cost -1.011070 --pellet_cost -0.306843 > result/result_18.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.111221 --teleportation_cost 0.146524 --edible_ghost_cost -1.181471 --pellet_cost -0.055574 > result/result_19.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.308907 --teleportation_cost 0.225187 --edible_ghost_cost -1.075951 --pellet_cost -0.110276 > result/result_20.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.162317 --teleportation_cost 0.094783 --edible_ghost_cost -1.044195 --pellet_cost -0.146990 > result/result_21.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.040694 --teleportation_cost 0.096305 --edible_ghost_cost -1.031215 --pellet_cost -0.105019 > result/result_22.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost -0.000506 --teleportation_cost -0.005981 --edible_ghost_cost -1.020925 --pellet_cost -0.316221 > result/result_23.txt
+Iteration: 17, Fitness value: -3303.84758
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.245972 --teleportation_cost 0.092822 --edible_ghost_cost -1.106244 --pellet_cost -0.281770 > result/result_24.txt
+Iteration: 23, Fitness value: -4496.752167
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.143712 --teleportation_cost 0.269938 --edible_ghost_cost -0.952831 --pellet_cost 0.068198 > result/result_25.txt
+Iteration: 16, Fitness value: -4737.91963
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.085407 --teleportation_cost 0.187364 --edible_ghost_cost -0.994937 --pellet_cost -0.213424 > result/result_26.txt
+Iteration: 18, Fitness value: -4591.341007
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.209369 --teleportation_cost 0.118651 --edible_ghost_cost -1.022369 --pellet_cost -0.024588 > result/result_27.txt
+Iteration: 20, Fitness value: -6394.851672
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost -0.096433 --teleportation_cost -0.042479 --edible_ghost_cost -1.168405 --pellet_cost -0.417378 > result/result_28.txt
+Iteration: 22, Fitness value: -5507.236999
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.070261 --teleportation_cost 0.114523 --edible_ghost_cost -0.918633 --pellet_cost -0.095324 > result/result_29.txt
+Iteration: 19, Fitness value: -5891.926766
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.068394 --teleportation_cost -0.014071 --edible_ghost_cost -0.984885 --pellet_cost -0.243800 > result/result_30.txt
+Iteration: 21, Fitness value: -6433.530288
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost -0.039662 --teleportation_cost -0.111115 --edible_ghost_cost -1.081228 --pellet_cost -0.178270 > result/result_31.txt
+Iteration: 25, Fitness value: -2682.439221
+Iteration: 24, Fitness value: -5043.69664
+Iteration: 26, Fitness value: -4755.079203
+Iteration: 28, Fitness value: -4336.118561
+Iteration: 27, Fitness value: -5245.011613
+Iteration: 30, Fitness value: -4405.460662
+Iteration: 31, Fitness value: -5503.106267
+Iteration: 29, Fitness value: -5854.164154
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.230952 --teleportation_cost 0.064352 --edible_ghost_cost -0.896088 --pellet_cost -0.211384 > result/result_32.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.210909 --teleportation_cost 0.239624 --edible_ghost_cost -0.997104 --pellet_cost -0.160007 > result/result_33.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.222423 --teleportation_cost 0.150748 --edible_ghost_cost -0.947616 --pellet_cost -0.151273 > result/result_34.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.143620 --teleportation_cost 0.049302 --edible_ghost_cost -1.042506 --pellet_cost -0.125570 > result/result_35.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.223217 --teleportation_cost 0.118335 --edible_ghost_cost -1.276794 --pellet_cost -0.262617 > result/result_36.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.148792 --teleportation_cost 0.514172 --edible_ghost_cost -1.034082 --pellet_cost -0.144036 > result/result_37.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.157106 --teleportation_cost 0.114011 --edible_ghost_cost -1.013587 --pellet_cost -0.049586 > result/result_38.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.150147 --teleportation_cost 0.076102 --edible_ghost_cost -1.031824 --pellet_cost -0.181782 > result/result_39.txt
+Iteration: 37, Fitness value: -5589.67485
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.222920 --teleportation_cost 0.161163 --edible_ghost_cost -1.090614 --pellet_cost -0.179584 > result/result_40.txt
+Iteration: 32, Fitness value: -5397.989757
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.070374 --teleportation_cost 0.152213 --edible_ghost_cost -1.034608 --pellet_cost -0.209407 > result/result_41.txt
+Iteration: 36, Fitness value: -5458.378231
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.289467 --teleportation_cost -0.002880 --edible_ghost_cost -1.144265 --pellet_cost 0.147165 > result/result_42.txt
+Iteration: 39, Fitness value: -5998.032438
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.281991 --teleportation_cost 0.141423 --edible_ghost_cost -0.982393 --pellet_cost -0.023455 > result/result_43.txt
+Iteration: 33, Fitness value: -5575.555309
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.271931 --teleportation_cost 0.179068 --edible_ghost_cost -1.071165 --pellet_cost -0.083043 > result/result_44.txt
+Iteration: 34, Fitness value: -6148.473777
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.180459 --teleportation_cost 0.335207 --edible_ghost_cost -1.112132 --pellet_cost -0.041002 > result/result_45.txt
+Iteration: 38, Fitness value: -5833.103005
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.166494 --teleportation_cost 0.179163 --edible_ghost_cost -0.994542 --pellet_cost -0.191949 > result/result_46.txt
+Iteration: 35, Fitness value: -6621.50535
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.364266 --teleportation_cost 0.440491 --edible_ghost_cost -1.064360 --pellet_cost 0.103707 > result/result_47.txt
+Iteration: 42, Fitness value: -1347.229883
+Iteration: 47, Fitness value: -1989.593853
+Iteration: 41, Fitness value: -5126.169631
+Iteration: 40, Fitness value: -5578.946095
+Iteration: 44, Fitness value: -4844.824535
+Iteration: 43, Fitness value: -5212.98836
+Iteration: 45, Fitness value: -5066.13763
+Iteration: 46, Fitness value: -5566.262188
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.184685 --teleportation_cost 0.101170 --edible_ghost_cost -1.053360 --pellet_cost -0.223815 > result/result_48.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.024323 --teleportation_cost 0.003371 --edible_ghost_cost -1.116513 --pellet_cost -0.145072 > result/result_49.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.195354 --teleportation_cost 0.067060 --edible_ghost_cost -0.957556 --pellet_cost -0.123645 > result/result_50.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.228631 --teleportation_cost 0.133653 --edible_ghost_cost -0.996201 --pellet_cost -0.089988 > result/result_51.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.246141 --teleportation_cost 0.172007 --edible_ghost_cost -1.091312 --pellet_cost -0.209741 > result/result_52.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.192846 --teleportation_cost 0.185299 --edible_ghost_cost -1.025501 --pellet_cost -0.131919 > result/result_53.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.169494 --teleportation_cost 0.052400 --edible_ghost_cost -0.984505 --pellet_cost -0.102511 > result/result_54.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.195615 --teleportation_cost 0.134613 --edible_ghost_cost -0.964767 --pellet_cost -0.070237 > result/result_55.txt
+Iteration: 52, Fitness value: -4576.812944
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.259239 --teleportation_cost 0.138638 --edible_ghost_cost -1.107546 --pellet_cost -0.226593 > result/result_56.txt
+Iteration: 48, Fitness value: -5292.364338
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.131101 --teleportation_cost 0.244212 --edible_ghost_cost -1.126673 --pellet_cost -0.203327 > result/result_57.txt
+Iteration: 55, Fitness value: -4810.232845
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.060844 --teleportation_cost 0.246123 --edible_ghost_cost -1.051937 --pellet_cost -0.200928 > result/result_58.txt
+Iteration: 53, Fitness value: -5370.000978
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.168290 --teleportation_cost -0.043296 --edible_ghost_cost -1.035909 --pellet_cost -0.211043 > result/result_59.txt
+Iteration: 51, Fitness value: -6509.696656
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.217701 --teleportation_cost 0.141302 --edible_ghost_cost -0.886171 --pellet_cost -0.075459 > result/result_60.txt
+Iteration: 49, Fitness value: -5607.076306
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.149103 --teleportation_cost 0.009169 --edible_ghost_cost -0.802374 --pellet_cost -0.178262 > result/result_61.txt
+Iteration: 54, Fitness value: -5762.524896
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.162922 --teleportation_cost 0.093711 --edible_ghost_cost -1.050534 --pellet_cost -0.074792 > result/result_62.txt
+Iteration: 50, Fitness value: -6440.39331
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.204492 --teleportation_cost 0.137028 --edible_ghost_cost -0.972567 --pellet_cost -0.059380 > result/result_63.txt
+Iteration: 56, Fitness value: -4485.558415
+Iteration: 57, Fitness value: -5134.48033
+Iteration: 58, Fitness value: -5228.368306
+Iteration: 59, Fitness value: -5137.333385
+Iteration: 60, Fitness value: -4426.767727
+Iteration: 61, Fitness value: -5538.3698
+Iteration: 63, Fitness value: -5701.220311
+Iteration: 62, Fitness value: -5567.413273
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.186889 --teleportation_cost 0.018634 --edible_ghost_cost -0.858045 --pellet_cost -0.093368 > result/result_64.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.160488 --teleportation_cost 0.047631 --edible_ghost_cost -0.842197 --pellet_cost -0.047788 > result/result_65.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.211789 --teleportation_cost 0.146802 --edible_ghost_cost -0.955329 --pellet_cost -0.190821 > result/result_66.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.168532 --teleportation_cost 0.057013 --edible_ghost_cost -0.987675 --pellet_cost -0.137139 > result/result_67.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.254039 --teleportation_cost 0.060845 --edible_ghost_cost -1.009396 --pellet_cost -0.106054 > result/result_68.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.248109 --teleportation_cost 0.151728 --edible_ghost_cost -0.878542 --pellet_cost -0.176821 > result/result_69.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.201176 --teleportation_cost 0.128525 --edible_ghost_cost -1.006396 --pellet_cost -0.209254 > result/result_70.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.262289 --teleportation_cost 0.151799 --edible_ghost_cost -0.899494 --pellet_cost -0.033134 > result/result_71.txt
+Iteration: 71, Fitness value: -4684.653111
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.358758 --teleportation_cost -0.013180 --edible_ghost_cost -0.881610 --pellet_cost 0.000526 > result/result_72.txt
+Iteration: 66, Fitness value: -5718.990637
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.192153 --teleportation_cost 0.186734 --edible_ghost_cost -1.060945 --pellet_cost -0.093957 > result/result_73.txt
+Iteration: 69, Fitness value: -5332.594896
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.032440 --teleportation_cost 0.235232 --edible_ghost_cost -0.979622 --pellet_cost -0.061753 > result/result_74.txt
+Iteration: 70, Fitness value: -5183.772907
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.176959 --teleportation_cost 0.159775 --edible_ghost_cost -1.021689 --pellet_cost -0.158249 > result/result_75.txt
+Iteration: 68, Fitness value: -6709.520131
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.228668 --teleportation_cost 0.131546 --edible_ghost_cost -0.957620 --pellet_cost -0.089431 > result/result_76.txt
+Iteration: 67, Fitness value: -6152.390757
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.176347 --teleportation_cost 0.139077 --edible_ghost_cost -1.007907 --pellet_cost -0.054761 > result/result_77.txt
+Iteration: 65, Fitness value: -5545.929381
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.129067 --teleportation_cost -0.000239 --edible_ghost_cost -1.019600 --pellet_cost -0.089087 > result/result_78.txt
+Iteration: 64, Fitness value: -6051.161027
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.185544 --teleportation_cost 0.061300 --edible_ghost_cost -1.032549 --pellet_cost -0.131870 > result/result_79.txt
+Iteration: 72, Fitness value: -4073.332861
+Iteration: 74, Fitness value: -5808.50607
+Iteration: 73, Fitness value: -6300.33194
+Iteration: 76, Fitness value: -6774.165055
+Iteration: 77, Fitness value: -5564.152239
+Iteration: 75, Fitness value: -6472.644384
+Iteration: 78, Fitness value: -5683.329323
+Iteration: 79, Fitness value: -6150.81072
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.138121 --teleportation_cost 0.033904 --edible_ghost_cost -1.061472 --pellet_cost -0.130090 > result/result_80.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.129384 --teleportation_cost 0.137798 --edible_ghost_cost -1.108166 --pellet_cost -0.133882 > result/result_81.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.256086 --teleportation_cost 0.110765 --edible_ghost_cost -1.025077 --pellet_cost -0.104986 > result/result_82.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.272466 --teleportation_cost 0.032342 --edible_ghost_cost -1.050775 --pellet_cost -0.090585 > result/result_83.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.227929 --teleportation_cost 0.164064 --edible_ghost_cost -0.902282 --pellet_cost -0.035270 > result/result_84.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.151109 --teleportation_cost 0.022535 --edible_ghost_cost -0.990836 --pellet_cost -0.143693 > result/result_85.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.240329 --teleportation_cost 0.200379 --edible_ghost_cost -0.950568 --pellet_cost -0.068130 > result/result_86.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.278576 --teleportation_cost 0.144848 --edible_ghost_cost -0.983821 --pellet_cost -0.102489 > result/result_87.txt
+Iteration: 84, Fitness value: -4327.909468
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.289223 --teleportation_cost 0.140199 --edible_ghost_cost -1.071547 --pellet_cost -0.208741 > result/result_88.txt
+Iteration: 87, Fitness value: -6389.950552
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.340087 --teleportation_cost 0.164517 --edible_ghost_cost -0.946693 --pellet_cost -0.031679 > result/result_89.txt
+Iteration: 86, Fitness value: -5012.757753
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.129583 --teleportation_cost 0.078820 --edible_ghost_cost -1.074037 --pellet_cost -0.042723 > result/result_90.txt
+Iteration: 85, Fitness value: -5621.118934
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.115894 --teleportation_cost 0.054176 --edible_ghost_cost -1.027265 --pellet_cost -0.157252 > result/result_91.txt
+Iteration: 83, Fitness value: -6588.530949
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.308518 --teleportation_cost 0.115608 --edible_ghost_cost -0.997785 --pellet_cost 0.002520 > result/result_92.txt
+Iteration: 82, Fitness value: -6867.507703
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.204475 --teleportation_cost 0.078291 --edible_ghost_cost -1.012079 --pellet_cost -0.133822 > result/result_93.txt
+Iteration: 81, Fitness value: -6085.148153
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.280625 --teleportation_cost 0.037841 --edible_ghost_cost -1.042452 --pellet_cost -0.139998 > result/result_94.txt
+Iteration: 80, Fitness value: -6202.922746
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.098355 --teleportation_cost 0.267556 --edible_ghost_cost -1.109597 --pellet_cost -0.138001 > result/result_95.txt
+Iteration: 88, Fitness value: -5072.377217
+Iteration: 89, Fitness value: -4782.051788
+Iteration: 92, Fitness value: -4242.488542
+Iteration: 91, Fitness value: -5517.787855
+Iteration: 94, Fitness value: -5847.864198
+Iteration: 90, Fitness value: -6451.932383
+Iteration: 95, Fitness value: -6037.43216
+Iteration: 93, Fitness value: -6422.717286
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.207063 --teleportation_cost 0.162015 --edible_ghost_cost -1.070644 --pellet_cost -0.009381 > result/result_96.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.334957 --teleportation_cost -0.015395 --edible_ghost_cost -1.073440 --pellet_cost -0.058258 > result/result_97.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.257700 --teleportation_cost 0.114218 --edible_ghost_cost -1.073642 --pellet_cost -0.125506 > result/result_98.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.304137 --teleportation_cost 0.034978 --edible_ghost_cost -0.991777 --pellet_cost -0.096656 > result/result_99.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.238340 --teleportation_cost 0.171887 --edible_ghost_cost -1.062166 --pellet_cost -0.113617 > result/result_100.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.164501 --teleportation_cost -0.142998 --edible_ghost_cost -1.072002 --pellet_cost -0.090283 > result/result_101.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.255385 --teleportation_cost 0.115147 --edible_ghost_cost -1.088986 --pellet_cost -0.099636 > result/result_102.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.285415 --teleportation_cost 0.060961 --edible_ghost_cost -1.072780 --pellet_cost -0.075691 > result/result_103.txt
+Iteration: 103, Fitness value: -4514.928237
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.209110 --teleportation_cost 0.021545 --edible_ghost_cost -1.044183 --pellet_cost -0.033199 > result/result_104.txt
+Iteration: 100, Fitness value: -5538.966974
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.178965 --teleportation_cost 0.038277 --edible_ghost_cost -0.976375 --pellet_cost -0.102213 > result/result_105.txt
+Iteration: 97, Fitness value: -5432.454653
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.137272 --teleportation_cost 0.098946 --edible_ghost_cost -0.952759 --pellet_cost -0.104971 > result/result_106.txt
+Iteration: 96, Fitness value: -5258.887898
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.226986 --teleportation_cost -0.028303 --edible_ghost_cost -1.033155 --pellet_cost -0.158848 > result/result_107.txt
+Iteration: 101, Fitness value: -4651.73759
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.138881 --teleportation_cost 0.061609 --edible_ghost_cost -1.094013 --pellet_cost -0.199562 > result/result_108.txt
+Iteration: 102, Fitness value: -7068.382004
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.152082 --teleportation_cost 0.072785 --edible_ghost_cost -1.149503 --pellet_cost -0.133446 > result/result_109.txt
+Iteration: 99, Fitness value: -6617.500817
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.158404 --teleportation_cost 0.046331 --edible_ghost_cost -1.035001 --pellet_cost -0.158050 > result/result_110.txt
+Iteration: 98, Fitness value: -6133.156982
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.203641 --teleportation_cost 0.057894 --edible_ghost_cost -1.035217 --pellet_cost -0.119047 > result/result_111.txt
+Iteration: 104, Fitness value: -4869.045811
+Iteration: 108, Fitness value: -5463.5371
+Iteration: 106, Fitness value: -5832.162467
+Iteration: 107, Fitness value: -5572.103517
+Iteration: 105, Fitness value: -5869.375582
+Iteration: 109, Fitness value: -5984.89692
+Iteration: 111, Fitness value: -5888.295754
+Iteration: 110, Fitness value: -6265.850803
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.328992 --teleportation_cost 0.046040 --edible_ghost_cost -0.952304 --pellet_cost -0.167295 > result/result_112.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.285057 --teleportation_cost 0.038579 --edible_ghost_cost -1.061881 --pellet_cost -0.133570 > result/result_113.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.257399 --teleportation_cost -0.021387 --edible_ghost_cost -1.050293 --pellet_cost -0.143250 > result/result_114.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.227158 --teleportation_cost 0.081727 --edible_ghost_cost -1.188895 --pellet_cost -0.044570 > result/result_115.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.200549 --teleportation_cost 0.085683 --edible_ghost_cost -1.001779 --pellet_cost -0.049141 > result/result_116.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.263620 --teleportation_cost -0.014024 --edible_ghost_cost -1.017930 --pellet_cost -0.090797 > result/result_117.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.225439 --teleportation_cost 0.057641 --edible_ghost_cost -1.012008 --pellet_cost -0.136589 > result/result_118.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.158358 --teleportation_cost 0.061118 --edible_ghost_cost -1.120922 --pellet_cost -0.044465 > result/result_119.txt
+Iteration: 117, Fitness value: -4770.976309
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.273715 --teleportation_cost -0.013777 --edible_ghost_cost -1.003838 --pellet_cost -0.137388 > result/result_120.txt
+Iteration: 114, Fitness value: -5747.278139
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.222961 --teleportation_cost 0.100119 --edible_ghost_cost -1.029221 --pellet_cost -0.159620 > result/result_121.txt
+Iteration: 113, Fitness value: -6018.775364
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.157848 --teleportation_cost 0.136343 --edible_ghost_cost -1.057598 --pellet_cost -0.123919 > result/result_122.txt
+Iteration: 112, Fitness value: -5973.639617
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.180463 --teleportation_cost 0.164474 --edible_ghost_cost -1.115947 --pellet_cost -0.103429 > result/result_123.txt
+Iteration: 116, Fitness value: -6394.033378
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.287660 --teleportation_cost 0.107940 --edible_ghost_cost -1.037742 --pellet_cost -0.126373 > result/result_124.txt
+Iteration: 115, Fitness value: -5454.676255
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.307586 --teleportation_cost 0.146507 --edible_ghost_cost -1.058597 --pellet_cost -0.145310 > result/result_125.txt
+Iteration: 118, Fitness value: -6147.315478
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.240540 --teleportation_cost -0.001023 --edible_ghost_cost -1.109911 --pellet_cost -0.174593 > result/result_126.txt
+Iteration: 119, Fitness value: -5809.864061
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.256948 --teleportation_cost 0.104435 --edible_ghost_cost -1.038008 --pellet_cost -0.070700 > result/result_127.txt
+Iteration: 120, Fitness value: -5726.292157
+Iteration: 127, Fitness value: -4610.013393
+Iteration: 123, Fitness value: -6182.597336
+Iteration: 121, Fitness value: -5942.388012
+Iteration: 126, Fitness value: -5916.346791
+Iteration: 125, Fitness value: -6222.649549
+Iteration: 124, Fitness value: -6349.28464
+Iteration: 122, Fitness value: -6248.070608
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.213564 --teleportation_cost 0.106255 --edible_ghost_cost -0.973870 --pellet_cost -0.114076 > result/result_128.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.289722 --teleportation_cost 0.008381 --edible_ghost_cost -1.071067 --pellet_cost -0.154892 > result/result_129.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.199171 --teleportation_cost 0.103369 --edible_ghost_cost -1.072321 --pellet_cost -0.113517 > result/result_130.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.228691 --teleportation_cost 0.157694 --edible_ghost_cost -1.035018 --pellet_cost -0.090846 > result/result_131.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.230877 --teleportation_cost 0.060658 --edible_ghost_cost -1.045302 --pellet_cost -0.185801 > result/result_132.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.172891 --teleportation_cost 0.181182 --edible_ghost_cost -1.028210 --pellet_cost -0.080221 > result/result_133.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.253232 --teleportation_cost 0.169118 --edible_ghost_cost -0.963206 --pellet_cost -0.058213 > result/result_134.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.253420 --teleportation_cost 0.055395 --edible_ghost_cost -1.059279 --pellet_cost -0.123954 > result/result_135.txt
+Iteration: 133, Fitness value: -5225.80654
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.173642 --teleportation_cost 0.154037 --edible_ghost_cost -1.110839 --pellet_cost -0.105886 > result/result_136.txt
+Iteration: 132, Fitness value: -6148.011035
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.195520 --teleportation_cost 0.115070 --edible_ghost_cost -0.972165 --pellet_cost -0.129742 > result/result_137.txt
+Iteration: 130, Fitness value: -6204.1797
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.142113 --teleportation_cost 0.088605 --edible_ghost_cost -0.955839 --pellet_cost -0.091770 > result/result_138.txt
+Iteration: 135, Fitness value: -6033.684327
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.322923 --teleportation_cost 0.064131 --edible_ghost_cost -0.967353 --pellet_cost -0.096045 > result/result_139.txt
+Iteration: 129, Fitness value: -6108.120706
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.167932 --teleportation_cost 0.133379 --edible_ghost_cost -1.002879 --pellet_cost -0.155420 > result/result_140.txt
+Iteration: 128, Fitness value: -6348.778134
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.224749 --teleportation_cost 0.125353 --edible_ghost_cost -1.049554 --pellet_cost -0.110753 > result/result_141.txt
+Iteration: 134, Fitness value: -6060.517133
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.278012 --teleportation_cost 0.102962 --edible_ghost_cost -1.017446 --pellet_cost -0.091759 > result/result_142.txt
+Iteration: 131, Fitness value: -6560.214742
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.231231 --teleportation_cost 0.076756 --edible_ghost_cost -1.033432 --pellet_cost -0.137298 > result/result_143.txt
+Iteration: 136, Fitness value: -6715.242273
+Iteration: 138, Fitness value: -5393.840932
+Iteration: 139, Fitness value: -6595.217564
+Iteration: 142, Fitness value: -6398.946302
+Iteration: 137, Fitness value: -6051.134383
+Iteration: 143, Fitness value: -6092.914756
+Iteration: 141, Fitness value: -6541.239396
+Iteration: 140, Fitness value: -6566.915378
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.257182 --teleportation_cost 0.099248 --edible_ghost_cost -1.059880 --pellet_cost -0.162462 > result/result_144.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.261314 --teleportation_cost 0.058295 --edible_ghost_cost -1.044462 --pellet_cost -0.175657 > result/result_145.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.242062 --teleportation_cost 0.086128 --edible_ghost_cost -1.034205 --pellet_cost -0.115089 > result/result_146.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.183619 --teleportation_cost 0.208288 --edible_ghost_cost -1.021688 --pellet_cost -0.066636 > result/result_147.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.295629 --teleportation_cost 0.095471 --edible_ghost_cost -1.058038 --pellet_cost -0.095465 > result/result_148.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.230948 --teleportation_cost 0.119576 --edible_ghost_cost -1.058022 --pellet_cost -0.098234 > result/result_149.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.191720 --teleportation_cost 0.106639 --edible_ghost_cost -1.022901 --pellet_cost -0.084402 > result/result_150.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.114743 --teleportation_cost 0.175850 --edible_ghost_cost -1.119246 --pellet_cost -0.108829 > result/result_151.txt
+Iteration: 147, Fitness value: -5172.229208
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.287410 --teleportation_cost 0.115021 --edible_ghost_cost -1.024553 --pellet_cost -0.156487 > result/result_152.txt
+Iteration: 146, Fitness value: -5768.710514
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.219404 --teleportation_cost 0.135960 --edible_ghost_cost -1.041622 --pellet_cost -0.158983 > result/result_153.txt
+Iteration: 150, Fitness value: -5012.499116
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.225479 --teleportation_cost 0.148598 --edible_ghost_cost -1.045880 --pellet_cost -0.106684 > result/result_154.txt
+Iteration: 151, Fitness value: -5071.363023
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.183880 --teleportation_cost 0.077333 --edible_ghost_cost -1.075126 --pellet_cost -0.118359 > result/result_155.txt
+Iteration: 145, Fitness value: -5598.201274
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.238662 --teleportation_cost 0.120910 --edible_ghost_cost -1.011432 --pellet_cost -0.113041 > result/result_156.txt
+Iteration: 148, Fitness value: -6593.466644
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.125638 --teleportation_cost 0.205180 --edible_ghost_cost -1.032320 --pellet_cost -0.096884 > result/result_157.txt
+Iteration: 149, Fitness value: -6641.181855
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.155888 --teleportation_cost 0.113107 --edible_ghost_cost -1.015302 --pellet_cost -0.131838 > result/result_158.txt
+Iteration: 144, Fitness value: -5755.063638
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.220280 --teleportation_cost 0.183840 --edible_ghost_cost -1.049220 --pellet_cost -0.141724 > result/result_159.txt
+Iteration: 153, Fitness value: -6368.92476
+Iteration: 152, Fitness value: -5798.389576
+Iteration: 154, Fitness value: -6855.733613
+Iteration: 156, Fitness value: -6379.723384
+Iteration: 159, Fitness value: -6171.935964
+Iteration: 155, Fitness value: -6332.873738
+Iteration: 157, Fitness value: -5663.536704
+Iteration: 158, Fitness value: -6400.331351
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.212305 --teleportation_cost 0.110697 --edible_ghost_cost -1.009472 --pellet_cost -0.106146 > result/result_160.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.243434 --teleportation_cost 0.150946 --edible_ghost_cost -1.021395 --pellet_cost -0.131712 > result/result_161.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.187607 --teleportation_cost 0.097613 --edible_ghost_cost -1.062802 --pellet_cost -0.082106 > result/result_162.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.207665 --teleportation_cost 0.095494 --edible_ghost_cost -1.016268 --pellet_cost -0.113797 > result/result_163.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.219904 --teleportation_cost 0.090505 --edible_ghost_cost -1.085927 --pellet_cost -0.116242 > result/result_164.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.180767 --teleportation_cost 0.150217 --edible_ghost_cost -1.065527 --pellet_cost -0.112364 > result/result_165.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.282317 --teleportation_cost 0.110012 --edible_ghost_cost -1.074964 --pellet_cost -0.083191 > result/result_166.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.212555 --teleportation_cost 0.135386 --edible_ghost_cost -1.046552 --pellet_cost -0.107020 > result/result_167.txt
+Iteration: 166, Fitness value: -4308.514399
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.251005 --teleportation_cost 0.136895 --edible_ghost_cost -1.034130 --pellet_cost -0.109118 > result/result_168.txt
+Iteration: 160, Fitness value: -6793.520683
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.255060 --teleportation_cost 0.135578 --edible_ghost_cost -1.029031 --pellet_cost -0.142837 > result/result_169.txt
+Iteration: 164, Fitness value: -5914.816893
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.238631 --teleportation_cost 0.107702 --edible_ghost_cost -1.018271 --pellet_cost -0.120069 > result/result_170.txt
+Iteration: 162, Fitness value: -5548.663295
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.241708 --teleportation_cost 0.129238 --edible_ghost_cost -1.082553 --pellet_cost -0.120446 > result/result_171.txt
+Iteration: 165, Fitness value: -6095.70525
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.218366 --teleportation_cost 0.111696 --edible_ghost_cost -1.050709 --pellet_cost -0.107402 > result/result_172.txt
+Iteration: 167, Fitness value: -7149.975526
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.239503 --teleportation_cost 0.062944 --edible_ghost_cost -1.020325 --pellet_cost -0.106803 > result/result_173.txt
+Iteration: 161, Fitness value: -5861.710809
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.186982 --teleportation_cost 0.158032 --edible_ghost_cost -1.082449 --pellet_cost -0.119998 > result/result_174.txt
+Iteration: 163, Fitness value: -6552.197501
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.270624 --teleportation_cost 0.116062 --edible_ghost_cost -1.017288 --pellet_cost -0.104345 > result/result_175.txt
+Iteration: 168, Fitness value: -6497.428351
+Iteration: 175, Fitness value: -6236.504349
+Iteration: 169, Fitness value: -6198.418975
+Iteration: 170, Fitness value: -6343.935867
+Iteration: 171, Fitness value: -6314.751774
+Iteration: 172, Fitness value: -6979.464698
+Iteration: 174, Fitness value: -6193.981664
+Iteration: 173, Fitness value: -7433.292045
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.194611 --teleportation_cost 0.099832 --edible_ghost_cost -0.997089 --pellet_cost -0.108748 > result/result_176.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.256055 --teleportation_cost 0.129714 --edible_ghost_cost -1.085395 --pellet_cost -0.104739 > result/result_177.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.220185 --teleportation_cost 0.115460 --edible_ghost_cost -1.037403 --pellet_cost -0.076385 > result/result_178.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.243200 --teleportation_cost 0.111542 --edible_ghost_cost -0.996576 --pellet_cost -0.130701 > result/result_179.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.231939 --teleportation_cost 0.110597 --edible_ghost_cost -1.011856 --pellet_cost -0.110834 > result/result_180.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.209141 --teleportation_cost 0.093999 --edible_ghost_cost -1.026862 --pellet_cost -0.123111 > result/result_181.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.236681 --teleportation_cost 0.040525 --edible_ghost_cost -0.996717 --pellet_cost -0.105860 > result/result_182.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.219748 --teleportation_cost 0.089339 --edible_ghost_cost -1.019506 --pellet_cost -0.107202 > result/result_183.txt
+Iteration: 178, Fitness value: -4535.981329
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.252994 --teleportation_cost 0.124189 --edible_ghost_cost -1.015293 --pellet_cost -0.109844 > result/result_184.txt
+Iteration: 177, Fitness value: -6525.11373
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.199102 --teleportation_cost 0.056866 --edible_ghost_cost -1.008336 --pellet_cost -0.119121 > result/result_185.txt
+Iteration: 182, Fitness value: -6847.171325
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.210499 --teleportation_cost 0.155336 --edible_ghost_cost -1.046451 --pellet_cost -0.146680 > result/result_186.txt
+Iteration: 181, Fitness value: -6077.938412
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.257653 --teleportation_cost 0.077878 --edible_ghost_cost -1.038860 --pellet_cost -0.122079 > result/result_187.txt
+Iteration: 180, Fitness value: -6054.126866
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.211743 --teleportation_cost 0.113775 --edible_ghost_cost -1.023017 --pellet_cost -0.093706 > result/result_188.txt
+Iteration: 179, Fitness value: -6320.696362
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.246656 --teleportation_cost 0.112187 --edible_ghost_cost -1.055286 --pellet_cost -0.110419 > result/result_189.txt
+Iteration: 176, Fitness value: -7361.588166
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.230259 --teleportation_cost 0.070500 --edible_ghost_cost -1.039693 --pellet_cost -0.081909 > result/result_190.txt
+Iteration: 183, Fitness value: -7424.874148
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.180491 --teleportation_cost 0.101426 --edible_ghost_cost -1.074612 --pellet_cost -0.077400 > result/result_191.txt
+Iteration: 184, Fitness value: -6624.576221
+Iteration: 190, Fitness value: -4462.754427
+Iteration: 185, Fitness value: -6488.033187
+Iteration: 186, Fitness value: -6868.458375
+Iteration: 188, Fitness value: -6963.954838
+Iteration: 187, Fitness value: -6187.080173
+Iteration: 189, Fitness value: -6188.411032
+Iteration: 191, Fitness value: -5769.287196
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.212174 --teleportation_cost 0.091966 --edible_ghost_cost -0.986258 --pellet_cost -0.112969 > result/result_192.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.204598 --teleportation_cost 0.174097 --edible_ghost_cost -1.079082 --pellet_cost -0.121562 > result/result_193.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.255694 --teleportation_cost 0.072436 --edible_ghost_cost -0.973147 --pellet_cost -0.105903 > result/result_194.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.225231 --teleportation_cost 0.104817 --edible_ghost_cost -1.026214 --pellet_cost -0.103703 > result/result_195.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.224235 --teleportation_cost 0.093942 --edible_ghost_cost -1.014636 --pellet_cost -0.112585 > result/result_196.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.177537 --teleportation_cost 0.135367 --edible_ghost_cost -1.019154 --pellet_cost -0.119195 > result/result_197.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.187020 --teleportation_cost 0.116384 --edible_ghost_cost -1.041772 --pellet_cost -0.100915 > result/result_198.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.197763 --teleportation_cost 0.064286 --edible_ghost_cost -1.017028 --pellet_cost -0.112122 > result/result_199.txt
+Iteration: 198, Fitness value: -4745.572783
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.206119 --teleportation_cost 0.126535 --edible_ghost_cost -1.028513 --pellet_cost -0.102044 > result/result_200.txt
+Iteration: 193, Fitness value: -5924.137851
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.206701 --teleportation_cost 0.109966 --edible_ghost_cost -1.047014 --pellet_cost -0.101557 > result/result_201.txt
+Iteration: 194, Fitness value: -6672.653603
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.246396 --teleportation_cost 0.032461 --edible_ghost_cost -0.989050 --pellet_cost -0.099392 > result/result_202.txt
+Iteration: 195, Fitness value: -7290.495042
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.235413 --teleportation_cost 0.103767 --edible_ghost_cost -1.034812 --pellet_cost -0.095607 > result/result_203.txt
+Iteration: 197, Fitness value: -6506.936583
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.207885 --teleportation_cost 0.060054 --edible_ghost_cost -1.052351 --pellet_cost -0.120337 > result/result_204.txt
+Iteration: 196, Fitness value: -6553.745388
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.203091 --teleportation_cost 0.121470 --edible_ghost_cost -1.016529 --pellet_cost -0.098099 > result/result_205.txt
+Iteration: 192, Fitness value: -5886.460782
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.161609 --teleportation_cost 0.037614 --edible_ghost_cost -0.987540 --pellet_cost -0.141701 > result/result_206.txt
+Iteration: 199, Fitness value: -6091.438463
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.201222 --teleportation_cost 0.085266 --edible_ghost_cost -0.994026 --pellet_cost -0.107001 > result/result_207.txt
+Iteration: 200, Fitness value: -7219.670173
+Iteration: 202, Fitness value: -6322.635278
+Iteration: 201, Fitness value: -6862.769935
+Iteration: 203, Fitness value: -6355.916203
+Iteration: 206, Fitness value: -5940.40098
+Iteration: 205, Fitness value: -6504.813237
+Iteration: 207, Fitness value: -7277.330408
+Iteration: 204, Fitness value: -6486.79912
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.191673 --teleportation_cost 0.064285 --edible_ghost_cost -1.054005 --pellet_cost -0.072143 > result/result_208.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.213274 --teleportation_cost 0.139966 --edible_ghost_cost -1.009400 --pellet_cost -0.101151 > result/result_209.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.209741 --teleportation_cost 0.100062 --edible_ghost_cost -1.016264 --pellet_cost -0.095347 > result/result_210.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.202956 --teleportation_cost 0.135624 --edible_ghost_cost -1.008130 --pellet_cost -0.114484 > result/result_211.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.199304 --teleportation_cost 0.094083 --edible_ghost_cost -1.022494 --pellet_cost -0.105095 > result/result_212.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.229695 --teleportation_cost 0.140969 --edible_ghost_cost -1.034620 --pellet_cost -0.113520 > result/result_213.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.241675 --teleportation_cost 0.091723 --edible_ghost_cost -0.999928 --pellet_cost -0.099529 > result/result_214.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.196370 --teleportation_cost 0.114107 --edible_ghost_cost -1.013678 --pellet_cost -0.107998 > result/result_215.txt
+Iteration: 210, Fitness value: -6323.674383
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.231667 --teleportation_cost 0.124496 --edible_ghost_cost -0.996622 --pellet_cost -0.116337 > result/result_216.txt
+Iteration: 214, Fitness value: -6628.828498
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.218782 --teleportation_cost 0.091152 --edible_ghost_cost -0.985895 --pellet_cost -0.109857 > result/result_217.txt
+Iteration: 213, Fitness value: -6092.406777
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.202057 --teleportation_cost 0.076850 --edible_ghost_cost -1.007417 --pellet_cost -0.103951 > result/result_218.txt
+Iteration: 211, Fitness value: -6220.021104
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.238855 --teleportation_cost 0.121785 --edible_ghost_cost -0.980939 --pellet_cost -0.082591 > result/result_219.txt
+Iteration: 209, Fitness value: -7087.674277
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.243762 --teleportation_cost 0.105902 --edible_ghost_cost -1.019549 --pellet_cost -0.091086 > result/result_220.txt
+Iteration: 215, Fitness value: -6884.556883
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.223665 --teleportation_cost 0.102796 --edible_ghost_cost -1.014412 --pellet_cost -0.092477 > result/result_221.txt
+Iteration: 208, Fitness value: -5627.680187
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.233485 --teleportation_cost 0.093420 --edible_ghost_cost -1.030065 --pellet_cost -0.089471 > result/result_222.txt
+Iteration: 212, Fitness value: -7227.405346
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.224172 --teleportation_cost 0.094515 --edible_ghost_cost -0.991239 --pellet_cost -0.110551 > result/result_223.txt
+Iteration: 218, Fitness value: -5043.715852
+Iteration: 222, Fitness value: -4545.828546
+Iteration: 219, Fitness value: -4839.790088
+Iteration: 216, Fitness value: -6094.653646
+Iteration: 220, Fitness value: -6403.210157
+Iteration: 217, Fitness value: -6146.725566
+Iteration: 223, Fitness value: -6112.880082
+Iteration: 221, Fitness value: -6533.698241
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.259129 --teleportation_cost 0.109373 --edible_ghost_cost -1.011644 --pellet_cost -0.083172 > result/result_224.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.201944 --teleportation_cost 0.138836 --edible_ghost_cost -1.025433 --pellet_cost -0.094506 > result/result_225.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.203851 --teleportation_cost 0.088218 --edible_ghost_cost -1.012926 --pellet_cost -0.099448 > result/result_226.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.217387 --teleportation_cost 0.131041 --edible_ghost_cost -1.033215 --pellet_cost -0.096335 > result/result_227.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.234845 --teleportation_cost 0.108788 --edible_ghost_cost -1.032446 --pellet_cost -0.107689 > result/result_228.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.183046 --teleportation_cost 0.126920 --edible_ghost_cost -0.996683 --pellet_cost -0.113892 > result/result_229.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.243403 --teleportation_cost 0.116553 --edible_ghost_cost -1.015013 --pellet_cost -0.107085 > result/result_230.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.212673 --teleportation_cost 0.121799 --edible_ghost_cost -1.000012 --pellet_cost -0.092740 > result/result_231.txt
+Iteration: 224, Fitness value: -4845.345094
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.200511 --teleportation_cost 0.096136 --edible_ghost_cost -1.006086 --pellet_cost -0.089096 > result/result_232.txt
+Iteration: 225, Fitness value: -6464.005681
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.196797 --teleportation_cost 0.098338 --edible_ghost_cost -1.031876 --pellet_cost -0.098781 > result/result_233.txt
+Iteration: 231, Fitness value: -6212.171299
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.206475 --teleportation_cost 0.109762 --edible_ghost_cost -1.007478 --pellet_cost -0.111375 > result/result_234.txt
+Iteration: 227, Fitness value: -6539.745415
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.197196 --teleportation_cost 0.090987 --edible_ghost_cost -1.024827 --pellet_cost -0.109766 > result/result_235.txt
+Iteration: 229, Fitness value: -6039.34978
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.223405 --teleportation_cost 0.123064 --edible_ghost_cost -1.027434 --pellet_cost -0.102646 > result/result_236.txt
+Iteration: 226, Fitness value: -6974.503825
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.209676 --teleportation_cost 0.112950 --edible_ghost_cost -1.022264 --pellet_cost -0.108453 > result/result_237.txt
+Iteration: 228, Fitness value: -6835.145332
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.217878 --teleportation_cost 0.132290 --edible_ghost_cost -0.991241 --pellet_cost -0.103787 > result/result_238.txt
+Iteration: 230, Fitness value: -7201.10142
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.222906 --teleportation_cost 0.109942 --edible_ghost_cost -1.023699 --pellet_cost -0.113558 > result/result_239.txt
+Iteration: 232, Fitness value: -4413.475445
+Iteration: 233, Fitness value: -5473.190229
+Iteration: 236, Fitness value: -6783.042391
+Iteration: 234, Fitness value: -6213.030642
+Iteration: 238, Fitness value: -6722.984069
+Iteration: 235, Fitness value: -5746.072259
+Iteration: 237, Fitness value: -6676.177659
+Iteration: 239, Fitness value: -5900.045008
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.223991 --teleportation_cost 0.113511 --edible_ghost_cost -1.017532 --pellet_cost -0.095786 > result/result_240.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.222324 --teleportation_cost 0.112015 --edible_ghost_cost -1.024001 --pellet_cost -0.116337 > result/result_241.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.241061 --teleportation_cost 0.123817 --edible_ghost_cost -1.016393 --pellet_cost -0.130145 > result/result_242.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.215983 --teleportation_cost 0.111067 --edible_ghost_cost -1.034075 --pellet_cost -0.122375 > result/result_243.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.210878 --teleportation_cost 0.105776 --edible_ghost_cost -1.040721 --pellet_cost -0.110355 > result/result_244.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.223544 --teleportation_cost 0.133043 --edible_ghost_cost -1.020096 --pellet_cost -0.108142 > result/result_245.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.253979 --teleportation_cost 0.103609 --edible_ghost_cost -1.008295 --pellet_cost -0.110215 > result/result_246.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.215797 --teleportation_cost 0.112094 --edible_ghost_cost -1.012362 --pellet_cost -0.108015 > result/result_247.txt
+Iteration: 246, Fitness value: -5650.149766
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.252911 --teleportation_cost 0.119102 --edible_ghost_cost -1.025834 --pellet_cost -0.109873 > result/result_248.txt
+Iteration: 240, Fitness value: -6403.595245
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.228829 --teleportation_cost 0.113267 --edible_ghost_cost -1.018003 --pellet_cost -0.108977 > result/result_249.txt
+Iteration: 242, Fitness value: -5524.895601
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.213268 --teleportation_cost 0.115640 --edible_ghost_cost -1.007347 --pellet_cost -0.116553 > result/result_250.txt
+Iteration: 245, Fitness value: -6718.454401
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.270354 --teleportation_cost 0.128114 --edible_ghost_cost -1.017012 --pellet_cost -0.105100 > result/result_251.txt
+Iteration: 247, Fitness value: -6980.852937
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.224410 --teleportation_cost 0.093809 --edible_ghost_cost -1.004487 --pellet_cost -0.090861 > result/result_252.txt
+Iteration: 244, Fitness value: -6309.297104
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.198007 --teleportation_cost 0.097062 --edible_ghost_cost -0.980091 --pellet_cost -0.103769 > result/result_253.txt
+Iteration: 241, Fitness value: -6791.983615
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.261441 --teleportation_cost 0.101630 --edible_ghost_cost -1.008943 --pellet_cost -0.110072 > result/result_254.txt
+Iteration: 243, Fitness value: -6163.780947
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.203334 --teleportation_cost 0.144724 --edible_ghost_cost -1.057345 --pellet_cost -0.113172 > result/result_255.txt
+Iteration: 249, Fitness value: -6667.821833
+Iteration: 251, Fitness value: -6706.545255
+Iteration: 252, Fitness value: -6290.289538
+Iteration: 248, Fitness value: -6702.138307
+Iteration: 255, Fitness value: -5842.421291
+Iteration: 250, Fitness value: -6378.854412
+Iteration: 253, Fitness value: -7040.917142
+Iteration: 254, Fitness value: -6448.505579
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.204567 --teleportation_cost 0.135251 --edible_ghost_cost -1.013994 --pellet_cost -0.102340 > result/result_256.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.252720 --teleportation_cost 0.111516 --edible_ghost_cost -1.010201 --pellet_cost -0.119172 > result/result_257.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.227079 --teleportation_cost 0.126436 --edible_ghost_cost -0.990641 --pellet_cost -0.100559 > result/result_258.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.227402 --teleportation_cost 0.102522 --edible_ghost_cost -0.959227 --pellet_cost -0.112853 > result/result_259.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.200266 --teleportation_cost 0.123445 --edible_ghost_cost -1.014459 --pellet_cost -0.116112 > result/result_260.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.209945 --teleportation_cost 0.122233 --edible_ghost_cost -0.991868 --pellet_cost -0.117119 > result/result_261.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.208958 --teleportation_cost 0.088876 --edible_ghost_cost -0.983050 --pellet_cost -0.110603 > result/result_262.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.251905 --teleportation_cost 0.125672 --edible_ghost_cost -1.050125 --pellet_cost -0.109181 > result/result_263.txt
+Iteration: 258, Fitness value: -6690.449958
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.207350 --teleportation_cost 0.111875 --edible_ghost_cost -1.006387 --pellet_cost -0.098066 > result/result_264.txt
+Iteration: 257, Fitness value: -5689.521368
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.217574 --teleportation_cost 0.109005 --edible_ghost_cost -1.014191 --pellet_cost -0.110410 > result/result_265.txt
+Iteration: 261, Fitness value: -6347.874081
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.231617 --teleportation_cost 0.127643 --edible_ghost_cost -1.049109 --pellet_cost -0.103960 > result/result_266.txt
+Iteration: 260, Fitness value: -5997.217548
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.215013 --teleportation_cost 0.124726 --edible_ghost_cost -1.012421 --pellet_cost -0.101794 > result/result_267.txt
+Iteration: 256, Fitness value: -6563.6941
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.237172 --teleportation_cost 0.126495 --edible_ghost_cost -1.029143 --pellet_cost -0.104703 > result/result_268.txt
+Iteration: 263, Fitness value: -6800.828296
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.219520 --teleportation_cost 0.095616 --edible_ghost_cost -1.024874 --pellet_cost -0.099759 > result/result_269.txt
+Iteration: 259, Fitness value: -6366.644881
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.207927 --teleportation_cost 0.136998 --edible_ghost_cost -1.028436 --pellet_cost -0.106439 > result/result_270.txt
+Iteration: 262, Fitness value: -5879.363499
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.224476 --teleportation_cost 0.112964 --edible_ghost_cost -1.020431 --pellet_cost -0.111812 > result/result_271.txt
+Iteration: 268, Fitness value: -6763.814222
+Iteration: 264, Fitness value: -6760.373286
+Iteration: 269, Fitness value: -6688.125857
+Iteration: 266, Fitness value: -6811.769444
+Iteration: 267, Fitness value: -6465.303238
+Iteration: 270, Fitness value: -7202.372651
+Iteration: 271, Fitness value: -6215.007078
+Iteration: 265, Fitness value: -6421.71746
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.205511 --teleportation_cost 0.140359 --edible_ghost_cost -1.002040 --pellet_cost -0.114921 > result/result_272.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.199311 --teleportation_cost 0.129836 --edible_ghost_cost -1.020962 --pellet_cost -0.111431 > result/result_273.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.245296 --teleportation_cost 0.115657 --edible_ghost_cost -1.004948 --pellet_cost -0.099695 > result/result_274.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.216154 --teleportation_cost 0.153750 --edible_ghost_cost -1.034132 --pellet_cost -0.112245 > result/result_275.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.208393 --teleportation_cost 0.108999 --edible_ghost_cost -1.033799 --pellet_cost -0.091081 > result/result_276.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.252293 --teleportation_cost 0.107156 --edible_ghost_cost -1.012564 --pellet_cost -0.099774 > result/result_277.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.241607 --teleportation_cost 0.166340 --edible_ghost_cost -1.041479 --pellet_cost -0.103204 > result/result_278.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.238131 --teleportation_cost 0.139876 --edible_ghost_cost -1.036905 --pellet_cost -0.106827 > result/result_279.txt
+Iteration: 279, Fitness value: -6404.335221
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.205236 --teleportation_cost 0.115681 --edible_ghost_cost -1.012495 --pellet_cost -0.121651 > result/result_280.txt
+Iteration: 278, Fitness value: -6446.797661
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.222014 --teleportation_cost 0.134867 --edible_ghost_cost -1.054550 --pellet_cost -0.093810 > result/result_281.txt
+Iteration: 273, Fitness value: -5857.7775
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.225708 --teleportation_cost 0.154201 --edible_ghost_cost -1.057068 --pellet_cost -0.099351 > result/result_282.txt
+Iteration: 276, Fitness value: -6267.088464
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.231607 --teleportation_cost 0.160907 --edible_ghost_cost -1.036678 --pellet_cost -0.095998 > result/result_283.txt
+Iteration: 277, Fitness value: -6756.149145
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.205966 --teleportation_cost 0.102660 --edible_ghost_cost -1.007709 --pellet_cost -0.099031 > result/result_284.txt
+Iteration: 274, Fitness value: -6962.36399
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.251172 --teleportation_cost 0.150819 --edible_ghost_cost -1.049244 --pellet_cost -0.113646 > result/result_285.txt
+Iteration: 275, Fitness value: -6469.051548
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.216666 --teleportation_cost 0.114926 --edible_ghost_cost -1.017318 --pellet_cost -0.096651 > result/result_286.txt
+Iteration: 272, Fitness value: -5718.228854
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.220360 --teleportation_cost 0.117619 --edible_ghost_cost -1.039710 --pellet_cost -0.092862 > result/result_287.txt
+Iteration: 284, Fitness value: -5765.625631
+Iteration: 280, Fitness value: -6024.97368
+Iteration: 283, Fitness value: -6625.961118
+Iteration: 287, Fitness value: -6247.768554
+Iteration: 282, Fitness value: -6814.699672
+Iteration: 285, Fitness value: -5731.635276
+Iteration: 281, Fitness value: -6598.617078
+Iteration: 286, Fitness value: -6676.064907
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.210728 --teleportation_cost 0.118160 --edible_ghost_cost -1.009866 --pellet_cost -0.094000 > result/result_288.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.261534 --teleportation_cost 0.120474 --edible_ghost_cost -1.053067 --pellet_cost -0.097462 > result/result_289.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.236085 --teleportation_cost 0.139326 --edible_ghost_cost -1.054438 --pellet_cost -0.091902 > result/result_290.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.231455 --teleportation_cost 0.107268 --edible_ghost_cost -0.980150 --pellet_cost -0.096100 > result/result_291.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.207406 --teleportation_cost 0.093395 --edible_ghost_cost -0.995905 --pellet_cost -0.114190 > result/result_292.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.211542 --teleportation_cost 0.129383 --edible_ghost_cost -1.014922 --pellet_cost -0.096948 > result/result_293.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.232597 --teleportation_cost 0.101189 --edible_ghost_cost -0.987693 --pellet_cost -0.101012 > result/result_294.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.222832 --teleportation_cost 0.095290 --edible_ghost_cost -1.034145 --pellet_cost -0.108164 > result/result_295.txt
+Iteration: 291, Fitness value: -5864.440445
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.242916 --teleportation_cost 0.158815 --edible_ghost_cost -1.057797 --pellet_cost -0.084297 > result/result_296.txt
+Iteration: 289, Fitness value: -6368.793599
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.257593 --teleportation_cost 0.166117 --edible_ghost_cost -1.048314 --pellet_cost -0.080040 > result/result_297.txt
+Iteration: 294, Fitness value: -6821.213758
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.231807 --teleportation_cost 0.155863 --edible_ghost_cost -1.032235 --pellet_cost -0.108719 > result/result_298.txt
+Iteration: 295, Fitness value: -6877.440013
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.238381 --teleportation_cost 0.123176 --edible_ghost_cost -1.027389 --pellet_cost -0.118031 > result/result_299.txt
+Iteration: 293, Fitness value: -6042.364909
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.226425 --teleportation_cost 0.138623 --edible_ghost_cost -1.018772 --pellet_cost -0.100411 > result/result_300.txt
+Iteration: 288, Fitness value: -6345.206227
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.233280 --teleportation_cost 0.173934 --edible_ghost_cost -1.082143 --pellet_cost -0.101498 > result/result_301.txt
+Iteration: 292, Fitness value: -6167.681388
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.216129 --teleportation_cost 0.139986 --edible_ghost_cost -1.030573 --pellet_cost -0.104790 > result/result_302.txt
+Iteration: 290, Fitness value: -6494.270028
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.197519 --teleportation_cost 0.152391 --edible_ghost_cost -1.046064 --pellet_cost -0.092733 > result/result_303.txt
+Iteration: 296, Fitness value: -4452.895716
+Iteration: 297, Fitness value: -4602.891296
+Iteration: 298, Fitness value: -6994.887004
+Iteration: 300, Fitness value: -6286.390431
+Iteration: 299, Fitness value: -6184.267299
+Iteration: 301, Fitness value: -6885.614045
+Iteration: 302, Fitness value: -6547.898167
+Iteration: 303, Fitness value: -6659.605122
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.220444 --teleportation_cost 0.173929 --edible_ghost_cost -1.035314 --pellet_cost -0.105501 > result/result_304.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.240956 --teleportation_cost 0.103469 --edible_ghost_cost -1.024140 --pellet_cost -0.106534 > result/result_305.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.229797 --teleportation_cost 0.138070 --edible_ghost_cost -1.077017 --pellet_cost -0.107954 > result/result_306.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.216423 --teleportation_cost 0.148433 --edible_ghost_cost -1.050324 --pellet_cost -0.104602 > result/result_307.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.242201 --teleportation_cost 0.174270 --edible_ghost_cost -1.059269 --pellet_cost -0.104484 > result/result_308.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.271709 --teleportation_cost 0.177707 --edible_ghost_cost -1.061368 --pellet_cost -0.098442 > result/result_309.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.198847 --teleportation_cost 0.158598 --edible_ghost_cost -1.045897 --pellet_cost -0.120105 > result/result_310.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.241939 --teleportation_cost 0.176539 --edible_ghost_cost -1.062978 --pellet_cost -0.095390 > result/result_311.txt
+Iteration: 309, Fitness value: -5911.730468
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.236002 --teleportation_cost 0.165810 --edible_ghost_cost -1.053585 --pellet_cost -0.110161 > result/result_312.txt
+Iteration: 307, Fitness value: -6716.583237
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.215987 --teleportation_cost 0.133226 --edible_ghost_cost -1.049160 --pellet_cost -0.096266 > result/result_313.txt
+Iteration: 310, Fitness value: -6148.352244
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.240426 --teleportation_cost 0.141550 --edible_ghost_cost -1.033176 --pellet_cost -0.087028 > result/result_314.txt
+Iteration: 305, Fitness value: -6692.681437
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.214752 --teleportation_cost 0.136800 --edible_ghost_cost -1.010317 --pellet_cost -0.099129 > result/result_315.txt
+Iteration: 311, Fitness value: -6618.628101
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.208275 --teleportation_cost 0.105320 --edible_ghost_cost -1.042915 --pellet_cost -0.121446 > result/result_316.txt
+Iteration: 306, Fitness value: -7129.717835
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.210100 --teleportation_cost 0.129085 --edible_ghost_cost -1.015575 --pellet_cost -0.102404 > result/result_317.txt
+Iteration: 304, Fitness value: -6714.23654
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.256749 --teleportation_cost 0.166924 --edible_ghost_cost -1.106329 --pellet_cost -0.101057 > result/result_318.txt
+Iteration: 308, Fitness value: -6880.137549
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.206399 --teleportation_cost 0.134903 --edible_ghost_cost -1.006391 --pellet_cost -0.103217 > result/result_319.txt
+Iteration: 314, Fitness value: -5299.434008
+Iteration: 313, Fitness value: -5965.827129
+Iteration: 312, Fitness value: -6854.40618
+Iteration: 318, Fitness value: -6623.527465
+Iteration: 315, Fitness value: -7048.862426
+Iteration: 319, Fitness value: -7236.741671
+Iteration: 317, Fitness value: -6777.905886
+Iteration: 316, Fitness value: -6671.249194
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.215605 --teleportation_cost 0.172885 --edible_ghost_cost -1.020021 --pellet_cost -0.105183 > result/result_320.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.226158 --teleportation_cost 0.153626 --edible_ghost_cost -1.035397 --pellet_cost -0.112781 > result/result_321.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.223104 --teleportation_cost 0.098326 --edible_ghost_cost -1.019977 --pellet_cost -0.114239 > result/result_322.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.225213 --teleportation_cost 0.168831 --edible_ghost_cost -1.064412 --pellet_cost -0.097781 > result/result_323.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.206454 --teleportation_cost 0.130905 --edible_ghost_cost -1.024213 --pellet_cost -0.103464 > result/result_324.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.222598 --teleportation_cost 0.160176 --edible_ghost_cost -1.030724 --pellet_cost -0.100473 > result/result_325.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.191470 --teleportation_cost 0.133814 --edible_ghost_cost -1.035973 --pellet_cost -0.106048 > result/result_326.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.220757 --teleportation_cost 0.157941 --edible_ghost_cost -1.004966 --pellet_cost -0.094144 > result/result_327.txt
+Iteration: 323, Fitness value: -6246.21066
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.209627 --teleportation_cost 0.147907 --edible_ghost_cost -1.027658 --pellet_cost -0.097063 > result/result_328.txt
+Iteration: 322, Fitness value: -6065.081447
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.224385 --teleportation_cost 0.133713 --edible_ghost_cost -0.980926 --pellet_cost -0.108773 > result/result_329.txt
+Iteration: 327, Fitness value: -6416.203545
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.240066 --teleportation_cost 0.140084 --edible_ghost_cost -1.028080 --pellet_cost -0.109989 > result/result_330.txt
+Iteration: 320, Fitness value: -7076.733856
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.208642 --teleportation_cost 0.136100 --edible_ghost_cost -1.006497 --pellet_cost -0.099520 > result/result_331.txt
+Iteration: 321, Fitness value: -5940.684949
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.223465 --teleportation_cost 0.163796 --edible_ghost_cost -1.033591 --pellet_cost -0.095592 > result/result_332.txt
+Iteration: 326, Fitness value: -6647.805604
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.231629 --teleportation_cost 0.172498 --edible_ghost_cost -1.076510 --pellet_cost -0.107505 > result/result_333.txt
+Iteration: 325, Fitness value: -6605.578858
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.239473 --teleportation_cost 0.113315 --edible_ghost_cost -1.039909 --pellet_cost -0.104716 > result/result_334.txt
+Iteration: 324, Fitness value: -7363.97069
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.248396 --teleportation_cost 0.156149 --edible_ghost_cost -1.096796 --pellet_cost -0.107113 > result/result_335.txt
+Iteration: 328, Fitness value: -5955.284674
+Iteration: 330, Fitness value: -6562.174772
+Iteration: 332, Fitness value: -6211.103296
+Iteration: 333, Fitness value: -6935.337397
+Iteration: 331, Fitness value: -6353.132974
+Iteration: 329, Fitness value: -7017.585903
+Iteration: 334, Fitness value: -6531.791961
+Iteration: 335, Fitness value: -7013.447352
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.211988 --teleportation_cost 0.149903 --edible_ghost_cost -1.040984 --pellet_cost -0.107096 > result/result_336.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.204075 --teleportation_cost 0.143071 --edible_ghost_cost -1.026924 --pellet_cost -0.110772 > result/result_337.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.205838 --teleportation_cost 0.139949 --edible_ghost_cost -1.043549 --pellet_cost -0.110138 > result/result_338.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.216528 --teleportation_cost 0.158915 --edible_ghost_cost -1.010249 --pellet_cost -0.107563 > result/result_339.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.208424 --teleportation_cost 0.162351 --edible_ghost_cost -1.051315 --pellet_cost -0.114261 > result/result_340.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.224525 --teleportation_cost 0.173322 --edible_ghost_cost -1.055435 --pellet_cost -0.108366 > result/result_341.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.206988 --teleportation_cost 0.146958 --edible_ghost_cost -1.025973 --pellet_cost -0.102498 > result/result_342.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.236522 --teleportation_cost 0.130181 --edible_ghost_cost -1.027593 --pellet_cost -0.107431 > result/result_343.txt
+Iteration: 340, Fitness value: -5593.812643
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.224493 --teleportation_cost 0.137657 --edible_ghost_cost -0.995111 --pellet_cost -0.114681 > result/result_344.txt
+Iteration: 343, Fitness value: -6527.351998
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.223231 --teleportation_cost 0.171883 --edible_ghost_cost -1.048250 --pellet_cost -0.109344 > result/result_345.txt
+Iteration: 341, Fitness value: -6449.906457
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.237170 --teleportation_cost 0.125338 --edible_ghost_cost -1.033593 --pellet_cost -0.110402 > result/result_346.txt
+Iteration: 339, Fitness value: -6469.239245
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.222968 --teleportation_cost 0.139424 --edible_ghost_cost -1.015502 --pellet_cost -0.104439 > result/result_347.txt
+Iteration: 336, Fitness value: -6718.65312
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.240674 --teleportation_cost 0.150881 --edible_ghost_cost -1.040049 --pellet_cost -0.101332 > result/result_348.txt
+Iteration: 342, Fitness value: -6521.276781
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.219133 --teleportation_cost 0.149086 --edible_ghost_cost -1.027834 --pellet_cost -0.096206 > result/result_349.txt
+Iteration: 338, Fitness value: -5705.018594
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.207367 --teleportation_cost 0.108324 --edible_ghost_cost -0.992835 --pellet_cost -0.104084 > result/result_350.txt
+Iteration: 337, Fitness value: -6518.291534
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.233916 --teleportation_cost 0.147739 --edible_ghost_cost -1.000268 --pellet_cost -0.105134 > result/result_351.txt
+Iteration: 344, Fitness value: -6195.058905
+Iteration: 347, Fitness value: -6835.779326
+Iteration: 348, Fitness value: -6449.258936
+Iteration: 345, Fitness value: -7181.351683
+Iteration: 349, Fitness value: -6408.399438
+Iteration: 346, Fitness value: -6525.857016
+Iteration: 350, Fitness value: -7231.018442
+Iteration: 351, Fitness value: -6893.875685
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.217468 --teleportation_cost 0.169336 --edible_ghost_cost -1.055773 --pellet_cost -0.110511 > result/result_352.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.214761 --teleportation_cost 0.155417 --edible_ghost_cost -1.037094 --pellet_cost -0.109824 > result/result_353.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.220734 --teleportation_cost 0.105473 --edible_ghost_cost -0.987480 --pellet_cost -0.098525 > result/result_354.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.215052 --teleportation_cost 0.150279 --edible_ghost_cost -1.044551 --pellet_cost -0.104435 > result/result_355.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.210179 --teleportation_cost 0.160125 --edible_ghost_cost -1.055406 --pellet_cost -0.109783 > result/result_356.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.234630 --teleportation_cost 0.160461 --edible_ghost_cost -1.014928 --pellet_cost -0.107095 > result/result_357.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.221791 --teleportation_cost 0.108232 --edible_ghost_cost -0.988090 --pellet_cost -0.109409 > result/result_358.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.207232 --teleportation_cost 0.118109 --edible_ghost_cost -0.992587 --pellet_cost -0.113126 > result/result_359.txt
+Iteration: 359, Fitness value: -5623.038393
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.216532 --teleportation_cost 0.141762 --edible_ghost_cost -1.010007 --pellet_cost -0.100200 > result/result_360.txt
+Iteration: 355, Fitness value: -6861.025399
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.218373 --teleportation_cost 0.132431 --edible_ghost_cost -0.979632 --pellet_cost -0.108824 > result/result_361.txt
+Iteration: 358, Fitness value: -6911.013418
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.244297 --teleportation_cost 0.176018 --edible_ghost_cost -1.028553 --pellet_cost -0.101010 > result/result_362.txt
+Iteration: 356, Fitness value: -6987.677915
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.206591 --teleportation_cost 0.142944 --edible_ghost_cost -1.039363 --pellet_cost -0.115894 > result/result_363.txt
+Iteration: 357, Fitness value: -7012.963294
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.211517 --teleportation_cost 0.115382 --edible_ghost_cost -0.984228 --pellet_cost -0.103269 > result/result_364.txt
+Iteration: 354, Fitness value: -7052.926813
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.232276 --teleportation_cost 0.157614 --edible_ghost_cost -1.011688 --pellet_cost -0.102231 > result/result_365.txt
+Iteration: 353, Fitness value: -7203.892535
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.207858 --teleportation_cost 0.124094 --edible_ghost_cost -1.012156 --pellet_cost -0.104941 > result/result_366.txt
+Iteration: 352, Fitness value: -6120.650052
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.236445 --teleportation_cost 0.155970 --edible_ghost_cost -1.017147 --pellet_cost -0.104703 > result/result_367.txt
+Iteration: 366, Fitness value: -6476.341711
+Iteration: 362, Fitness value: -6877.952533
+Iteration: 360, Fitness value: -6718.831121
+Iteration: 361, Fitness value: -6652.024115
+Iteration: 367, Fitness value: -6604.90251
+Iteration: 365, Fitness value: -6373.572904
+Iteration: 364, Fitness value: -6885.180276
+Iteration: 363, Fitness value: -6386.253838
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.214724 --teleportation_cost 0.137805 --edible_ghost_cost -1.023486 --pellet_cost -0.108895 > result/result_368.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.204090 --teleportation_cost 0.165941 --edible_ghost_cost -1.035758 --pellet_cost -0.110240 > result/result_369.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.201829 --teleportation_cost 0.152996 --edible_ghost_cost -1.051920 --pellet_cost -0.102763 > result/result_370.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.227024 --teleportation_cost 0.133646 --edible_ghost_cost -1.017908 --pellet_cost -0.107128 > result/result_371.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.219883 --teleportation_cost 0.146799 --edible_ghost_cost -1.012208 --pellet_cost -0.104984 > result/result_372.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.224405 --teleportation_cost 0.123517 --edible_ghost_cost -1.008254 --pellet_cost -0.103647 > result/result_373.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.212578 --teleportation_cost 0.123711 --edible_ghost_cost -1.002967 --pellet_cost -0.105717 > result/result_374.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.216272 --teleportation_cost 0.143626 --edible_ghost_cost -1.026555 --pellet_cost -0.103122 > result/result_375.txt
+Iteration: 368, Fitness value: -6379.27561
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.240295 --teleportation_cost 0.156108 --edible_ghost_cost -1.077565 --pellet_cost -0.105241 > result/result_376.txt
+Iteration: 375, Fitness value: -6695.476611
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.202376 --teleportation_cost 0.152258 --edible_ghost_cost -1.028802 --pellet_cost -0.112390 > result/result_377.txt
+Iteration: 371, Fitness value: -6731.3104
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.230121 --teleportation_cost 0.158305 --edible_ghost_cost -1.005089 --pellet_cost -0.110845 > result/result_378.txt
+Iteration: 373, Fitness value: -6695.585858
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.216122 --teleportation_cost 0.103071 --edible_ghost_cost -0.978102 --pellet_cost -0.103778 > result/result_379.txt
+Iteration: 372, Fitness value: -7365.763526
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.221778 --teleportation_cost 0.135983 --edible_ghost_cost -1.041904 --pellet_cost -0.110164 > result/result_380.txt
+Iteration: 370, Fitness value: -6828.976606
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.218305 --teleportation_cost 0.120382 --edible_ghost_cost -1.007684 --pellet_cost -0.106152 > result/result_381.txt
+Iteration: 374, Fitness value: -7262.25414
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.220508 --teleportation_cost 0.127510 --edible_ghost_cost -1.025273 --pellet_cost -0.108957 > result/result_382.txt
+Iteration: 369, Fitness value: -7290.805953
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.215489 --teleportation_cost 0.135337 --edible_ghost_cost -0.996937 --pellet_cost -0.106558 > result/result_383.txt
+Iteration: 376, Fitness value: -6772.761178
+Iteration: 377, Fitness value: -5963.833579
+Iteration: 379, Fitness value: -6886.16168
+Iteration: 378, Fitness value: -5863.700707
+Iteration: 380, Fitness value: -6183.200452
+Iteration: 381, Fitness value: -7130.830245
+Iteration: 382, Fitness value: -6670.283873
+Iteration: 383, Fitness value: -7224.410644
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.211924 --teleportation_cost 0.128166 --edible_ghost_cost -0.994074 --pellet_cost -0.102144 > result/result_384.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.196118 --teleportation_cost 0.147900 --edible_ghost_cost -1.014958 --pellet_cost -0.109847 > result/result_385.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.196303 --teleportation_cost 0.146716 --edible_ghost_cost -0.996443 --pellet_cost -0.105741 > result/result_386.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.218243 --teleportation_cost 0.143356 --edible_ghost_cost -1.017208 --pellet_cost -0.108462 > result/result_387.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.205004 --teleportation_cost 0.161844 --edible_ghost_cost -1.045052 --pellet_cost -0.109366 > result/result_388.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.195333 --teleportation_cost 0.150483 --edible_ghost_cost -1.001102 --pellet_cost -0.104564 > result/result_389.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.218321 --teleportation_cost 0.153574 --edible_ghost_cost -1.014151 --pellet_cost -0.105571 > result/result_390.txt
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.208631 --teleportation_cost 0.155343 --edible_ghost_cost -1.024589 --pellet_cost -0.107825 > result/result_391.txt
+Iteration: 389, Fitness value: -6656.78395
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.218104 --teleportation_cost 0.128555 --edible_ghost_cost -0.996806 --pellet_cost -0.107487 > result/result_392.txt
+Iteration: 388, Fitness value: -6764.601855
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.216384 --teleportation_cost 0.168636 --edible_ghost_cost -1.037147 --pellet_cost -0.108568 > result/result_393.txt
+Iteration: 390, Fitness value: -6799.157735
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.218206 --teleportation_cost 0.141864 --edible_ghost_cost -1.010684 --pellet_cost -0.105750 > result/result_394.txt
+Iteration: 385, Fitness value: -6672.495845
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.208618 --teleportation_cost 0.144377 --edible_ghost_cost -1.013458 --pellet_cost -0.103625 > result/result_395.txt
+Iteration: 391, Fitness value: -6759.010792
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.208271 --teleportation_cost 0.147294 --edible_ghost_cost -1.025189 --pellet_cost -0.105324 > result/result_396.txt
+Iteration: 384, Fitness value: -6672.832218
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.210860 --teleportation_cost 0.147724 --edible_ghost_cost -1.015436 --pellet_cost -0.107153 > result/result_397.txt
+Iteration: 387, Fitness value: -7058.699344
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.221660 --teleportation_cost 0.145562 --edible_ghost_cost -1.020532 --pellet_cost -0.109401 > result/result_398.txt
+Iteration: 386, Fitness value: -7320.331007
+./pacman ../../roms/ms_pacman.bin --ghost_cost 1 --corner_cost 0.223135 --teleportation_cost 0.160368 --edible_ghost_cost -1.037256 --pellet_cost -0.106019 > result/result_399.txt
+Iteration: 397, Fitness value: -6215.683228
+Iteration: 392, Fitness value: -6924.459857
+Iteration: 395, Fitness value: -6453.507348
+Iteration: 393, Fitness value: -7164.127
+Iteration: 394, Fitness value: -6877.987899
+Iteration: 398, Fitness value: -7197.854655
+Iteration: 396, Fitness value: -7102.311911
+Iteration: 399, Fitness value: -7013.027559

@@ -75,8 +75,9 @@ int main(int argc, char *argv[])
     int lambda = 16; // offsprings at each generation.
     CMAParameters<> cmaparams(x0, sigma, lambda);
     cmaparams.set_mt_feval(true);
-    cmaparams.set_max_fevals(200);
+    cmaparams.set_max_fevals(400);
     cmaparams.set_fplot("data.dat");
+    cmaparams.set_algo(aCMAES);
     //cmaparams._algo = BIPOP_CMAES;
     CMASolutions cmasols = cmaes<>(pacman_experiment, cmaparams);
     std::cout << "best solution: " << cmasols << std::endl;
