@@ -4,7 +4,7 @@ AGENTLDFLAGS := -lm -lrlutils -lrlagent -lrlgluenetdev
 EXPLDFLAGS := -lrlutils -lrlexperiment -lrlgluenetdev
 CFLAGS := -Wall -pedantic -std=c++11
 
-all: cmaes
+all: 
 	AGENTLDFLAGS="$(AGENTLDFLAGS)" CFLAGS="$(CFLAGS)" make -f Makefile.agent
 	EXPLDFLAGS="$(EXPLDFLAGS)" CFLAGS="$(CFLAGS)"  make -f Makefile.experiment
 
